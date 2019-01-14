@@ -42,7 +42,7 @@ App({
         id: 1,
         name: '果盘3',
         pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        standard: '[{"0":"小份","2":"大份","3":"超大份","name":"份量","code":"cm"},{"1":"超辣","0":"微辣","2":"无辣","name":"口味","code":"ys"}]',
+        standard: '[{"0":"小份","2":"大份","3":"超大份","name":"份量","code":"cm","price":[120,240,360]},{"1":"超辣","0":"微辣","2":"无辣","name":"口味","code":"ys"}]',
         sold: 1014,
         price: 120,
         ismode: 0,
@@ -58,7 +58,7 @@ App({
         id: 3,
         name: '方便面',
         pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        standard: '[{"0":"小份","2":"大份","3":"超大份","name":"份量","code":"cm"},{"1":"超辣","0":"微辣","2":"无辣","name":"口味","code":"ys"}]',
+        standard: '[{"0":"小份","2":"大份","3":"超大份","name":"份量","code":"cm","price":[5,10,15]},{"1":"超辣","0":"微辣","2":"无辣","name":"口味","code":"ys"}]',
         sold: 1030,
         price: 5,
         ismode: 0,
@@ -133,18 +133,39 @@ App({
       }
     ],
     cart: {
-      count: 0,//商品总数量
-      total: 0,//总价格
-      list: {}//key为商品id，value为该商品数量
+      count: 0, //商品总数量
+      total: 0, //总价格
+      list: {}, //key为商品id，value为该商品数量
+      standardCart: [], //可选规格商品，包含商品名称、口味、分量
     },
     showCartDetail: false,
     showCart: true
   },
 
   // 购物车操作全局函数
+  standardAdd: function(e) {
+    var one = {},
+      count = this.globalData.cart.count || 0;
+    one.name = e.currentTarget.dataset.name;
+    one.price = e.currentTarget.dataset.price;
+    one.favour = e.currentTarget.dataset.favour;
+    one.num = e.currentTarget.dataset.num;
+    if (e.currentTarget.dataset.from == 'detail') {
+      this.globalData.cart.standardCart = [];
+      one.num++;
+      count++;
+    } else {
+      count += one.num
+    }
+    this.globalData.cart.standardCart.push(one);
+    this.globalData.cart.count = count;
+  },
   //加入购物车
   tapAddCart: function(e) {
-    this.addCart(e.currentTarget.dataset.id);
+    if (e.currentTarget.dataset.name)
+      this.standardAdd(e);
+    else
+      this.addCart(e.currentTarget.dataset.id);
   },
 
   //购物车详情栏--从购物车中删除
@@ -164,21 +185,20 @@ App({
     }
     this.globalData.cart.count = count;
     this.globalData.cart.total = total;
-    this.globalData.cart=this.globalData.cart
+    this.globalData.cart = this.globalData.cart
   },
   //显示购物车详情栏
   showCartDetail: function() {
-    this.globalData.showCartDetail= !this.globalData.showCartDetail
+    this.globalData.showCartDetail = !this.globalData.showCartDetail
   },
   // 当购物车空隐藏购物车详情栏
   hideCartDetail: function() {
-    this.globalData.showCartDetail=false
+    this.globalData.showCartDetail = false
   },
   //购物车详情栏--加入购物车
   addCart: function(id) {
     var num = this.globalData.cart.list[id] || 0;
     this.globalData.cart.list[id] = num + 1;
-    console.log(id);
     this.countCart();
   },
 

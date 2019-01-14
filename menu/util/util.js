@@ -63,6 +63,9 @@ function Tap(input) {
         case "code":
           obj.ano = value[key];
           break;
+        case "price":
+          obj.price = value[key];
+          break;
         default:
           obj.value.push(value[key]);
       }

@@ -43,7 +43,5 @@
   <!-- 购物车 -->
   <template is="cart" data="{{cart,showCartDetail,showCart,goods}}" />
   <!-- 规格抽屉 -->
-  <template is="drawer" data="{{showModalStatus,item,animationData,warning,haveCheckedProp,postData,index,number}}" />
-
-
+  <template is="drawer" data="{{showModalStatus,item,animationData,warning,haveCheckedProp,postData,index,number,getCount}}" />
 </view>

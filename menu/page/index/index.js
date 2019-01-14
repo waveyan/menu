@@ -112,7 +112,7 @@ Page({
 
   // 添加购物车
   tapAddCart: function (e) {
-    console.log(e)
+    console.log(this)
     var that = this
     app.tapAddCart(e);
     that.refresh();

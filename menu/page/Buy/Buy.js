@@ -1,4 +1,3 @@
-// var detail = require('../../data/posts-data.js');
 var common = require('../../util/util.js');
 
 var app = getApp();
@@ -14,10 +13,11 @@ Page({
     warning: false,
     warnDes: "",
     number: 1,
-    postData: {},
+    postData: {}, //是否已选规格
     showCart: true,
     showCartDetail: false,
     goods: app.globalData.goods,
+    getCount: false, //是否已选规格
   },
   postData: {},
 
@@ -40,44 +40,6 @@ Page({
     var that = this;
     that.refresh();
   },
-
-  // 同步全局购物车数据
-  refresh: function() {
-    this.setData({
-      cart: app.globalData.cart,
-      showCartDetail: app.globalData.showCartDetail,
-      showCart: app.globalData.showCart,
-    })
-  },
-  // 添加购物车
-  tapAddCart: function(e) {
-    var that = this;
-    console.log(e);
-    app.tapAddCart(e);
-    that.refresh();
-  },
-  //购物车详情栏--从购物车中删除
-  tapReduceCart: function(e) {
-    var that = this
-    app.tapReduceCart(e);
-    that.refresh();
-  },
-  // 显示购物车详情栏
-  showCartDetail: function() {
-    app.showCartDetail()
-    this.setData({
-      showCartDetail: app.globalData.showCartDetail
-    });
-  },
-  // 隐藏购物车详情栏
-  hideCartDetail: function() {
-    app.hideCartDetail();
-    console.log(app.globalData.showCartDetail)
-    this.setData({
-      showCartDetail: app.globalData.showCartDetail
-    });
-  },
-
   // 抽屉显示和隐藏
   setModalStatus: function(e) {
     console.log("设置显示状态，1显示0不显示", e.currentTarget.dataset.status);
@@ -112,11 +74,18 @@ Page({
 
   // 抽屉弹出信息的属性值
   getChecked: function(e) {
-    var that = this,
+    var price, that = this,
       haveCheckedProp = "",
       name = e.currentTarget.dataset.property,
       value = e.currentTarget.dataset.value,
       length, objLength;
+    if (name == 'cm') {
+      price = that.data.item.property[0].price[e.currentTarget.dataset.code];
+      that.data.item.price = price;
+      that.setData({
+        item: that.data.item
+      });
+    }
     that.postData[name] = value;
     length = that.data.item.property.length;
     objLength = common.objLength(that.postData);
@@ -129,8 +98,8 @@ Page({
       });
     }
     this.setData({
-      postData: that.postData,
-      haveCheckedProp: haveCheckedProp
+      postData: that.postData, //已选，dict
+      haveCheckedProp: haveCheckedProp //已选
     })
   },
 
@@ -217,12 +186,6 @@ Page({
       }
     })
   },
-  // 添加购物车
-  tapAddCart: function(e) {
-    var that = this
-    app.tapAddCart(e);
-    that.refresh();
-  },
   //购物车详情栏--从购物车中删除
   tapReduceCart: function(e) {
     var that = this
@@ -243,6 +206,24 @@ Page({
     this.setData({
       showCartDetail: app.globalData.showCartDetail
     });
+  },
+  // 同步全局购物车数据
+  refresh: function () {
+    this.setData({
+      cart: app.globalData.cart,
+      showCartDetail: app.globalData.showCartDetail,
+      showCart: app.globalData.showCart,
+    })
+  },
+  // 添加购物车
+  tapAddCart: function (e) {
+    var that = this;
+    app.tapAddCart(e);
+    that.refresh();
+  },
+  //选规格后添加
+  goToCart: function (e) {
+
   },
 
 

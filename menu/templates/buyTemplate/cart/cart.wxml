@@ -1,27 +1,34 @@
-  <template name="cart">
-  	<view class="cart-detail" hidden="{{!showCartDetail||!cart.count}}">
-		<view class="mask" bindtap="hideCartDetail"></view>
-		<view class="list">
-			<view class="item" wx:for="{{cart.list}}" wx:for-index="id" wx:for-item="num" wx:key="id">
-				<view class="name ellipsis">{{goods[id].name}}</view>
-				<view class="total">￥{{goods[id].price*cart.list[id]}}</view>
-				<view class="reduce" data-id="{{id}}" bindtap="tapReduceCart">-</view>
-				<view class="num">{{num}}</view>
-				<view class="add1" data-id="{{id}}" bindtap="tapAddCart">+</view>
-			</view>
-		</view>
-	</view>
+<template name="cart">
+  <view class="cart-detail" hidden="{{!showCartDetail||!cart.count}}">
+    <view class="mask" bindtap="hideCartDetail"></view>
+    <view class="list">
+      <view class="item" wx:for="{{cart.list}}" wx:for-index="id" wx:for-item="num" wx:key="id">
+        <view class="name ellipsis">{{goods[id].name}}</view>
+        <view class="total">￥{{goods[id].price*cart.list[id]}}</view>
+        <view class="reduce" data-id="{{id}}" bindtap="tapReduceCart">-</view>
+        <view class="num">{{num}}</view>
+        <view class="add1" data-id="{{id}}" bindtap="tapAddCart">+</view>
+      </view>
+      <view class="item" wx:for="{{cart.standardCart}}" wx:for-index="id" wx:for-item="item" wx:key="id">
+        <view class="name ellipsis">{{item.name}}({{item.favour}})</view>
+        <view class="total">￥{{item.price*item.num}}</view>
+        <view class="reduce" data-id="{{id}}" bindtap="tapReduceCart">-</view>
+        <view class="num">{{item.num}}</view>
+        <view class="add1" data-name='{{item.name}}' data-favour="{{item.favour}}" data-price="{{item.price}}" data-num='{{item.num}}' data-from='detail' bindtap="tapAddCart">+</view>
+      </view>
+    </view>
+  </view>
 
-	<view class="cart">
-		<view class="data" bindtap="showCartDetail">
-			<view class="icon">
-				<image src="../../res/images/cart.png"></image>
-				<view class="count">{{cart.count}}</view>
-			</view>
-			<view class="total">￥{{cart.total}}</view>
-		</view>
-		<form bindsubmit="submit" report-submit="true">
-			<button class="yellow {{cart.count?'':'disabled'}}" formType="submit" disabled="{{!cart.count}}">结算</button>
-		</form>
-	</view>
-  </template>
+  <view class="cart">
+    <view class="data" bindtap="showCartDetail">
+      <view class="icon">
+        <image src="../../res/images/cart.png"></image>
+        <view class="count">{{cart.count}}</view>
+      </view>
+      <view class="total">￥{{cart.total}}</view>
+    </view>
+    <form bindsubmit="submit" report-submit="true">
+      <button class="yellow {{cart.count?'':'disabled'}}" formType="submit" disabled="{{!cart.count}}">结算</button>
+    </form>
+  </view>
+</template>
