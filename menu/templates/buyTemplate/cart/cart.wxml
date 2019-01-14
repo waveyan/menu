@@ -12,7 +12,7 @@
 		</view>
 	</view>
 
-	<view class="cart" hidden='{{!showCart}}'>
+	<view class="cart">
 		<view class="data" bindtap="showCartDetail">
 			<view class="icon">
 				<image src="../../res/images/cart.png"></image>

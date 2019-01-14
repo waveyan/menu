@@ -1,32 +1,37 @@
 <import src="../../templates/buyTemplate/comments.wxml" />
-<import src="../../templates/buyTemplate/cart.wxml" />
+<import src="../../templates/buyTemplate/cart/cart.wxml" />
 <import src="../../templates/buyTemplate/drawer/drawer.wxml" />
 <view class="sec-detail">
   <view class="sec-outer">
     <view class="wx-view_KHAWVZ" data-c_e_id="wx_viewb7dbd52e">
       <swiper autoplay="True" class="wx-swiper_Mn3JMs">
         <swiper-item class="c-full wx-swiper-item_F6vCx8" data-c_e_id="wx_swiper_item015a5cd2">
-          <image bindtap="tap_d5808da3" class="wx-image_HsAX8s2" src="{{item.menuImg}}" />
+          <image bindtap="tap_d5808da3" class="wx-image_HsAX8s2" src="{{item.pic}}" />
         </swiper-item>
         <swiper-item class="c-full wx-swiper-item_qGeJVI" data-c_e_id="wx_swiper_item1d2f7146">
-          <image class="wx-image_HsAX8s2" src="{{item.menuImg}}" />
+          <image class="wx-image_HsAX8s2" src="{{item.pic}}" />
         </swiper-item>
       </swiper>
       <view>
-        <text class="c-block wx-text_V55JEt" data-c_e_id="wx_textbf43d609">{{item.title}}</text>
+        <text class="c-block wx-text_V55JEt" data-c_e_id="wx_textbf43d609">{{item.name}}</text>
       </view>
       <view class="label">
         <view class="intro">
           <view class="nav_likelistmore">
-            <text class="c-block wx-text_t7lDiK" data-c_e_id="wx_textfcc12486">月销售:1000</text>
-            <view class="wx-text_t7lDiK1">￥10000</view>
-            <!-- 添加按钮 -->
-            <!-- <view class="addCart" bindtap="tapAddCart" data-id="{{id}}">
-          <image style="width:70rpx;height:70rpx;margin-right:30rpx;" src="../../res/images/icon/getCar.png"></image></view> -->
-            <!-- 选择规格按钮 -->
-            <view class="button_mode" bindtap="setModalStatus" data-status="1">
-              <text>选择规格</text>
-            </view>
+            <text class="c-block wx-text_t7lDiK" data-c_e_id="wx_textfcc12486">月销售:{{item.sold}}</text>
+            <view class="wx-text_t7lDiK1">￥{{item.price}}</view>
+            <block wx:if="{{item.ismode == 0}}">
+              <!-- 选择规格按钮 -->
+              <view class="button_mode" bindtap="setModalStatus" data-status="1">
+                <text>选择规格</text>
+              </view>
+            </block>
+            <block wx:else>
+              <!-- 添加按钮 -->
+              <view class="addCart" bindtap="tapAddCart" data-id="{{item.id}}">
+                <image style="width:70rpx;height:70rpx;margin-right:30rpx;" src="../../res/images/icon/getCar.png"></image>
+              </view>
+            </block>
           </view>
         </view>
       </view>
@@ -36,7 +41,7 @@
     </view>
   </view>
   <!-- 购物车 -->
-  <template is="cart" data="{{cart,showCartDetail,showCart}}" />
+  <template is="cart" data="{{cart,showCartDetail,showCart,goods}}" />
   <!-- 规格抽屉 -->
   <template is="drawer" data="{{showModalStatus,item,animationData,warning,haveCheckedProp,postData,index,number}}" />
 

@@ -1,9 +1,6 @@
-var detail = require('../../data/posts-data.js');
+// var detail = require('../../data/posts-data.js');
 var common = require('../../util/util.js');
 
-// 引入coolsite360交互配置设定
-// require('coolsite.config.js');
-// 获取全局应用程序实例对象
 var app = getApp();
 // 创建页面实例对象
 Page({
@@ -18,54 +15,71 @@ Page({
     warnDes: "",
     number: 1,
     postData: {},
-    showCart:true,
+    showCart: true,
+    showCartDetail: false,
+    goods: app.globalData.goods,
   },
   postData: {},
 
   onLoad: function(option) {
-    // app.coolsite360.register(this);
     // 获取到加入购物车选项信息
     var that = this;
     var postId = option.id;
     // var postId = 0;
-    var item = detail.postList[postId];
-    item.property = common.Tap(item.standard);
+    var item = that.data.goods[postId];
+    if (item.ismode == 0) {
+      item.property = common.Tap(item.standard);
+    }
     that.setData({
       storeTotal: item.storeTotal,
       item: item,
       imgUrls: common.strToArray(item.imgBanner),
     })
   },
-  onShow:function(){
-    console.log('onshow')
-    var that = this
-    wx.getStorage({
-      key: 'cart',
-      success(res) {
-        if (res.data.count > 0) {
-          that.setData({
-            cart: res.data,
-          })
-          console.log(that.data.cart)
-        }
-      }
-    })
+  onShow: function() {
+    var that = this;
+    that.refresh();
   },
 
-  // 显示隐藏购物车
-  showCartDetail: function () {
+  // 同步全局购物车数据
+  refresh: function() {
     this.setData({
-      showCartDetail: !this.data.showCartDetail
+      cart: app.globalData.cart,
+      showCartDetail: app.globalData.showCartDetail,
+      showCart: app.globalData.showCart,
+    })
+  },
+  // 添加购物车
+  tapAddCart: function(e) {
+    var that = this;
+    console.log(e);
+    app.tapAddCart(e);
+    that.refresh();
+  },
+  //购物车详情栏--从购物车中删除
+  tapReduceCart: function(e) {
+    var that = this
+    app.tapReduceCart(e);
+    that.refresh();
+  },
+  // 显示购物车详情栏
+  showCartDetail: function() {
+    app.showCartDetail()
+    this.setData({
+      showCartDetail: app.globalData.showCartDetail
     });
   },
-  hideCartDetail: function () {
+  // 隐藏购物车详情栏
+  hideCartDetail: function() {
+    app.hideCartDetail();
+    console.log(app.globalData.showCartDetail)
     this.setData({
-      showCartDetail: false
+      showCartDetail: app.globalData.showCartDetail
     });
   },
 
   // 抽屉显示和隐藏
-  setModalStatus: function (e) {
+  setModalStatus: function(e) {
     console.log("设置显示状态，1显示0不显示", e.currentTarget.dataset.status);
     var animation = wx.createAnimation({
       duration: 388,
@@ -78,31 +92,27 @@ Page({
       animationData: animation.export()
     })
     if (e.currentTarget.dataset.status == 1) {
-      this.setData(
-        {
-          showModalStatus: true
-        }
-      );
+      this.setData({
+        showModalStatus: true
+      });
     }
     /* 抽屉弹出动画 */
-    setTimeout(function () {
+    setTimeout(function() {
       animation.translateY(0).step()
       this.setData({
         animationData: animation
       })
       if (e.currentTarget.dataset.status == 0) {
-        this.setData(
-          {
-            showModalStatus: false
-          }
-        );
+        this.setData({
+          showModalStatus: false
+        });
       }
     }.bind(this), 200)
   },
 
   // 抽屉弹出信息的属性值
-  getChecked: function (e) {
-      var that = this,
+  getChecked: function(e) {
+    var that = this,
       haveCheckedProp = "",
       name = e.currentTarget.dataset.property,
       value = e.currentTarget.dataset.value,
@@ -124,10 +134,10 @@ Page({
     })
   },
 
-  goToCounter: function () {
+  goToCounter: function() {
     var that = this,
-      length = that.data.item.property.length,   //属性num
-      objLength = common.objLength(that.data.postData);   //已选择属性num
+      length = that.data.item.property.length, //属性num
+      objLength = common.objLength(that.data.postData); //已选择属性num
     if (that.data.item.storeTotal == 0) {
       common.alert.call(that, "供应不足");
     } else {
@@ -139,8 +149,7 @@ Page({
           image = that.data.imgUrls[0];
         wx.navigateTo({
           url: "counter?number=" + number + "&title=" + title + "&tagline=" + tagline + "&price=" + price + "&image=" + image,
-          success: function (res) {
-          }
+          success: function(res) {}
         })
       } else {
         common.alert.call(that, "请选择菜品属性");
@@ -148,7 +157,7 @@ Page({
     }
   },
 
-  addNum: function () {
+  addNum: function() {
     var that = this,
       num = that.data.number;
     if (num + 1 > that.data.item.storeTotal) {
@@ -161,7 +170,7 @@ Page({
     }
   },
 
-  minusNum: function () {
+  minusNum: function() {
     var that = this,
       num = that.data.number;
     if (num - 1 < 1) {
@@ -175,7 +184,7 @@ Page({
   },
 
   // 微信支付实现
-  wxpay: function () {
+  wxpay: function() {
     var code = app.code;
     var url = 'https://www.xxy1978.com/wxpay/example/jsapi.php';
     wx.request({
@@ -187,21 +196,21 @@ Page({
       header: {
         'content-type': 'application/json'
       },
-      success: function (res) {
+      success: function(res) {
         wx.requestPayment({
           timeStamp: res.data.timeStamp,
           nonceStr: res.data.nonceStr,
           package: res.data.package,
           signType: 'MD5',
           paySign: res.data.paySign,
-          success: function (res) {
+          success: function(res) {
             wx.showToast({
               title: '支付成功',
               icon: 'success',
               duration: 3000
             });
           },
-          fail: function (res) {
+          fail: function(res) {
             console.log("支付失败")
           },
         })
@@ -209,26 +218,26 @@ Page({
     })
   },
   // 添加购物车
-  tapAddCart: function (e) {
+  tapAddCart: function(e) {
     var that = this
     app.tapAddCart(e);
     that.refresh();
   },
   //购物车详情栏--从购物车中删除
-  tapReduceCart: function (e) {
+  tapReduceCart: function(e) {
     var that = this
     app.tapReduceCart(e);
     that.refresh();
   },
   // 显示购物车详情栏
-  showCartDetail: function () {
+  showCartDetail: function() {
     app.showCartDetail()
     this.setData({
       showCartDetail: app.globalData.showCartDetail
     });
   },
   // 隐藏购物车详情栏
-  hideCartDetail: function () {
+  hideCartDetail: function() {
     app.hideCartDetail();
     console.log(app.globalData.showCartDetail)
     this.setData({
@@ -236,6 +245,5 @@ Page({
     });
   },
 
-  
-})
 
+})

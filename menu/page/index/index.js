@@ -53,7 +53,7 @@ Page({
   //以下为自定义点击事件
   menuTap: function (event) {
     //event(系统给的一个框架)、currentTarget(当前鼠标点击的一个组件)、dataset(所有自定义数据的集合)、  .（变量名）
-    var postId = event.currentTarget.dataset.postid;
+    var postId = event.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../Buy/Buy?id=' + postId
     })
@@ -112,6 +112,7 @@ Page({
 
   // 添加购物车
   tapAddCart: function (e) {
+    console.log(e)
     var that = this
     app.tapAddCart(e);
     that.refresh();

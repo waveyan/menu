@@ -6,18 +6,18 @@
       <view wx:if="{{warning}}" class="warning">{{warnDes}}</view>
       <view class="check-banner">
         <view class="banner-left inline-block">
-          <image src="{{item.menuImg}}" class="check-image" />
+          <image src="{{item.pic}}" class="check-image" />
         </view>
         <view class="banner-right inline-block">
           <view bindtap="setModalStatus" data-status="0">
             <image class="closeImg" src="../../res/images/cancel.png"></image>
           </view>
+          <view class="title">{{item.name}}</view>
           <view class="banner-price">
             <view class="priceClass">
               {{item.price}}元
             </view>
           </view>
-          <!--<view class="banner-storage">库存：{{item.storeTotal}}</view>-->
           <view class="banner-checked">已选：{{haveCheckedProp}}</view>
         </view>
       </view>

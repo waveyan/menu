@@ -208,7 +208,8 @@ Page({
   },
   //以下为自定义点击事件
   menuTap: function(event) {
-    var postId = event.currentTarget.dataset.postid;
+    var postId = event.currentTarget.dataset.id;
+    console.log(postId);
     wx.navigateTo({
       url: '../Buy/Buy?id=' + postId
     })

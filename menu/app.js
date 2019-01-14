@@ -15,31 +15,6 @@ App({
   },
   getUserInfo: function(cb) {
     var that = this
-    if (this.globalData.userInfo) {
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    } else {
-      //调用登录接口
-      wx.login({
-        success: function(res) {
-          if (res.code) {
-            that.code = res.code
-            //  customLogin(that.code)
-          } else {
-            console.log('获取登录态失败' + res.errMsg)
-          }
-          wx.getUserInfo({
-            success: function(res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
-            }
-          })
-        },
-
-        fail: function(res) {
-          console.log(fail)
-        }
-      })
-    }
   },
 
   getCoverUrl: function(did) {
@@ -67,6 +42,7 @@ App({
         id: 1,
         name: '果盘3',
         pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
+        standard: '[{"0":"小份","2":"大份","3":"超大份","name":"份量","code":"cm"},{"1":"超辣","0":"微辣","2":"无辣","name":"口味","code":"ys"}]',
         sold: 1014,
         price: 120,
         ismode: 0,
@@ -82,6 +58,7 @@ App({
         id: 3,
         name: '方便面',
         pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
+        standard: '[{"0":"小份","2":"大份","3":"超大份","name":"份量","code":"cm"},{"1":"超辣","0":"微辣","2":"无辣","name":"口味","code":"ys"}]',
         sold: 1030,
         price: 5,
         ismode: 0,
@@ -167,7 +144,7 @@ App({
   // 购物车操作全局函数
   //加入购物车
   tapAddCart: function(e) {
-    this.addCart(e.target.dataset.id);
+    this.addCart(e.currentTarget.dataset.id);
   },
 
   //购物车详情栏--从购物车中删除
@@ -201,6 +178,7 @@ App({
   addCart: function(id) {
     var num = this.globalData.cart.list[id] || 0;
     this.globalData.cart.list[id] = num + 1;
+    console.log(id);
     this.countCart();
   },
 
