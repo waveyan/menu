@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "page/index/index",
+    "page/category/category",
+    "page/me/me",
+    "page/seafood/seafood",
+    "page/orderConfirm/orderConfirm",
+    "page/addressManager/addressManager",
+    "page/addressAdd/addressAdd",
+    "page/Buy/Buy",
+    "page/detail/detail",
+    "page/about/about",
+    "page/fqa/fqa",
+    "page/tid/tid",
+    "page/Test/test",
+    "page/feedback/feedback"
+  ],
+  "networkTimeout": {
+    "connectSocket": "",
+    "request": "",
+    "downloadFile": "",
+    "uploadFile": ""
+  },
+  "tabBar": {
+    "backgroundColor": "#fbfafa",
+    "position": "bottom",
+    "borderStyle": "block",
+    "color": "#666",
+    "selectedColor": "#666",
+    "list": [
+      {
+        "pagePath": "page/index/index",
+        "text": "首页",
+        "iconPath": "res/images/icon/home.png",
+        "selectedIconPath": "res/images/icon/homeTwo.png"
+      },
+      {
+        "pagePath": "page/category/category",
+        "selectedIconPath": "res/images/icon/categoryTwo.png",
+        "iconPath": "res/images/icon/category.png",
+        "text": "分类"
+      },
+      {
+        "selectedIconPath": "res/images/icon/shoppingCarTwo.png",
+        "iconPath": "res/images/icon/shoppingCar.png",
+        "pagePath": "page/seafood/seafood",
+        "text": "海产超市"
+      },
+      {
+        "pagePath": "page/me/me",
+        "selectedIconPath": "res/images/icon/userImgTwo.png",
+        "iconPath": "res/images/icon/userImg.png",
+        "text": "个人中心"
+      }
+    ]
+  }
+}

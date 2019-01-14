@@ -1,0 +1,12 @@
+.styleImg{
+    background-size: contain; 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+}
+
+.price_text{
+    margin-top: 50rpx;
+    margin-left: 50rpx;
+    color: "#ff5408";
+}
+

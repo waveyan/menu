@@ -1,0 +1,96 @@
+<view class="main">
+  <view class="title">
+    <text>{{brand}}</text>
+    <text>{{model}}</text>
+    <text>{{color}}</text>
+  </view>
+  <view class="chooseFailureList">
+    <text wx:for="{{chooseFailureList}}" wx:key="{{index}}" data-id="{{item.ChooseFailure}}" data-text="{{item.desc}}" data-remark="{{item.remark}}" data-sub_index="{{item.sub_index}}" data-num="{{index}}" class="{{item.class ? 'active' : ''}}" bindtap="select_chooseFailureList">{{item.desc}}</text>
+  </view>
+</view>
+
+<!--弹窗-->
+<view class="detailFailureCon" hidden="{{detailFailureFlag ? true : false}}">
+  <view class="detailFailure">
+    <view class="detailFailure_title">
+    <!-- ·标题· -->
+      请选择店铺
+    </view>
+    <view class="detailFailure_content">
+      <view wx:for="{{detailFailureArr}}" wx:key="{{index}}" data-sub_index="{{item.sub_index}}" data-repairCombID="{{item.repairCombID}}" data-ChooseFailureid="{{item.ChooseFailureid}}" data-num="{{index}}" data-grade="{{item.grade}}" data-text="{{item.desc}}" class="{{item.class ? 'active' : ''}}" catchtap="select_detailFailur">
+
+      <!-- 二级标题，价格 -->
+        <text data-sub_index="{{item.sub_index}}" data-repairCombID="{{item.repairCombID}}" data-ChooseFailureid="{{item.ChooseFailureid}}" data-num="{{index}}" data-grade="{{item.grade}}" class="{{item.class ? 'active' : ''}}" data-text="{{item.desc}}" catchtap="select_detailFailur">11</text>
+        <text class="detailFailure_content_r" data-sub_index="{{item.sub_index}}" data-repairCombID="{{item.repairCombID}}" data-ChooseFailureid="{{item.ChooseFailureid}}" data-num="{{index}}" data-grade="{{item.grade}}" data-text="{{item.desc}}" class="{{item.class ? 'active' : ''}}" catchtap="select_detailFailur">￥123</text>
+
+      <!-- 备注详情 -->
+      </view>
+    </view>
+    <view class="detailFailure_content_tip">
+      {{remark}}
+    </view>
+    <view class="detailFailure_btn">
+      <text class="detailFailure_btn_l" bindtap="cancel">取消</text>
+      <text bindtap="confirm">确定</text>
+    </view>
+  </view>
+</view>
+<!--end弹窗-->
+
+<!--其他故障弹窗-->
+<view class="detailFailure_ortherCon" hidden="{{detailFailureOrtherFlag ? true : false}}">
+  <view class="detailFailure_orther">
+    <view class="detailFailure_orther_title">其它故障</view>
+    <input class="detailFailure_orther_textarea" fixed="true" placeholder="请描述故障情况..." bindinput="textareaVal" />
+    <view class="detailFailure_orther_imgCon">
+      <view wx:for="{{imgArr}}" wx:key="{{index}}">
+          <image src="{{item}}" bindtap="previewImage" data-url="{{item}}"></image>
+          <text data-index="{{index}}" bindtap="imgDel">X</text>
+      </view>
+      <view class="addImg" bindtap="addImg">+</view>
+    </view>
+    <view class="detailFailure_orther_btn" bindtap="otherConfirm">确定</view>
+  </view>
+</view>
+
+<!--end其他故障弹窗-->
+
+<!--底部-->
+<view class="footer" hidden="{{footerFlag ? true : false}}">
+  <view class="footer_l">
+    <view class="footer_l_imgCon" hidden="{{footer_l_imgConFlag ? true : false}}" >
+      <image src="../../res/images/b_phone.png" bindtap="taggleCom"></image>
+      <text hidden="{{combTampNum ? false : true}}">{{combTampNum}}</text>
+    </view>
+    <view class="{{footer_l_imgConFlag ? 'footer_l_content1' : 'footer_l_content'}}">
+      <view class="footer_l_content_l">
+        <text>维修价：</text>
+        <text class="footer_l_content_price" hidden="{{price ? 0 : true}}">￥{{price}}</text>
+      </view>
+      <view class="footer_l_content_tip">
+        此为预测维修费用
+      </view>
+    </view>
+  </view>
+  <view class="footer_r" bindtap="next">下一步</view>
+  <view class="comCon" hidden="{{footer_l_imgConFlag ? false : true}}">
+    <view class="comCon_t_imgCon">
+      <image src="../../res/images/b_phone.png" bindtap="taggleCom"></image>
+    </view>
+    <view class="comCon_title">
+      <text>{{brand}}</text>
+      <text>{{model}}</text>
+      <text>{{color}}</text>
+    </view>
+    <view class="comCon_rowCon">
+      <view class="comCon_row" wx:for="{{combTampArr}}" wx:key="{{index}}">
+        <text>{{item.text}}</text>
+        <text class="comCon_row_price">{{item.grade}}</text>
+        <text class="comCon_row_x" data-sub_index="{{item.sub_index}}" bindtap="del">X</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!--故障详情列表展开时蒙层-->
+  <view class="shade" hidden="{{footer_l_imgConFlag ? false : true}}"></view>
+<!--end底部-->

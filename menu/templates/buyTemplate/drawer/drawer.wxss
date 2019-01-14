@@ -1,0 +1,129 @@
+.bottom-check{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 116%;
+    background: rgba(0,0,0,0.7);
+}
+.check-top {
+    height: 40%;
+}
+.check-bottom{
+    position: relative;
+    height: 60%;
+    background: #f2f2f2;
+}
+.warning{
+    display: inline-block;
+    position: absolute;
+    top: 70rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10rpx 26rpx;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 28rpx;
+    z-index: 1000;
+
+}
+.check-banner, .check-center{
+    padding: 20rpx 20rpx 0;
+    box-sizing: border-box;
+    overflow: auto;
+}
+.check-center{
+    position: absolute;
+    top: 210rpx;
+    bottom: 100rpx;
+    width: 100%;
+}
+.add, .minus{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60rpx;
+    font-size: 50rpx;
+}
+.minus{
+    left: 20rpx;
+}
+.add{
+    right: 20rpx;
+}
+.check-banner{
+    height: 210rpx;
+    border-bottom: 1px solid #e5e5e5;
+}
+.banner-left{
+    position: absolute;
+    top: -30rpx;
+    left: 26rpx;
+    width: 210rpx;
+}
+.banner-left image{
+    border-color: #e7e7e7;
+    border-style: solid;
+    border-width: 6rpx;
+    border-radius: 10rpx;
+    width: 100%;
+    height: 210rpx;
+}
+.banner-right{
+    position:absolute;
+    left: 274rpx;
+    top:0;
+    width:450rpx;
+    height:180rpx;
+}
+
+.banner-right .banner-storage, .banner-right .banner-checked{
+    font-size: 28rpx;
+    padding: 4rpx 0;
+}
+.check-center .check-sec{
+    padding: 10rpx 0 24rpx;
+    font-size: 28rpx;
+}
+.check-sec:last-child{
+    padding-bottom: 20rpx;
+}
+
+/* 数量 */
+.check-sec .title{
+    margin-right: 10rpx;
+}
+.check-sec .choice-detail{
+    margin:0 4rpx;
+    padding:12rpx 18rpx;
+    text-align:center;
+    border:1px solid #e5e5e5;
+    border-radius:16rpx;
+    margin-bottom: 12rpx;
+    
+}
+
+/* 选项属性 */
+.check-sec .active{
+    color: white;
+    background-color: #feb70f;
+}
+.choice-slider{
+    position: relative;
+    margin:0 4rpx;
+    padding:14rpx 0;
+    width: 300rpx;
+    text-align:center;
+    border:1px solid #e5e5e5;
+    border-radius:44rpx;
+}
+/* 确定按钮 */
+.confirm{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    color: white;
+    background-color: #feb70f;
+    border-radius: 0;
+}

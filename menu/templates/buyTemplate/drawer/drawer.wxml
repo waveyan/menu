@@ -1,0 +1,52 @@
+<template name="drawer">
+  <!-- 抽屉内容 -->
+  <view class="bottom-check" wx:if="{{ showModalStatus }}">
+    <view class="check-top" bindtap="setModalStatus" data-status="0"></view>
+    <view animation="{{animationData}}" class="check-bottom">
+      <view wx:if="{{warning}}" class="warning">{{warnDes}}</view>
+      <view class="check-banner">
+        <view class="banner-left inline-block">
+          <image src="{{item.menuImg}}" class="check-image" />
+        </view>
+        <view class="banner-right inline-block">
+          <view bindtap="setModalStatus" data-status="0">
+            <image class="closeImg" src="../../res/images/cancel.png"></image>
+          </view>
+          <view class="banner-price">
+            <view class="priceClass">
+              {{item.price}}元
+            </view>
+          </view>
+          <!--<view class="banner-storage">库存：{{item.storeTotal}}</view>-->
+          <view class="banner-checked">已选：{{haveCheckedProp}}</view>
+        </view>
+      </view>
+      <view class="check-center">
+
+        <!-- SKU---选取格式 -->
+        <view class="color check-sec" wx:for="{{item.property}}" wx:for-item="item">
+          <!-- 大类属性名 -->
+          <view class="inline-block-two">{{item.name}}</view>
+          <!-- 大类下属性名 -->
+          <view class="nature">
+            <!-- 属性名 -->
+            <view data-property="{{item.ano}}" data-value="{{per}}" data-index="{{index}}" class="inline-block choice-detail {{per == postData[item.ano]? 'active' : ''}}" wx:for="{{item.value}}" wx:for-item="per" wx:for-index="index" data-code="{{index}}" bindtap="getChecked">{{per}}</view>
+          </view>
+        </view>
+
+        <view class="color check-sec">
+          <view class="inline-block title">数量</view>
+          <view class="inline-block choice-slider">
+            <view class="minus" bindtap="minusNum">-</view>
+            {{number}}
+            <view class="add" bindtap="addNum">+</view>
+          </view>
+        </view>
+      </view>
+      <view bindtap="setModalStatus" data-status="0">
+        <button class="confirm" bindtap="goToCounter" bindtap="wxpay">确定</button>
+      </view>
+    </view>
+  </view>
+
+</template>

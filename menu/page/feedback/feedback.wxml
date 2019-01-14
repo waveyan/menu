@@ -1,0 +1,13 @@
+<page>
+    <view class="opinion" >
+        <view class="opinionTitle" >让我们更好</view>
+        <textarea class="opinionTextarea" placeholder="写下您的建议,让我们更好的为你服务" bindblur="bindTextAreaBlur"/> 
+    </view>
+    <!--<view class="opinionBtn" bindtap="modalTap">
+        <text class="opinionText">保存</text>
+    </view>-->
+    <view class="container">
+        <button class="{{btn}}" hover-class="click" bindtap="save" disabled="{{disabled}}">保存</button>
+    </view>
+    <modal class="modal" title="保存成功" hidden="{{modalHidden}}" bindconfirm="modalChange" no-cancel="true" ></modal>
+</page>

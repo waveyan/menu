@@ -1,0 +1,30 @@
+
+<!--店铺活动弹出窗-->
+<template name="formulaTemplate">
+
+  <view class="goodsdetail">
+    <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="500">
+      <swiper-item>
+        <image src="http://xxy1978.oss-cn-shenzhen.aliyuncs.com/menu/gooddetail.jpg"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="http://xxy1978.oss-cn-shenzhen.aliyuncs.com/menu/gooddetail.jpg"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="http://xxy1978.oss-cn-shenzhen.aliyuncs.com/menu/gooddetail.jpg"></image>
+      </swiper-item>
+    </swiper>
+    <view class="title1"></view>
+    <view class="title2"></view>
+    <view class="title3">餐厅星级：
+      <image src="http://xxy1978.oss-cn-shenzhen.aliyuncs.com/menu/star.jpg"></image>
+      <image src="http://xxy1978.oss-cn-shenzhen.aliyuncs.com/menu/star.jpg"></image>
+      <image src="http://xxy1978.oss-cn-shenzhen.aliyuncs.com/menu/star.jpg"></image>
+      <image src="http://xxy1978.oss-cn-shenzhen.aliyuncs.com/menu/star.jpg"></image>
+    </view>
+    <!-- <view class="title4">
+      <view class="title6">确定</view>
+    </view> -->
+  </view>
+
+</template>

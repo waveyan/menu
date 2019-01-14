@@ -1,0 +1,138 @@
+@import "../../templates/indexTemplate/menuList/stars-template/stars-template.wxss";
+@import "../select_fault/select_fault.wxss";
+@import "../../templates/indexTemplate/index-twoTemplate/index.wxss";
+@import "../../templates/buyTemplate/cart/cart.wxss";
+/*弹窗*/
+.goods-ding{position: fixed;}
+.goods-detail .mask{position: fixed;left: 0;top: 0;width: 100%;height: 100%;}
+.goods-detail .mask{background: rgba(0,0,0,0.7);}
+.goodsdetail{position: fixed;top:50%;width:80%;height:800rpx;left:10%;margin-top:-450rpx;background: #fff;z-index: 99999999999999;border-radius:10px;overflow: hidden}
+.banner{height: 500rpx;border-radius:10px;}
+.banner image{width: 100%;height: 100%;border-radius:10px 10px 0 0;}
+.goodsdetail .title1{padding:10rpx 20rpx;color:#3c3c3c;font-size: 36rpx;}
+.goodsdetail .title2{padding:5rpx 20rpx;color:#3c3c3c;font-size: 24rpx;}
+.goodsdetail .title3{padding:5rpx 20rpx;color:#3c3c3c;font-size: 24rpx;}
+.goodsdetail .title3 image{width:24rpx;height:24rpx}
+.goodsdetail .title4{width:100%;position:absolute;bottom:20rpx;color:#3c3c3c;}
+.goodsdetail .title5{width:50%;float:left;font-size:36rpx;margin-left:20rpx;font-size: 36rpx;}
+.goodsdetail .title6{width:200rpx;height:80rpx;font-size: 24rpx;line-height:80rpx;float:right;background:#393939;color:#fff;text-align:center;margin-right:20rpx;border-radius:5px;}
+.goodsdetail .title7{height:80rpx;font-size: 24rpx;float:right;color:#4a4a4a;text-align:center;margin-right:30rpx;border-radius:5px;}
+.goodsdetail .title7 .reduce,
+.goodsdetail .title7 .add{font-size: 50rpx;background: #feb70f;width: 50rpx;height: 50rpx;text-align: center;border-radius: 50%;float:left;line-height:50rpx;}
+.goodsdetail .title7 .num{float:left;width:50rpx;line-height:50rpx;text-align: center;margin: 0 10rpx;}
+
+.close{
+    width: 64rpx;
+    height: 64rpx;
+    float: right;
+    top: 886rpx;
+    left: 340rpx;
+    position: absolute;
+}
+
+.page { 
+    background-color: rgba(255,255,255,1);  
+}
+
+.list{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: center;
+  padding: 0 ;
+  margin-bottom: 50rpx;
+}
+
+.title{
+  text-align:center;
+  margin-top: 10rpx;
+  margin-left: 29rpx;
+  color: #666;
+  font-size: 32rpx;
+}
+
+.h2{
+  margin-top: 39rpx;
+  text-align:center;
+}
+
+.h2 image{
+  width: 146rpx;
+  height: 10rpx;
+  position: relative;
+  top: -4rpx;
+}
+
+.h2 text{
+  color: #959595;
+  margin: 0 40rpx;
+  font-family:"Microsoft YaHei";
+}
+
+.radio-group{
+  margin-top: 39rpx;
+  text-align:center;
+}
+
+.radio-two-group{
+  margin-left: 38rpx;
+}
+
+.hot_line{
+  z-index: -1;
+}
+
+.posterTop{
+  margin-bottom: 18rpx;
+}
+
+.price_text{
+    margin-top: -48rpx;
+    font-size: 38rpx;
+    color: #ff5408;
+}
+
+/* 左上角标签 */
+.main_img{
+  width: 3.25em;
+  height: 3.25em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: 3.25em 3.25em;
+  background: url(http://m.lobo666.com/Public/image/main/new.png) no-repeat center;
+}
+
+.fengexian{
+  margin-top: 15rpx;
+  height:1px;
+  width:100%;
+  background:#dfdfdf;
+  overflow:hidden;
+}
+.button_mode{
+    /* margin-top:50rpx; */
+    margin-left:150rpx;
+    width:150rpx;
+    height:50rpx;
+    background-color: #feb70f;
+    color: white;
+    font-size: 26rpx;
+    border-radius: 10rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 购物车首页适应css */
+.cart {
+  position: fixed;
+}
+.cart-detail .list {
+  position: fixed;
+  bottom: 50rpx;
+  background: #f7f7f7;
+  display:inline;
+}
