@@ -1,3 +1,4 @@
+var common = require('../../util/util.js');
 // 获取到小程序实例
 const app = getApp();
 Page({
@@ -5,8 +6,10 @@ Page({
     showCartDetail:false,
     showCart:true,
     goods: app.globalData.goods,
-    goodsList: app.globalData.goodsList,
+    goodsList: app.globalData.goodsList, getCount: false, //是否已选规格
+    number: 1, //规格中数量
   },
+  postData: {},
   // 生命周期函数--监听页面加载
   // 一个页面只会调用一次。
   onLoad: function(options) {
@@ -102,8 +105,9 @@ Page({
     });
   },
 
+  // drawer--------------------------------------------------------------------------------------
   // 抽屉显示和隐藏
-  setModalStatus: function(e) {
+  setModalStatus: function (e) {
     console.log("设置显示状态，1显示0不显示", e.currentTarget.dataset.status);
     var animation = wx.createAnimation({
       duration: 388,
@@ -116,12 +120,20 @@ Page({
       animationData: animation.export()
     })
     if (e.currentTarget.dataset.status == 1) {
+      var postId = e.currentTarget.dataset.id;
+      var item = this.data.goods[postId];
+      if (item.ismode == 0) {
+        item.property = common.Tap(item.standard);
+      }
       this.setData({
-        showModalStatus: true
+        showModalStatus: true,
+        storeTotal: item.storeTotal,
+        item: item,
+        imgUrls: common.strToArray(item.imgBanner),
       });
     }
     /* 抽屉弹出动画 */
-    setTimeout(function() {
+    setTimeout(function () {
       animation.translateY(0).step()
       this.setData({
         animationData: animation
@@ -135,12 +147,19 @@ Page({
   },
 
   // 抽屉弹出信息的属性值
-  getChecked: function(e) {
-    var that = this,
+  getChecked: function (e) {
+    var price, that = this,
       haveCheckedProp = "",
       name = e.currentTarget.dataset.property,
       value = e.currentTarget.dataset.value,
       length, objLength;
+    if (name == 'cm') {
+      price = that.data.item.property[0].price[e.currentTarget.dataset.code];
+      that.data.item.price = price;
+      that.setData({
+        item: that.data.item
+      });
+    }
     that.postData[name] = value;
     length = that.data.item.property.length;
     objLength = common.objLength(that.postData);
@@ -153,35 +172,11 @@ Page({
       });
     }
     this.setData({
-      postData: that.postData,
-      haveCheckedProp: haveCheckedProp
+      postData: that.postData, //已选，dict
+      haveCheckedProp: haveCheckedProp //已选
     })
   },
-
-  goToCounter: function() {
-    var that = this,
-      length = that.data.item.property.length, //属性num
-      objLength = common.objLength(that.data.postData); //已选择属性num
-    if (that.data.item.storeTotal == 0) {
-      common.alert.call(that, "供应不足");
-    } else {
-      if (length === objLength) {
-        var number = that.data.number,
-          title = that.data.item.title,
-          tagline = that.data.item.tagline,
-          price = that.data.item.sellPrice,
-          image = that.data.imgUrls[0];
-        wx.navigateTo({
-          url: "counter?number=" + number + "&title=" + title + "&tagline=" + tagline + "&price=" + price + "&image=" + image,
-          success: function(res) {}
-        })
-      } else {
-        common.alert.call(that, "请选择菜品属性");
-      }
-    }
-  },
-
-  addNum: function() {
+  addNum: function () {
     var that = this,
       num = that.data.number;
     if (num + 1 > that.data.item.storeTotal) {
@@ -193,12 +188,11 @@ Page({
       })
     }
   },
-
-  minusNum: function() {
+  minusNum: function () {
     var that = this,
       num = that.data.number;
     if (num - 1 < 1) {
-      common.alert.call(that, "购买份数最少为1");
+      // common.alert.call(that, "购买份数最少为1");
     } else {
       num -= 1;
       that.setData({
@@ -206,6 +200,7 @@ Page({
       })
     }
   },
+  // end drawer---------------------------------------------------------------------------------
   //以下为自定义点击事件
   menuTap: function(event) {
     var postId = event.currentTarget.dataset.id;

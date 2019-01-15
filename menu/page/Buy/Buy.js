@@ -4,20 +4,11 @@ var app = getApp();
 // 创建页面实例对象
 Page({
   data: {
-    indicatorDots: true,
-    autoplay: true,
-    interval: 5000,
-    duration: 1000,
-    circular: true,
-    isShow: false,
-    warning: false,
-    warnDes: "",
-    number: 1,
-    postData: {}, //是否已选规格
     showCart: true,
     showCartDetail: false,
     goods: app.globalData.goods,
     getCount: false, //是否已选规格
+    number: 1,//规格中数量
   },
   postData: {},
 
@@ -103,29 +94,6 @@ Page({
     })
   },
 
-  goToCounter: function() {
-    var that = this,
-      length = that.data.item.property.length, //属性num
-      objLength = common.objLength(that.data.postData); //已选择属性num
-    if (that.data.item.storeTotal == 0) {
-      common.alert.call(that, "供应不足");
-    } else {
-      if (length === objLength) {
-        var number = that.data.number,
-          title = that.data.item.title,
-          tagline = that.data.item.tagline,
-          price = that.data.item.sellPrice,
-          image = that.data.imgUrls[0];
-        wx.navigateTo({
-          url: "counter?number=" + number + "&title=" + title + "&tagline=" + tagline + "&price=" + price + "&image=" + image,
-          success: function(res) {}
-        })
-      } else {
-        common.alert.call(that, "请选择菜品属性");
-      }
-    }
-  },
-
   addNum: function() {
     var that = this,
       num = that.data.number;
@@ -143,48 +111,13 @@ Page({
     var that = this,
       num = that.data.number;
     if (num - 1 < 1) {
-      common.alert.call(that, "购买份数最少为1");
+      // common.alert.call(that, "购买份数最少为1");
     } else {
       num -= 1;
       that.setData({
         number: num,
       })
     }
-  },
-
-  // 微信支付实现
-  wxpay: function() {
-    var code = app.code;
-    var url = 'https://www.xxy1978.com/wxpay/example/jsapi.php';
-    wx.request({
-      url: url,
-      data: {
-        code: code,
-      },
-      method: 'GET',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function(res) {
-        wx.requestPayment({
-          timeStamp: res.data.timeStamp,
-          nonceStr: res.data.nonceStr,
-          package: res.data.package,
-          signType: 'MD5',
-          paySign: res.data.paySign,
-          success: function(res) {
-            wx.showToast({
-              title: '支付成功',
-              icon: 'success',
-              duration: 3000
-            });
-          },
-          fail: function(res) {
-            console.log("支付失败")
-          },
-        })
-      }
-    })
   },
   // 显示购物车详情栏
   showCartDetail: function() {

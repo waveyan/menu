@@ -22,7 +22,7 @@
             <view class="price">￥{{goods[id].price}}</view>
           </view>
           <block wx:if="{{goods[id].ismode == 0}}">
-            <view class="button_mode" bindtap="setModalStatus" data-status="1">
+            <view class="button_mode" bindtap="setModalStatus" data-id='{{id}}' data-status="1">
               <text>选择规格</text>
             </view>
           </block>
@@ -39,4 +39,4 @@
 <!-- 购物车 -->
 <template is="cart" data="{{cart,showCartDetail,showCart,goods}}" />
 <!-- 规格抽屉 -->
-<template is="drawer" data="{{showModalStatus,item,animationData,warning,haveCheckedProp,postData,index,number}}" />
+<template is="drawer" data="{{showModalStatus,item,animationData,haveCheckedProp,postData,index,number,getCount}}" />

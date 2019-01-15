@@ -1,5 +1,6 @@
 @import "../../res/wxss/shopcar.wxss";
 @import "../../templates/buyTemplate/cart/cart.wxss";
+@import "../../templates/buyTemplate/drawer/drawer.wxss";
 page {
   height: 100%;
   width: 100%;

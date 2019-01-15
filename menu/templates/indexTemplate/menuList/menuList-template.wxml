@@ -12,7 +12,7 @@
     </view>
     <view class="c-block wx-text_WEMSkk" data-c_e_id="wx_textd752e84a">
       <block wx:if="{{ismode == 0}}">
-        <view class="button_mode" bindtap="setModalStatus" data-status="1">
+        <view class="button_mode" bindtap="setModalStatus" data-id='{{id}}' data-status="1">
           <text>选择规格</text>
         </view>
       </block>

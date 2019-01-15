@@ -4,6 +4,7 @@
 <import src="../../templates/indexTemplate/menuList/stars-template/stars-template.wxml" />
 <import src="../../templates/indexTemplate//index-twoTemplate/index.wxml" />
 <import src="../../templates/buyTemplate/cart/cart.wxml" />
+<import src="../../templates/buyTemplate/drawer/drawer.wxml" />
 
 <!-- 购物车 -->
 <template is="cart" data="{{cart,showCartDetail,showCart,goods}}" />
@@ -40,8 +41,6 @@
       <template is="menuListTemplate" data="{{...item}}" />
     </block>
   </view>
-
   <!-- 规格抽屉 -->
-  <template is="drawer" data="{{showModalStatus,item,animationData,warning,haveCheckedProp,postData,index,number}}" />
-
+  <template is="drawer" data="{{showModalStatus,item,animationData,haveCheckedProp,postData,index,number,getCount}}" />
   <view class="c-minheight wx-view_tvMgwg" /></view>

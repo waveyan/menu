@@ -12,7 +12,7 @@
           <view bindtap="setModalStatus" data-status="0">
             <image class="closeImg" src="../../res/images/cancel.png"></image>
           </view>
-          <view class="title">{{item.name}}</view>
+          <view class="drawer-title">{{item.name}}</view>
           <view class="banner-price">
             <view class="priceClass">
               {{item.price}}元
