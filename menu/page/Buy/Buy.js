@@ -186,12 +186,6 @@ Page({
       }
     })
   },
-  //购物车详情栏--从购物车中删除
-  tapReduceCart: function(e) {
-    var that = this
-    app.tapReduceCart(e);
-    that.refresh();
-  },
   // 显示购物车详情栏
   showCartDetail: function() {
     app.showCartDetail()
@@ -221,10 +215,10 @@ Page({
     app.tapAddCart(e);
     that.refresh();
   },
-  //选规格后添加
-  goToCart: function (e) {
-
+  //购物车详情栏--从购物车中删除
+  tapReduceCart: function (e) {
+    var that = this
+    app.tapReduceCart(e);
+    that.refresh();
   },
-
-
 })

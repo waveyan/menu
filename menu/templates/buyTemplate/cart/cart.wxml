@@ -12,9 +12,9 @@
       <view class="item" wx:for="{{cart.standardCart}}" wx:for-index="id" wx:for-item="item" wx:key="id">
         <view class="name ellipsis">{{item.name}}({{item.favour}})</view>
         <view class="total">￥{{item.price*item.num}}</view>
-        <view class="reduce" data-id="{{id}}" bindtap="tapReduceCart">-</view>
+        <view class="reduce" data-name='{{item.name}}' data-favour='{{item.favour}}' data-from='detail' bindtap="tapReduceCart">-</view>
         <view class="num">{{item.num}}</view>
-        <view class="add1" data-name='{{item.name}}' data-favour="{{item.favour}}" data-price="{{item.price}}" data-num='{{item.num}}' data-from='detail' bindtap="tapAddCart">+</view>
+        <view class="add1" data-name='{{item.name}}' data-favour='{{item.favour}}' data-from='detail' bindtap="tapAddCart">+</view>
       </view>
     </view>
   </view>

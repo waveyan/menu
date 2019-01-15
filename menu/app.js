@@ -136,7 +136,7 @@ App({
       count: 0, //商品总数量
       total: 0, //总价格
       list: {}, //key为商品id，value为该商品数量
-      standardCart: [], //可选规格商品，包含商品名称、口味、分量
+      standardCart: {}, //可选规格商品，{'namefavour':{name:,favour:,num:,price:}}
     },
     showCartDetail: false,
     showCart: true
@@ -144,48 +144,71 @@ App({
 
   // 购物车操作全局函数
   standardAdd: function(e) {
-    var one = {},
-      count = this.globalData.cart.count || 0;
-    one.name = e.currentTarget.dataset.name;
-    one.price = e.currentTarget.dataset.price;
-    one.favour = e.currentTarget.dataset.favour;
-    one.num = e.currentTarget.dataset.num;
     if (e.currentTarget.dataset.from == 'detail') {
-      this.globalData.cart.standardCart = [];
-      one.num++;
-      count++;
+      this.cartDetailAdd(e);
     } else {
-      count += one.num
+      this.detailAdd(e);
     }
-    this.globalData.cart.standardCart.push(one);
+  },
+  // 可选规格菜品---购物车详情栏加入购物车
+  cartDetailAdd: function(e) {
+    var count = this.globalData.cart.count || 0,
+      key = e.currentTarget.dataset.name + e.currentTarget.dataset.favour,
+      one = this.globalData.cart.standardCart[key];
+    one.num++;
+    count++;
+    this.globalData.cart.standardCart[key] = one;
     this.globalData.cart.count = count;
+    this.globalData.cart.total += one.price;
+  },
+  //可选规格菜品---菜品详情页加入购物车
+  detailAdd: function(e) {
+    var count = this.globalData.cart.count || 0,
+      key = e.currentTarget.dataset.name + e.currentTarget.dataset.favour,
+      one = this.globalData.cart.standardCart[key];
+    if (one) {
+      one.num += e.currentTarget.dataset.num;
+    } else {
+      one = {};
+      one.name = e.currentTarget.dataset.name;
+      one.price = e.currentTarget.dataset.price;
+      one.favour = e.currentTarget.dataset.favour;
+      one.num = e.currentTarget.dataset.num;
+    }
+    count += e.currentTarget.dataset.num;
+    this.globalData.cart.standardCart[key] = one;
+    this.globalData.cart.count = count;
+    this.globalData.cart.total += one.num * one.price;
   },
   //加入购物车
   tapAddCart: function(e) {
+    //选规格时
     if (e.currentTarget.dataset.name)
       this.standardAdd(e);
     else
       this.addCart(e.currentTarget.dataset.id);
   },
+  // 可选规格菜品--- 购物车详情栏从购物车删除
+  standardReduce: function(e) {
+    var count = this.globalData.cart.count || 0,
+      key = e.currentTarget.dataset.name + e.currentTarget.dataset.favour,
+      one = this.globalData.cart.standardCart[key];
+    one.num--;
+    count--;
+    if(one.num<=0)
+      delete this.globalData.cart.standardCart[key]
+    else
+      this.globalData.cart.standardCart[key] = one;
+    this.globalData.cart.count = count;
+    this.globalData.cart.total -=one.price;
+  },
 
   //购物车详情栏--从购物车中删除
   tapReduceCart: function(e) {
-    this.reduceCart(e.target.dataset.id);
-  },
-
-  // 更新总金额
-  countCart: function(index, lists) {
-    var count = 0,
-      total = 0;
-    var goods;
-    for (var id in this.globalData.cart.list) {
-      goods = this.globalData.goods[id];
-      count += this.globalData.cart.list[id];
-      total += goods.price * this.globalData.cart.list[id];
-    }
-    this.globalData.cart.count = count;
-    this.globalData.cart.total = total;
-    this.globalData.cart = this.globalData.cart
+    if (e.currentTarget.dataset.name)
+      this.standardReduce(e)
+    else
+      this.reduceCart(e.target.dataset.id);
   },
   //显示购物车详情栏
   showCartDetail: function() {
@@ -199,7 +222,8 @@ App({
   addCart: function(id) {
     var num = this.globalData.cart.list[id] || 0;
     this.globalData.cart.list[id] = num + 1;
-    this.countCart();
+    this.globalData.cart.total += this.globalData.goods[id].price
+    this.globalData.cart.count++;
   },
 
   reduceCart: function(id) {
@@ -209,6 +233,7 @@ App({
     } else {
       this.globalData.cart.list[id] = num - 1;
     }
-    this.countCart();
+    this.globalData.cart.total -= this.globalData.goods[id].price
+    this.globalData.cart.count--;
   },
 })
