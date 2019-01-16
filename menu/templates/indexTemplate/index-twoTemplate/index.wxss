@@ -32,7 +32,7 @@ swiper-item image {
   margin: 0rpx 0 30rpx;
 }
 
-.btn {
+.index-btn {
   width: 90%;
   height: 88rpx;
   line-height: 88rpx;

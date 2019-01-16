@@ -8,7 +8,7 @@
 </swiper>
 <view class="flow">
   <image src="../../../res/images/flow.png"></image>
-  <view class="btn" bindtap="actionSheetTap" data-url="select_phone">马上点餐</view>
+  <view class="index-btn" bindtap="actionSheetTap" data-url="select_phone">马上点餐</view>
 </view>
 <view class="hotCon">
   <view class="hotTitle"></view>

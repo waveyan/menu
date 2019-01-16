@@ -57,7 +57,7 @@ Page({
     //event(系统给的一个框架)、currentTarget(当前鼠标点击的一个组件)、dataset(所有自定义数据的集合)、  .（变量名）
     var postId = event.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../Buy/Buy?id=' + postId
+      url: '../foodDetail/foodDetail?id=' + postId
     })
   },
 
@@ -236,4 +236,10 @@ Page({
     }
   },
   // end drawer---------------------------------------------------------------------------------
+  // 购物车结算按钮事件
+  submit: function (e) {
+    wx.navigateTo({
+      url: '../orderConfirm/orderConfirm',
+    })
+  },
 })

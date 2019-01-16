@@ -174,6 +174,7 @@ App({
       one.price = e.currentTarget.dataset.price;
       one.favour = e.currentTarget.dataset.favour;
       one.num = e.currentTarget.dataset.num;
+      one.id = e.currentTarget.dataset.id;
     }
     count += e.currentTarget.dataset.num;
     this.globalData.cart.standardCart[key] = one;

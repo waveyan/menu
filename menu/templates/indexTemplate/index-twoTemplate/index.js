@@ -113,12 +113,4 @@ Page({
     // 页面上拉触底事件的处理函数
 
   },
-  onShareAppMessage: function () {
-    // 用户点击右上角分享
-    return {
-      title: '加速度手机维修', // 分享标题
-      desc: '加速度手机维修', // 分享描述
-      path: 'pages/index/index' // 分享路径
-    }
-  }
 })

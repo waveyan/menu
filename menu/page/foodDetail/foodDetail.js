@@ -154,4 +154,10 @@ Page({
     app.tapReduceCart(e);
     that.refresh();
   },
+  // 购物车结算按钮事件
+  submit: function (e) {
+    wx.navigateTo({
+      url: '../orderConfirm/orderConfirm',
+    })
+  },
 })

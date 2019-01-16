@@ -1,13 +1,15 @@
 {
   "pages": [
     "page/index/index",
+    "page/orderConfirm/orderConfirm",
+    
     "page/category/category",
     "page/me/me",
     "page/seafood/seafood",
-    "page/orderConfirm/orderConfirm",
+    
     "page/addressManager/addressManager",
     "page/addressAdd/addressAdd",
-    "page/Buy/Buy",
+    "page/foodDetail/foodDetail",
     "page/detail/detail",
     "page/about/about",
     "page/fqa/fqa",

@@ -206,7 +206,13 @@ Page({
     var postId = event.currentTarget.dataset.id;
     console.log(postId);
     wx.navigateTo({
-      url: '../Buy/Buy?id=' + postId
+      url: '../foodDetail/foodDetail?id=' + postId
+    })
+  },
+  // 购物车结算按钮事件
+  submit: function (e) {
+    wx.navigateTo({
+      url: '../orderConfirm/orderConfirm',
     })
   },
 });
