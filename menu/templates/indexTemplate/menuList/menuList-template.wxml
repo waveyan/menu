@@ -18,7 +18,7 @@
       </block>
       <block wx:else>
         <view bindtap='tapAddCart' data-id="{{id}}">
-          <image style="width:64rpx;height:64rpx;margin-left:238rpx;margin-top:-22rpx;" src="../../../res/images/icon/getCar.png"></image>
+          <image style="width:64rpx;height:64rpx;margin-left:238rpx;margin-top:-22rpx;" src="../../res/images/icon/getCar.png"></image>
         </view>
       </block>
       <view class="price_text">

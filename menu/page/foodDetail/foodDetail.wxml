@@ -1,42 +1,90 @@
-<import src="../../templates/buyTemplate/comments.wxml" />
 <import src="../../templates/buyTemplate/cart/cart.wxml" />
 <import src="../../templates/buyTemplate/drawer/drawer.wxml" />
-<view class="sec-detail">
-  <view class="sec-outer">
-    <view class="wx-view_KHAWVZ" data-c_e_id="wx_viewb7dbd52e">
-      <swiper autoplay="True" class="wx-swiper_Mn3JMs">
-        <swiper-item class="c-full wx-swiper-item_F6vCx8" data-c_e_id="wx_swiper_item015a5cd2">
-          <image bindtap="tap_d5808da3" class="wx-image_HsAX8s2" src="{{item.pic}}" />
-        </swiper-item>
-        <swiper-item class="c-full wx-swiper-item_qGeJVI" data-c_e_id="wx_swiper_item1d2f7146">
-          <image class="wx-image_HsAX8s2" src="{{item.pic}}" />
-        </swiper-item>
-      </swiper>
-      <view>
-        <text class="c-block wx-text_V55JEt" data-c_e_id="wx_textbf43d609">{{item.name}}</text>
-      </view>
-      <view class="label">
-        <view class="intro">
-          <view class="nav_likelistmore">
-            <text class="c-block wx-text_t7lDiK" data-c_e_id="wx_textfcc12486">月销售:{{item.sold}}</text>
-            <view class="wx-text_t7lDiK1">￥{{item.price}}</view>
-            <block wx:if="{{item.ismode == 0}}">
-              <!-- 选择规格按钮 -->
-              <view class="button_mode" bindtap="setModalStatus" data-status="1">
-                <text>选择规格</text>
-              </view>
-            </block>
-            <block wx:else>
-              <!-- 添加按钮 -->
-              <view class="addCart" bindtap="tapAddCart" data-id="{{item.id}}">
-                <image style="width:70rpx;height:70rpx;margin-right:30rpx;" src="../../res/images/icon/getCar.png"></image>
-              </view>
-            </block>
+<view class="wx-view_KHAWVZ" data-c_e_id="wx_viewb7dbd52e">
+  <swiper autoplay="True" class="wx-swiper_Mn3JMs" data-c_e_id="wx_swiper43d9f094" indicator-dots="True" lower-threshold="50">
+    <swiper-item class="c-full wx-swiper-item_F6vCx8" data-c_e_id="wx_swiper_item7c6cedf6">
+      <image bindtap="tap_d8243df5" class="wx-image_HsAX8s2" data-c_e_id="wx_image229b0fb1" mode="aspectFill" src="{{item.pic}}" style="background-image: url({{item.pic}}); background-size: cover; background-position: center center; background-repeat: no-repeat; "
+      />
+    </swiper-item>
+    <swiper-item class="c-full wx-swiper-item_qGeJVI" data-c_e_id="wx_swiper_itemaaf766af">
+      <image class="wx-image_HsAX8s2" data-c_e_id="wx_imagec3f0abaa" mode="aspectFill" src="{{item.pic}}" style="background-image: url({{item.pic}}); background-size: cover; background-position: center center; background-repeat: no-repeat; " />
+    </swiper-item>
+  </swiper>
+  <text class="c-block wx-text_V55JEt" data-c_e_id="wx_textbf43d609">{{item.name}}</text>
+  <text class="c-block wx-text_2" data-c_e_id="wx_textf2189671">月销量{{item.sold}}      好评率100%</text>
+  <block wx:if="{{item.ismode == 0}}">
+    <!-- 选择规格按钮 -->
+    <view class="c-minheight wx-view_NwQHUg" data-c_e_id="wx_view_b9065420" bindtap="setModalStatus" data-status="1">
+      <text class="c-block wx-text_FOAOCN" data-c_e_id="wx_text_9c0d6c6e">￥{{item.price}}    加入购物车</text>
+    </view>
+  </block>
+  <block wx:else>
+    <!-- 添加按钮 -->
+    <view class="c-minheight wx-view_NwQHUg" data-c_e_id="wx_view_b9065420" bindtap="tapAddCart" data-id="{{item.id}}">
+      <text class="c-block wx-text_FOAOCN" data-c_e_id="wx_text_9c0d6c6e">￥{{item.price}}    加入购物车</text>
+    </view>
+  </block>
+  <view class="wx-view_Ipiy3Y" data-c_e_id="wx_viewa6f000ae" />
+  <view class="commentlistwrap" data-c_e_id="wx_view_c359400f">
+    <view class="wx-view_8NFuqw" data-c_e_id="wx_view_664566c4">
+      <text class="c-block wx-text_t7lDiK" data-c_e_id="wx_text68f182cf">2人点评</text>
+    </view>
+    <view class="commentlistitem" data-c_e_id="wx_view_16d0f86f">
+      <navigator class="nav_userlink" data-c_e_id="wx_navigator2ffed891" hover-class="navigator-hover">
+        <view class="likeuser fm2" data-c_e_id="wx_viewd34d457a">
+          <image class="useravatar" data-c_e_id="wx_image7b2bd094" mode="aspectFill" src="http://imgcdn.guoku.com/avatar/50/681eb4e30ac36d9481ea421c3fc61c6b.jpg" style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url(http://imgcdn.guoku.com/avatar/50/681eb4e30ac36d9481ea421c3fc61c6b.jpg); "
+          />
+        </view>
+      </navigator>
+      <view class="c-minheight wx-view_WnUrtw" data-c_e_id="wx_view_66505bdf">
+        <view class="wx-view_F9ISUC" data-c_e_id="wx_view27217bec">
+          <navigator class="wx-navigator_wTcTS2" data-c_e_id="wx_navigator70eae9f8" hover-class="navigator-hover">
+            <text class="wx-text_71u3gA" data-c_e_id="wx_text5fe6919d">木芽</text>
+          </navigator>
+          <view class="wx-view_wrkAD7" data-c_e_id="wx_view_53be94ea">
+            <image class="wx-image_YoXk15" data-c_e_id="wx_image_d1caf161" src="http://qty83k.creatby.com/materials/origin/53a095f5786a4f0e1e50eea5ec5c84bc_origin.png" />
           </view>
         </view>
+        <text class="c-block wx-text_kGXxsa" data-c_e_id="wx_text_39bacddb">在植觉买过东西，每一件都是用心之作。很喜欢植觉的调调，不争不抢。今天在这个app上无意中也看到了植觉小物，小确幸顿时溢满心间</text>
+        <view class="comment_operate" data-c_e_id="wx_view_cf5ce19f">
+          <view class="wx-view_h6iSr9" data-c_e_id="wx_view3a8d0d4f">
+            <view class="commentlikebtn" data-c_e_id="wx_viewb3b5b6f1">
+              <image class="wx-image_YoXk15" data-c_e_id="wx_image0736d1e2" src="http://qty83k.creatby.com/materials/origin/2459ad45d8071985f1cf7f91f3b3df66_origin.png" />
+            </view>
+            <view class="commentreplybtn" data-c_e_id="wx_view9909114c">
+              <image class="wx-image_YoXk15" data-c_e_id="wx_imagef86ae815" src="http://qty83k.creatby.com/materials/origin/0564a45ab780222757935674e13d6919_origin.png" />
+            </view>
+          </view>
+          <text class="listitem_creattime" data-c_e_id="wx_text8c8804b3">2016.10.29</text>
+        </view>
       </view>
-      <view class="likelist" data-c_e_id="wx_view_4cc0358a">
-        <template is="commentsTemplate" />
+    </view>
+    <view class="commentlistitem" data-c_e_id="wx_view4daafd3b">
+      <navigator class="nav_userlink" data-c_e_id="wx_navigator4581cf51" hover-class="navigator-hover">
+        <view class="likeuser fm3" data-c_e_id="wx_view94910b5d">
+          <image class="useravatar" data-c_e_id="wx_imaged4532b14" mode="aspectFill" src="http://imgcdn.guoku.com/avatar/128/589c0d8d2966eb20241a61564676b7f7.jpg" style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url(http://imgcdn.guoku.com/avatar/128/589c0d8d2966eb20241a61564676b7f7.jpg); "
+          />
+        </view>
+      </navigator>
+      <view class="c-minheight wx-view_WnUrtw" data-c_e_id="wx_viewc808f6b9">
+        <view class="wx-view_F9ISUC" data-c_e_id="wx_view54c5a204">
+          <navigator class="wx-navigator_wTcTS2" data-c_e_id="wx_navigator9e12243f" hover-class="navigator-hover">
+            <text class="wx-text_71u3gA" data-c_e_id="wx_textf720176a">UPUP</text>
+          </navigator>
+          <view class="wx-view_wrkAD7" data-c_e_id="wx_viewd862c378" />
+        </view>
+        <text class="c-block wx-text_kGXxsa" data-c_e_id="wx_texte7f2518b">所以说包装多重要，你普通卖花的能把弹簧草卖到这个价格吗？呵呵……</text>
+        <view class="comment_operate" data-c_e_id="wx_view1ec2d46b">
+          <view class="wx-view_h6iSr9" data-c_e_id="wx_view126a4c3a">
+            <view class="commentlikebtn" data-c_e_id="wx_viewe2d39273">
+              <image class="wx-image_YoXk15" data-c_e_id="wx_image696d6d8f" src="http://qty83k.creatby.com/materials/origin/2459ad45d8071985f1cf7f91f3b3df66_origin.png" />
+            </view>
+            <view class="commentreplybtn" data-c_e_id="wx_view5c7d06ea">
+              <image class="wx-image_YoXk15" data-c_e_id="wx_image23cd763a" src="http://qty83k.creatby.com/materials/origin/0564a45ab780222757935674e13d6919_origin.png" />
+            </view>
+          </view>
+          <text class="listitem_creattime" data-c_e_id="wx_text7a845479">2016.10.29</text>
+        </view>
       </view>
     </view>
   </view>

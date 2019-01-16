@@ -7,7 +7,7 @@
   </block>
 </swiper>
 <view class="flow">
-  <image src="../../../res/images/flow.png"></image>
+  <image src="../../res/images/flow.png"></image>
   <view class="index-btn" bindtap="actionSheetTap" data-url="select_phone">马上点餐</view>
 </view>
 <view class="hotCon">
@@ -32,19 +32,19 @@
 <view class="silde clearfix">
   <view class="b_r" catchtap="openwin" data-url="feedback">
     <view class="imgCon b_r" catchtap="openwin" data-url="feedback">
-      <image src="../../../res/images/icon/yjfg.png" catchtap="openwin" data-url="feedback"></image>
+      <image src="../../res/images/icon/yjfg.png" catchtap="openwin" data-url="feedback"></image>
     </view>
     <text catchtap="openwin" data-url="feedback">意见反馈</text>
   </view>
   <view class="b_r" catchtap="openwin" data-url="serverFlow">
     <view class="imgCon" catchtap="openwin" data-url="serverFlow">
-      <image src="../../../res/images/icon/fwlc.png" catchtap="openwin" data-url="serverFlow"></image>
+      <image src="../../res/images/icon/fwlc.png" catchtap="openwin" data-url="serverFlow"></image>
     </view>
     <text catchtap="openwin" data-url="serverFlow">服务流程</text>
   </view>
   <view catchtap="openwin" data-url="fqa">
     <view class="imgCon" catchtap="openwin" data-url="fqa">
-      <image src="../../../res/images/icon/fqa.png" catchtap="openwin" data-url="fqa"></image>
+      <image src="../../res/images/icon/fqa.png" catchtap="openwin" data-url="fqa"></image>
     </view>
     <text catchtap="openwin" data-url="fqa">常见问题</text>
   </view>

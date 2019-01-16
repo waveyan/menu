@@ -35,7 +35,7 @@
         </view>
 
         <view class="color check-sec">
-          <view class="inline-block title">数量</view>
+          <view class="inline-block">数量</view>
           <view class="inline-block choice-slider">
             <view class="minus" bindtap="minusNum">-</view>
             {{number}}

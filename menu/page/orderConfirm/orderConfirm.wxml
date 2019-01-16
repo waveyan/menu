@@ -30,20 +30,20 @@
     <view class="order_info">
       <text>餐具数量</text>
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{chos_array}}">
-        <view class="order_info_right_color">{{chos_array[index]}}</view>
+        <text class="order_info_right_color" decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{chos_array[index]}}&nbsp;&nbsp;</text>
       </picker>
     </view>
     <view class="order_info">
       <text>发票信息</text>
-      <text class="order_info_right_color">〉</text>
+      <text class="order_info_right_color" decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;〉&nbsp;&nbsp;</text>
     </view>
     <view class="order_info">
       <text>备注</text>
-      <text class="order_info_right_color">〉</text>
+      <text class="order_info_right_color" decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;〉&nbsp;&nbsp;</text>
     </view>
     <view class="coupon">
       <text>优惠券</text>
-      <text class="order_info_right_color">无可用</text>
+      <text class="order_info_right_color" decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无可用</text>
     </view>
     <view class="bottom_text_1">
       <text>商品金额</text>

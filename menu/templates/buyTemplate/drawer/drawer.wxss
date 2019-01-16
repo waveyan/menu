@@ -35,7 +35,7 @@
 .check-center{
     position: absolute;
     top: 210rpx;
-    bottom: 100rpx;
+    bottom: 130rpx;
     width: 100%;
 }
 .add, .minus{
@@ -82,7 +82,7 @@
     padding: 4rpx 0;
 }
 .check-center .check-sec{
-    padding: 10rpx 0 24rpx;
+    padding: 10rpx 0 0 0;
     font-size: 28rpx;
 }
 .check-sec:last-child{
@@ -132,7 +132,7 @@
 }
 .nature {
 height:110rpx;
-margin-top:30rpx;
+margin-top:10rpx;
 border-bottom:1px solid #e5e5e5;
 }
 .inline-block-two {
