@@ -3,10 +3,10 @@
   <scroll-view scroll-y="true" scroll-x="false">
     <view bindtap="addressClick">
       <view class="top_view">
-        <text>收货地址{{addressInfo.trueName}}  {{addressInfo.mobPhone}}</text>
+        <text>收货信息：{{addressInfo.trueName}}  {{addressInfo.mobPhone}}</text>
       </view>
       <view class="address_view">
-        <text>广东省四会市东海明珠豪庭广东省四会市东海明珠豪庭广东省四会市东海明珠豪庭广东省四会市东海明珠豪庭广东省四会市东海明珠豪庭广东省四会市东海明珠豪庭广东省四会市东海明珠豪庭广东省四会市东海明珠豪庭广东省四会市东海明珠豪庭广东省四会市东海明珠豪庭</text>
+        <text>{{addressInfo.areaInfo}} {{addressInfo.address}}</text>
       </view>
     </view>
     <view bindtap="addressClick">

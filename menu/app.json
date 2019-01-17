@@ -1,26 +1,17 @@
 {
   "pages": [
     "page/index/index",
+    "page/addressManager/addressManager",
     "page/orderBill/orderBill",
-    
-    
-    
     "page/orderMark/orderMark",
-    
     "page/orderConfirm/orderConfirm",
-    
     "page/category/category",
     "page/me/me",
     "page/seafood/seafood",
-    
-    "page/addressManager/addressManager",
     "page/addressAdd/addressAdd",
     "page/foodDetail/foodDetail",
     "page/detail/detail",
-    "page/about/about",
     "page/fqa/fqa",
-    "page/tid/tid",
-    "page/Test/test",
     "page/feedback/feedback"
   ],
   "networkTimeout": {

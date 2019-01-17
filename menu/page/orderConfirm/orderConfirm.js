@@ -2,7 +2,14 @@ const app = getApp();
 Page({
   data: {
     orderData: {},
-    addressInfo: {},
+    // 默认地址
+    addressInfo: {
+      trueName: 'xxxx1',
+      mobPhone: '13xxxxxxxxxxxxxxxxx',
+      areaInfo: '广东省',
+      address: '四会市东海明珠豪庭',
+      addressId: 1
+    },
     chos_array: ['不需要', '1人', '2人', '3人', '4人', '5人', '6人', '7人', '8人', '9人', '10人', '10人以上'], //餐具数量
     index: 0, //餐具默认数量
     distribution: 5, //配送费
@@ -27,7 +34,7 @@ Page({
   addressClick: function() {
     const that = this
     wx.showActionSheet({
-      itemList: ['管理外卖地址', '扫描桌面二维码'],
+      itemList: ['编辑收获信息', '扫描桌面二维码'],
       success(e) {
         // 扫码
         if (e.tapIndex == 1) {

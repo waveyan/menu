@@ -1,5 +1,4 @@
 @import "../../templates/indexTemplate/menuList/stars-template/stars-template.wxss";
-@import "../select_fault/select_fault.wxss";
 @import "../../templates/indexTemplate/index-twoTemplate/index.wxss";
 @import "../../templates/buyTemplate/cart/cart.wxss";
 @import "../../res/wxss/shopcar.wxss";
