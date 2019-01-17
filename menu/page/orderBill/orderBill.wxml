@@ -1,0 +1,28 @@
+<view class="top_line"></view>
+<view>
+  <view class="add_item">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{items}}" wx:for-index='idx' wx:for-item='item'>
+        <radio value="{{idx}}" color="#feb70f" checked='{{item.checked}}'/> {{item.name}}
+      </label>
+    </radio-group>
+  </view>
+  <block wx:if="{{value==1||value==2}}">
+    <view class="add_item ">
+      <text class="item_text ">抬头:</text>
+      <input class="item_input_1 " bindinput="bindUpInput" placeholder="请填写准确的抬头名称 " value="{{up}}" />
+    </view>
+  </block>
+  <block wx:if="{{value==1}}">
+    <view class="add_item">
+      <text class="item_text">税号:</text>
+      <input class="item_input_1" bindinput="bindCodeInput" placeholder="请输入税号或社会信用代码 " value="{{code}}" />
+    </view>
+    <view class="tip">可咨询公司财务部门获得[税号]或[社会信用代码]</view>
+  </block>
+  <view class="add_address" bindtap="ok">
+    <view class="add">
+      <text>确定</text>
+    </view>
+  </view>
+</view>

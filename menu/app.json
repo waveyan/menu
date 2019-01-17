@@ -1,6 +1,12 @@
 {
   "pages": [
     "page/index/index",
+    "page/orderBill/orderBill",
+    
+    
+    
+    "page/orderMark/orderMark",
+    
     "page/orderConfirm/orderConfirm",
     
     "page/category/category",

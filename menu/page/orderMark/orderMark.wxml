@@ -1,0 +1,31 @@
+<view class="c-minheight wx-view_PRyJfI" data-c_e_id="wx_view_c2c11577">
+  <form class="c-minheight wx-form_jtqLY3" data-c_e_id="wx_form_0c314dae">
+    <view class="c-minheight wx-view_mpqEcg" data-c_e_id="wx_view_54efb2c1">
+      <textarea class="c-block c-fullwidth wx-textarea_qw1BID" data-c_e_id="wx_textarea_3d183cc0" name="textarea1" value="{{value}}" placeholder="亲，想对商家说点什么吗？(最多25字喔)" type="textarea" bindinput="input" maxlength="25"/>
+      <view class="c-minheight wx-view_MwguRl" data-c_e_id="wx_view_542d72c9">
+        <br/>
+        <view bindtap='add' class="c-minheight wx-view_kdfo5M" data-c_e_id="wx_view_a8f4a452" data-value='加饭'>
+          加饭
+        </view>
+        <view bindtap='add' class="c-minheight wx-view_kdfo5M" data-c_e_id="wx_viewb69c8094" data-value='不吃辣'>
+          不吃辣
+        </view>
+        <view bindtap='add' class="c-minheight wx-view_kdfo5M" data-c_e_id="wx_view37ae096d" data-value='多放辣'>
+          多放辣
+        </view>
+        <view bindtap='add' class="c-minheight wx-view_kdfo5M" data-c_e_id="wx_viewbdcf844e" data-value='少放辣'>
+          少放辣
+        </view>
+        <view bindtap='add' class="c-minheight wx-view_kdfo5M" data-c_e_id="wx_view19875014" data-value='不要香菜'>
+          不要香菜
+        </view>
+        <view bindtap='add' class="c-minheight wx-view_kdfo5M" data-c_e_id="wx_view4def14ec" data-value='不要葱'>
+          不要葱
+        </view>
+      </view>
+    </view>
+    <view class="c-minheight wx-view_IvhZ0I" data-c_e_id="wx_view_f118b919" bindtap='ok'>
+      确定
+    </view>
+  </form>
+</view>

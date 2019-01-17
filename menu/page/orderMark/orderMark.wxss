@@ -1,0 +1,144 @@
+/* 基础样式 */
+
+view, scroll-view, swiper, swiper-item, icon, text, progress, button,
+checkbox-group, checkbox, form, input, label, picker, radio-group, radio, slider,
+switch, action-sheet, action-sheet-item, action-sheet-cancel, modal, toast,
+loading, navigator, audio, image, video, map, canvas {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+page {
+  height: 100%;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+
+checkbox-group, radio-group {
+  display: block;
+}
+
+:before, :after, ::before, ::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.c-minheight {
+  min-height: 80px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 0px;
+}
+
+.c-full {
+  width: 100%;
+  height: 100%;
+}
+
+.c-block {
+  display: block;
+}
+
+.c-autosize {
+  width: auto;
+  height: auto;
+}
+
+.c-fullwidth {
+  width: 100%;
+}
+
+.c-fullheight {
+  height: 100%;
+}
+
+.c-initHide {
+  opacity: 0 !important;
+}
+
+.c-ellipse {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* 自定义样式 */
+
+.wx-form_jtqLY3 {
+  margin-left: 18px;
+  margin-right: 18px;
+  margin-top: 16px;
+}
+
+.wx-view_kdfo5M {
+  display: inline;
+  justify-content: flex-start;
+  margin: 21px 35px 42px 0px;
+  padding-left: 0px;
+  border-style: solid;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 2em;
+  border-color: rgb(254, 183, 15);
+  border-width: 2px;
+  font-weight: 100;
+}
+
+.wx-view_MwguRl {
+display:  block;
+border-style:  none;
+margin-bottom:  0px;
+line-height:  1em;
+padding-top:  0px;
+text-align:  left;
+margin-top: 9px;
+margin-left:18rpx;
+
+}
+
+.wx-view_FkCh0v {
+  display: flex;
+}
+
+.wx-view_8ykU9c {
+  display: flex;
+}
+
+.wx-view_lrdkcy {
+  display: flex;
+}
+
+.wx-view_JKxofY {
+  display: flex;
+}
+
+.wx-textarea_qw1BID {
+  background-color: rgba(242, 242, 242, 1);
+}
+
+.wx-button_IVJ51Z {
+  margin-top: 26px;
+  background-attachment: scroll;
+  background-color: rgb(254, 183, 15);
+  background-size: contain;
+  color: #fff;
+}
+
+.wx-view_IvhZ0I {
+  text-align: center;
+  margin-bottom: 2px;
+  width: 100%;
+  height: 10px;
+  min-height: 10px;
+  padding-bottom: 31px;
+  margin-left: 0px;
+  display: block;
+  margin-top: 0px;
+  padding-top: 5px;
+  border-radius: 6px;
+  color: rgb(247, 247, 247);
+  background-color: rgb(254, 183, 15);
+}

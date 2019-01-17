@@ -100,5 +100,9 @@
 }
 .right_text{
     color: #feb70f;
+}
+.bill{
+  border-top:0.5px solid silver;
+  border-top-color:#EFEFF4;
 
 }
