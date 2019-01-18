@@ -1,0 +1,24 @@
+.headerView {
+  z-index: 1;
+  top: 0;
+  position: fixed;
+  background: #fff;
+  width: 100%;
+  height: 72rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.top-bar-item {
+  display: inline-block;
+  width: 33%;
+  color: gray;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.top-bar-active {
+  color: #eec82e;
+  font-size: 32rpx;
+}

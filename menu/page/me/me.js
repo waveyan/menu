@@ -22,14 +22,19 @@ Page({
     // })
   },
 
-  detail: function () {
+  orderDetail: function () {
     wx.navigateTo({
       url: '../orderTotal/orderTotal'
     })
   },
   goToCoponMarket:function(e){
     wx.navigateTo({
-      url: '../coupon/coupon',
+      url: '../couponMarket/couponMarket',
+    })
+  },
+  myCoupon:function(e){
+    wx.navigateTo({
+      url: '../myCoupon/myCoupon',
     })
   }
 });

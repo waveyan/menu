@@ -67,7 +67,7 @@
       </view>
     </block>
 
-    <view class="coupon">
+    <view class="coupon" bindtap='myCoupon' data-total='{{cart.total}}'>
       <text>优惠券</text>
       <text class="order_info_right_color" decode="true">无可用&nbsp;&nbsp;</text>
     </view>

@@ -1,9 +1,8 @@
+<import src="../../templates/buyTemplate/switchTab/switchTab.wxml" />
 <view class="container">
-  <view class="headerView flex-wrp flex-tab">
-    <view class="top-bar-item {{currentNavtab==idx ? 'top-bar-active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
-      {{itemName}}
-    </view>
-  </view>
+<!-- 切换栏 -->
+<template is="switchTab" data="{{currentNavtab,navTab}}" />
+
   <scroll-view bindscroll="srcoll" class="scrollview-list" scroll-y="true" style="height:90%" bindscrolltolower="lower">
     <view class="blank"></view>
     <view class="coupon-list">
@@ -24,7 +23,7 @@
             <view class="t2 t">2018-01-17</view>
             <view class="t2 t">2018-01-25</view>
             <view class="t3 t">
-              <text>立即领取</text>
+              <text>立即使用</text>
             </view>
           </view>
         </view>
@@ -45,7 +44,7 @@
             <view class="t2 t">2018-01-17</view>
             <view class="t2 t">2018-01-25</view>
             <view class="t3 t">
-              <text>立即领取</text>
+              <text>立即使用</text>
             </view>
           </view>
         </view>
@@ -66,7 +65,7 @@
             <view class="t2 t">2018-01-17</view>
             <view class="t2 t">2018-01-25</view>
             <view class="t3 t">
-              <text>立即领取</text>
+              <text>立即使用</text>
             </view>
           </view>
         </view>
@@ -87,7 +86,7 @@
             <view class="t2 t">2018-01-17</view>
             <view class="t2 t">2018-01-25</view>
             <view class="t3 t">
-              <text>立即领取</text>
+              <text>立即使用</text>
             </view>
           </view>
         </view>
@@ -108,7 +107,7 @@
             <view class="t2 t">2018-01-17</view>
             <view class="t2 t">2018-01-25</view>
             <view class="t3 t">
-              <text>立即领取</text>
+              <text>立即使用</text>
             </view>
           </view>
         </view>

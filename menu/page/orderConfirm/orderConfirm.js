@@ -68,4 +68,9 @@ Page({
       url: '../orderBill/orderBill?up=' + that.data.up + '&code=' + that.data.code + '&value=' + that.data.bvalue,
     })
   },
+  myCoupon:function(e){
+    wx.navigateTo({
+      url: '../myCoupon/myCoupon?total='+e.currentTarget.dataset.total,
+    })
+  }
 })

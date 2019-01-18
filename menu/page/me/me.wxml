@@ -18,12 +18,12 @@
     <text class="userItemText">积分超市</text>
     <image class="userItemArrow" src="../../res/images/icon/right.png"></image>
   </view>
-  <view class="userItem" bindtap="detail">
+  <view class="userItem" bindtap="orderDetail">
     <image class="userItemImg" src="../../res/images/icon/order.png"></image>
     <text class="userItemText">我的订单</text>
     <image class="userItemArrow" src="../../res/images/icon/right.png"></image>
   </view>
-  <view class="userItem" bindtap="detail">
+  <view class="userItem" bindtap="myCoupon">
     <image class="userItemImg" src="../../res/images/icon/quan.png"></image>
     <text class="userItemText">我的优惠券</text>
     <image class="userItemArrow" src="../../res/images/icon/right.png"></image>

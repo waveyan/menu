@@ -1,9 +1,7 @@
+<import src="../../templates/buyTemplate/switchTab/switchTab.wxml" />
 <view class="container">
-  <view class="headerView flex-wrp flex-tab">
-    <view class="top-bar-item {{currentNavtab==idx ? 'top-bar-active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
-      {{itemName}}
-    </view>
-  </view>
+<!-- 切换栏 -->
+<template is="switchTab" data="{{currentNavtab,navTab}}" />
 
   <!--列表list组件 需要修改-->
   <scroll-view bindscroll="srcoll" class="scrollview-list" scroll-y="true" style="height:750px" bindscrolltolower="lower">

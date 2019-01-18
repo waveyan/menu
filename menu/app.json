@@ -1,7 +1,8 @@
 {
   "pages": [
     "page/index/index",
-    "page/coupon/coupon",
+    "page/couponMarket/couponMarket",
+    "page/myCoupon/myCoupon",
     "page/orderTotal/orderTotal",
     "page/me/me",
     "page/loading/loading",
