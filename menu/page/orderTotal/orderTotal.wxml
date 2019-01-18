@@ -1,0 +1,64 @@
+<view class="container">
+  <view class="headerView flex-wrp flex-tab">
+    <view class="top-bar-item {{currentNavtab==idx ? 'top-bar-active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
+      {{itemName}}
+    </view>
+  </view>
+
+  <!--列表list组件 需要修改-->
+  <scroll-view bindscroll="srcoll" class="scrollview-list" scroll-y="true" style="height:750px" bindscrolltolower="lower">
+    <!-- <view class="list" wx:for="{{newlist}}" wx:key="">
+      <view class="item-headerview">
+        <view class="statusandprice">
+          <view class="item-text">状态:{{item.state}}</view>
+          <view class="item-text">总价:{{item.orderTotalPrice}}</view>
+        </view>
+        <button data-button="{{item.button}}"class="status" bindtap="orderbutton">{{item.button}}</button>
+      </view>
+      <view class="divLine"></view>
+      <view class="item-bottom">
+        <image class="img" src="{{item.goodsImage}}" mode='scaleToFill' />
+        <view class="goodsinfo">
+          <text class="goodsname">{{item.goodsName}}</text>
+          <text class="goodsnum">{{item.goodsNum}}</text>
+        </view>
+      </view>
+    </view> -->
+    <view class="orderli">
+      <view class="orderlitop">
+        <navigator url="/page/orderDetail/orderDetail?id=1">
+          <view class="orderlileft">
+            <view class="orderlitit1">7寸缤纷水果披萨等3件商品</view>
+            <view class="orderlitit2">017年03月16日 22:15</view>
+          </view>
+          <view class="orderliright">
+            ¥75
+          </view>
+        </navigator>
+        <view class="orderlibottom">
+          订单进行中
+          <button class='order_btn'>申请退款</button>
+        </view>
+      </view>
+
+    </view>
+    <view class="orderli">
+      <view class="orderlitop">
+        <navigator url="../orderDetail/orderDetail">
+          <view class="orderlileft">
+            <view class="orderlitit1">7寸缤纷水果披萨等3件商品</view>
+            <view class="orderlitit2">017年03月16日 22:15</view>
+          </view>
+          <view class="orderliright">
+            ¥75
+          </view>
+        </navigator>
+        <view class="orderlibottom">
+          订单已完成
+        </view>
+        <button class='order_btn'>评价</button>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="tips">{{tips}}</view>
+</view>

@@ -43,7 +43,7 @@
     width: 100%;
     position: absolute;
     left: 0;
-    bottom: 20px;
+    /* bottom: 20px; */
     right: 0;
 }
 .add{
@@ -57,4 +57,7 @@
     display: flex;
     font-size: 15px;
     margin-left: 5%;
+}
+.body-view{
+  margin-left: 35%;
 }

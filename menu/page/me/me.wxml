@@ -1,23 +1,33 @@
 <view class="container">
   <view class="head-background">
-      <image class="userinfo-bgImg" src="{{userInfo.avatarUrl}}"></image>
+    <image class="userinfo-bgImg" src="{{userInfo.avatarUrl}}"></image>
   </view>
   <view class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{name}}</text>
-    <text class="userProfile" id="userProfile">{{introduction}}</text>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
   <view class="usermotto interval">
-    <image class="myNumber"  src="http://xxy1978.oss-cn-shenzhen.aliyuncs.com/User-icon/my_number.png" bindtap="map"></image>
-    <text class="user-number">当前排号:</text>
+    <image class="myNumber" src="../../res/images/icon/score.png" bindtap="map"></image>
+    <text class="user-number">积分:</text>
     <text class="number">6</text>
+    <!-- <text class="user-number">当前排号:</text>
+    <text class="number">6</text> -->
+  </view>
+  <view class="userItem" bindtap="goToCoponMarket">
+    <image class="userItemImg" src="../../res/images/icon/market.png"></image>
+    <text class="userItemText">积分超市</text>
+    <image class="userItemArrow" src="../../res/images/icon/right.png"></image>
   </view>
   <view class="userItem" bindtap="detail">
-    <image class="userItemImg" src="http://xxy1978.oss-cn-shenzhen.aliyuncs.com/User-icon/order.png"></image>
-    <text class="userItemText" >我的订单</text>
-    <image class="userItemArrow"  src="../../res/images/icon/right.png"></image>
+    <image class="userItemImg" src="../../res/images/icon/order.png"></image>
+    <text class="userItemText">我的订单</text>
+    <image class="userItemArrow" src="../../res/images/icon/right.png"></image>
+  </view>
+  <view class="userItem" bindtap="detail">
+    <image class="userItemImg" src="../../res/images/icon/quan.png"></image>
+    <text class="userItemText">我的优惠券</text>
+    <image class="userItemArrow" src="../../res/images/icon/right.png"></image>
   </view>
   <view class="interval" bindtap="collection">
   </view>
 </view>
-

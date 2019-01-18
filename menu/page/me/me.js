@@ -2,61 +2,34 @@
 //获取应用实例
 var app = getApp()
 Page({
-
-  onShareAppMessage: function () {
-    return {
-      title: '自定义分享标题',
-      desc: '自定义分享描述',
-      path: '/page/user?id=123'
-    }
-  },
   data: {
-    warnSize: 'default',
-    imgUrl: null,
-    address: 'China',
-    index: 1,
-    userInfo: {}
+    userInfo:{},
+  },
+  onShow: function() {
+    var that = this;
+    console.log(app.globalData.userInfo);
+    that.setData({
+      userInfo: app.globalData.userInfo,
+    });
+    // wx.login({
+    //   success(res) {
+    //     if (res.code) {
+    //       console.log(res);
+    //     } else {
+    //       console.log('登录失败！' + res.errMsg)
+    //     }
+    //   }
+    // })
   },
 
   detail: function () {
     wx.navigateTo({
-      url: '../order/order'
+      url: '../orderTotal/orderTotal'
     })
   },
-
-  onLoad: function () {
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo,
-        name: userInfo.nickName
-      })
+  goToCoponMarket:function(e){
+    wx.navigateTo({
+      url: '../coupon/coupon',
     })
-  },
-  onShow: function () {
-    var _this = this;
-    wx.getStorage({
-      key: 'introduction',
-      success: function (res) {
-        _this.setData({
-          introduction: res.data
-        })
-      }
-    })
-    wx.getStorage({
-      key: 'name',
-      success: function (res) {
-        _this.setData({
-          name: res.data
-        })
-      },
-      fail: function () {
-        _this.setData({
-          name: _this.data.userInfo.nickName
-        })
-      }
-    })
-  },
-})
+  }
+});

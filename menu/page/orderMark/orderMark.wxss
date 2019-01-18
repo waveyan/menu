@@ -142,3 +142,14 @@ margin-left:18rpx;
   color: rgb(247, 247, 247);
   background-color: rgb(254, 183, 15);
 }
+.add{
+    width: 100%;
+    height: 44px;
+    background-color: #feb70f;
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 15px;
+}

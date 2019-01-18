@@ -1,7 +1,7 @@
 <view>
   <view class="top_line"></view>
   <scroll-view scroll-y="true" scroll-x="false">
-    <view bindtap="addressClick">
+    <view>
       <view class="top_view">
         <text>收货信息：{{addressInfo.trueName}}  {{addressInfo.mobPhone}}</text>
       </view>
@@ -9,7 +9,7 @@
         <text>{{addressInfo.areaInfo}} {{addressInfo.address}}</text>
       </view>
     </view>
-    <view bindtap="addressClick">
+    <view>
       <view class="top_view">
         <text>桌号：3</text>
       </view>
@@ -35,17 +35,15 @@
 
     <view class="order_info">
       <text>餐具数量</text>
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{chos_array}}">
-        <text class="order_info_right_color" decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{chos_array[index]}}&nbsp;&nbsp;</text>
-      </picker>
+        <text class="order_info_right_color" decode="true">10&nbsp;&nbsp;</text>
     </view>
     <view class="order_info" bindtap='goToMark'>
       <text>备注</text>
-      <text class="order_info_right_color"><block wx:if="{{mark}}">{{mark}}</block><block wx:else>〉</block></text>
+      <text class="order_info_right_color">hahha</text>
     </view>
 
     <block wx:if="{{bvalue==1}}">
-      <view class="bill" bindtap='goToBill'>
+      <view class="bill">
         <view class="top_view">
           <text>发票信息（公司）</text>
         </view>
@@ -55,13 +53,13 @@
       </view>
     </block>
     <block wx:elif="{{bvalue==2}}">
-      <view class="order_info" bindtap='goToBill'>
+      <view class="order_info">
         <text>发票信息(个人)</text>
         <text class="order_info_right_color">抬头：{{up}}</text>
       </view>
     </block>
     <block wx:if='{{bvalue==0||!bvalue}}'>
-      <view class="order_info" bindtap='goToBill'>
+      <view class="order_info">
         <text>发票信息</text>
         <text class="order_info_right_color" decode="true">不需要&nbsp;&nbsp;</text>
       </view>
@@ -87,6 +85,7 @@
       <text class="true_pay_right">¥{{cart.total+distribution}}</text>
       <text>实付金额:　</text>
     </view>
-    <button class="bottom_btn" bindtap="paynow" type="primary">微信支付</button>
+    <button class="bottom_btn">评价</button>
+    <button type='primary' class='refund_btn'>申请退款</button>
   </scroll-view>
 </view>

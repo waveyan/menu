@@ -1,16 +1,19 @@
 {
   "pages": [
     "page/index/index",
+    "page/coupon/coupon",
+    "page/orderTotal/orderTotal",
+    "page/me/me",
+    "page/loading/loading",
+    "page/orderDetail/orderDetail",
     "page/addressManager/addressManager",
     "page/orderBill/orderBill",
     "page/orderMark/orderMark",
     "page/orderConfirm/orderConfirm",
     "page/category/category",
-    "page/me/me",
     "page/seafood/seafood",
     "page/addressAdd/addressAdd",
     "page/foodDetail/foodDetail",
-    "page/detail/detail",
     "page/fqa/fqa",
     "page/feedback/feedback"
   ],

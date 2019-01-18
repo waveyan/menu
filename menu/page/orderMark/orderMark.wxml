@@ -24,7 +24,7 @@
         </view>
       </view>
     </view>
-    <view class="c-minheight wx-view_IvhZ0I" data-c_e_id="wx_view_f118b919" bindtap='ok'>
+    <view class="add" data-c_e_id="wx_view_f118b919" bindtap='ok'>
       确定
     </view>
   </form>
