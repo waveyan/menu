@@ -54,14 +54,20 @@
 
 .coupon-left .t3 {
   left: 220rpx;
-  top: 50rpx;
-  width: 200rpx;
+  top: 25rpx;
+  width: 190rpx;
+  font-size: 30rpx;
+}
+.coupon-left .t3_5 {
+  left: 220rpx;
+  top: 110rpx;
+  width: 190rpx;
   font-size: 30rpx;
 }
 
 .coupon-left .t4 {
   left: 10rpx;
-  top: 180rpx;
+  top: 160rpx;
   font-size: 35rpx;
 }
 
@@ -82,7 +88,7 @@
 
 .coupon-rig .t3 {
   padding-top: 25rpx;
-  font-size:30rpx;
+  font-size:25rpx;
 
 }
 

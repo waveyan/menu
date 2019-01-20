@@ -54,7 +54,7 @@
         <view class="orderlibottom">
           订单已完成
         </view>
-        <button class='order_btn'>评价</button>
+        <button class='order_btn' bindtap='goToComment'>评价</button>
       </view>
     </view>
   </scroll-view>

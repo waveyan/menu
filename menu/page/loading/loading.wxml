@@ -4,7 +4,7 @@
 </view>
 
 <view class="enter-container">
-  <button class="enter-button" type='primary' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" > 马上用餐
+  <button class="enter-button" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" > 马上用餐
   </button>
 </view>
 

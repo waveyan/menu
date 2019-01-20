@@ -75,5 +75,10 @@ Page({
     })
     that.getData();
   },
+  goToComment:function(){
+    wx.navigateTo({
+      url: '../comment/comment',
+    })
+  }
 
 })
