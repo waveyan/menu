@@ -6,7 +6,8 @@ Page({
     showCartDetail:false,
     showCart:true,
     goods: app.globalData.goods,
-    goodsList: app.globalData.goodsList, getCount: false, //是否已选规格
+    goodsList: app.globalData.goodsList, 
+    getCount: false, //是否已选规格
     number: 1, //规格中数量
   },
   postData: {},

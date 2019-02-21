@@ -11,15 +11,6 @@ Page({
     that.setData({
       userInfo: app.globalData.userInfo,
     });
-    // wx.login({
-    //   success(res) {
-    //     if (res.code) {
-    //       console.log(res);
-    //     } else {
-    //       console.log('登录失败！' + res.errMsg)
-    //     }
-    //   }
-    // })
   },
 
   orderDetail: function () {

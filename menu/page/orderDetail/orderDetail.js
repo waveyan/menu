@@ -49,7 +49,7 @@ Page({
             fail() {}
           })
         }
-        // 外买点餐
+        // 编辑收货地址
         else {
           wx.navigateTo({
             url: '../addressManager/addressManager',

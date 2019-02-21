@@ -1,9 +1,7 @@
 {
   "pages": [
-    "page/comment/comment",
     "page/index/index",
-    
-    
+    "page/comment/comment",
     "page/loading/loading",
     "page/couponMarket/couponMarket",
     "page/myCoupon/myCoupon",

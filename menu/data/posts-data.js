@@ -4,7 +4,7 @@ var menu_database = [
     id: 1,
     name: '果盘3',
     pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-    standard: '[{"0":"小份","2":"大份","3":"超大份","name":"份量","code":"cm"},{"1":"超辣","0":"微辣","2":"无辣","name":"口味","code":"ys"}]',
+    standard: '[{"0":"小份","1":"大份","2":"超大份","name":"份量","code":"cm"},{"1":"超辣","0":"微辣","2":"无辣","name":"口味","code":"ys"}]',
     sold: 1014,
     price: 120,
     ismode: 0,
@@ -14,7 +14,8 @@ var menu_database = [
     name: '龙舌兰',
     pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
     sold: 1029,
-    price: 100
+    price: 100,
+    ismode:1
   },
   {
     id: 3,

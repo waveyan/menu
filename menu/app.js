@@ -1,8 +1,4 @@
-var rid = 33
-var tid = 0
-var menu = []
-var apiPath = "https://www.xxy1978.com/api/"
-var cosPath = "http://data-1252385075.cosgz.myqcloud.com/"
+var api = require('./util/api.js');
 
 App({
   code: null,
@@ -14,21 +10,29 @@ App({
     wx.setStorageSync('logs', logs)
     this.getUserInfo()
   },
+  // 获取用户信息
   getUserInfo: function() {
-    var that = this
-    // 获取用户信息
+    var that = this;
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+              that.globalData.userInfo = res.userInfo
+              try {
+                const value = wx.getStorageSync('accessToken')
+                if (value) {
+                  that.globalData.userInfo.accessToken = value;
+                }
+              } catch (e) {
+                console.log(e);
+              }
+              api.backendLogin(that.globalData.userInfo);
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
+              if (that.userInfoReadyCallback) {
+                that.userInfoReadyCallback(res)
               }
             }
           })
@@ -40,23 +44,6 @@ App({
         }
       }
     })
-  },
-
-  getCoverUrl: function(did) {
-    return cosPath + did + ".jpg"
-  },
-  getDetailObj: function(did) {
-    var detail = wx.getStorageSync("detail-" + did)
-    if (detail == undefined) {
-      wx.request({
-        url: cosPath + did + ".json",
-        success: function(res) {
-          wx.setStorageSync("detail-" + did, JSON.stringify(res.data))
-          return res.data
-        }
-      })
-    }
-    return JSON.parse(detail)
   },
   // 全局变量
   globalData: {
@@ -132,27 +119,27 @@ App({
       }
     },
     goodsList: [{
-        id: 'hot',
+        id: '1',
         classifyName: '热销',
-        goods: [1, 2, 3, 4, 5]
+        goods: [1, 2, 3, 4, 5] //菜品id
       },
       {
-        id: 'new',
+        id: '2',
         classifyName: '小吃',
         goods: [1, 3]
       },
       {
-        id: 'vegetable',
+        id: '3',
         classifyName: '果盘',
         goods: [1, 6, 5]
       },
       {
-        id: 'mushroom',
+        id: '4',
         classifyName: '鸡尾酒',
         goods: [1, 7, 8, 9]
       },
       {
-        id: 'food',
+        id: '5',
         classifyName: '主食',
         goods: [3, 4]
       }
@@ -221,12 +208,12 @@ App({
       one = this.globalData.cart.standardCart[key];
     one.num--;
     count--;
-    if(one.num<=0)
+    if (one.num <= 0)
       delete this.globalData.cart.standardCart[key]
     else
       this.globalData.cart.standardCart[key] = one;
     this.globalData.cart.count = count;
-    this.globalData.cart.total -=one.price;
+    this.globalData.cart.total -= one.price;
   },
 
   //购物车详情栏--从购物车中删除
