@@ -1,7 +1,6 @@
 var api = require('./util/api.js');
 
 App({
-  code: null,
   onLaunch: function(options) {
     //调用API从本地缓存中获取数据
     console.log(options)
@@ -49,6 +48,7 @@ App({
   globalData: {
     userInfo: null,
     showCartDetail: false,
+    deskNum:null,//桌号，扫码获取
     goods: {
       1: {
         id: 1,

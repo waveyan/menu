@@ -2,20 +2,32 @@
   <view class="top_line"></view>
   <scroll-view scroll-y="true" scroll-x="false">
     <view bindtap="addressClick">
-      <view class="top_view">
-        <text>收货信息：{{addressInfo.trueName}}  {{addressInfo.mobPhone}}</text>
-      </view>
-      <view class="address_view">
-        <text>{{addressInfo.areaInfo}} {{addressInfo.address}}</text>
-      </view>
+      <block wx:if='{{deskNum!=null}}'>
+        <view bindtap="addressClick">
+          <view class="top_view">
+            <text>桌号：{{deskNum}}</text>
+          </view>
+          <view class="address_view">
+          </view>
+        </view>
+      </block>
+      <block wx:elif="{{addressInfo!=null}}">
+        <view class="top_view">
+          <text>收货信息：{{addressInfo.name}}  {{addressInfo.phone}}</text>
+        </view>
+        <view class="address_view">
+          <text>{{addressInfo.province}} {{addressInfo.city}}{{addressInfo.district}}{{addressInfo.address}}</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="top_view">
+          <text>请先填写收货人信息</text>
+        </view>
+        <view class="address_view">
+        </view>
+      </block>
     </view>
-    <view bindtap="addressClick">
-      <view class="top_view">
-        <text>桌号：3</text>
-      </view>
-      <view class="address_view">
-      </view>
-    </view>
+
     <view class="goods_info" wx:for="{{cart.list}}" wx:for-index="idx" wx:for-item="num">
       <image class="image_icon" src="{{goods[idx].pic}}" mode="aspectFit"></image>
       <view class="goods_infos">

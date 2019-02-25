@@ -1,34 +1,8 @@
+var app=getApp();
+var api = require('../../util/api.js');
 Page({
   data: {
-    addressData: [{
-        trueName: 'xxxx1',
-        mobPhone: '13xxxxxxxxxxxxxxxxx',
-        areaInfo: '广东省',
-        address: '四会市东海明珠豪庭',
-        addressId: 1
-      },
-      {
-        addressId: 2,
-        trueName: 'xxxx2',
-        mobPhone: '13xxxxxxxxxxxxxxxxx',
-        areaInfo: '广东省',
-        address: '四会市东海明珠豪庭'
-      },
-      {
-        addressId: 3,
-        trueName: 'xxxx3',
-        mobPhone: '13xxxxxxxxxxxxxxxxx',
-        areaInfo: '广东省',
-        address: '四会市东海明珠豪庭'
-      },
-      {
-        addressId: 4,
-        trueName: 'xxxx4',
-        mobPhone: '13xxxxxxxxxxxxxxxxx',
-        areaInfo: '广东省',
-        address: '四会市东海明珠豪庭'
-      },
-    ],
+    addressList: null,
   },
   addressClick: function(e) {
     var that = this;
@@ -43,7 +17,7 @@ Page({
   },
   addrEdit: function(e) {
     wx.navigateTo({
-      url: '../addressAdd/addressAdd?addressId=' + e.currentTarget.dataset.id,
+      url: '../addressAdd/addressAdd?id=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.name + '&phone=' + e.currentTarget.dataset.phone + '&province=' + e.currentTarget.dataset.province + '&city=' + e.currentTarget.dataset.city + '&address=' + e.currentTarget.dataset.address + '&isDefault=' + e.currentTarget.dataset.isdefault,
     })
   },
   addrDelete: function(e) {
@@ -64,11 +38,29 @@ Page({
       url: '../addressAdd/addressAdd',
     })
   },
-  onLoad: function(options) {},
-  onReady: function() {
-    // Do something when page ready.
-  },
-  onShow: function() {
+  //地址
+  getMyAddressList: function () {
     var that = this;
+    wx.request({
+      method: "GET",
+      url: api.apiPath + 'userapi/getaddresslist',
+      header: {
+        'access-token': api.getAccessToken()
+      },
+      success(res) {
+        var data = res.data;
+        if (data.data.length > 0) {
+          that.setData({
+            addressList: data.data
+          })
+        }
+      }
+    })
+  },
+  onLoad: function(options) {
+  },
+  onReady: function() {},
+  onShow: function () {
+    this.getMyAddressList();
   },
 })

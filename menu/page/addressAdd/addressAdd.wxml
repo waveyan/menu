@@ -1,54 +1,38 @@
 <view class="top_line"></view>
 <view>
-  <view class="add_item">
-    <text class="item_text">收货人:</text>
-    <input class="item_input" bindinput="bindNameInput" placeholder="请输入收货人" value="{{addressInfo.trueName}}" />
-  </view>
-  <view class="add_item">
-    <text class="item_text">手机号:</text>
-    <input class="item_input" bindinput="bindPhoneInput" placeholder="请输入手机号" value="{{addressInfo.mobPhone}}" />
-  </view>
-  <!-- <view class="add_item">
-        <text class="item_text">邮政编码:</text>
-        <input class="item_input_1" bindinput="bindZipCodeInput" placeholder="请输入邮政编码" value="{{addressInfo.zipCode}}"/>
-    </view> -->
-  <view class="add_item">
-    <text class="item_text">省:</text>
-    <picker class="item_picker" model="selector" bindchange="bindProvinceChange" value="{{index}}" range="{{array}}" range-key="areaName">
-      <view class="picker">
-        {{array[index].areaName}}
-      </view>
-    </picker>
-  </view>
-  <view class="add_item">
-    <text class="item_text">市:</text>
-    <picker class="item_picker" model="selector" bindchange="bindCityChange" value="{{indexC}}" range="{{array[index].childern}}" range-key="areaName">
-      <view class="picker">
-        {{array[index].childern[indexC].areaName}}
-      </view>
-    </picker>
-  </view>
-  <view class="add_item">
-    <text class="item_text">区/县:</text>
-    <picker class="item_picker1" model="selector" bindchange="bindDistrictChange" value="{{indexD}}" range="{{array[index].childern[indexC].childern}}" range-key="areaName">
-      <view class="picker_1">
-        {{array[index].childern[indexC].childern[indexD].areaName}}
-      </view>
-    </picker>
-  </view>
-  <view class="add_item">
-    <text class="item_text">详细地址:</text>
-    <input class="item_input_1" bindinput="bindAddressInput" placeholder="请输入详细地址" value="{{addressInfo.address}}" />
-  </view>
-  <view class="add_item">
-    <text class="item_text">是否设为默认地址:</text>
-    <view class="body-view">
-      <switch checked bindchange="switch1Change" />
+  <form bindsubmit="formSubmit">
+  <input hidden='{{true}}' name="id" value="{{addressInfo.id}}"/>
+    <view class="add_item">
+      <text class="item_text">收货人:</text>
+      <input class="item_input" name="name" placeholder="请输入收货人" value="{{addressInfo.name}}" />
     </view>
-  </view>
-  <view class="add_address" bindtap="addAddress">
-    <view class="add">
-      <text>保存</text>
+    <view class="add_item">
+      <text class="item_text">手机号:</text>
+      <input class="item_input" name="phone" placeholder="请输入手机号" value="{{addressInfo.phone}}" />
     </view>
-  </view>
+    <view class="add_item">
+      <text class="item_text">省:</text>
+      <input class="item_input" name="province" placeholder="请输入省份" value="广东省" />
+    </view>
+    <view class="add_item">
+      <text class="item_text">市:</text>
+      <input class="item_input" name="city" placeholder="请输入市" value="四会市" />
+    </view>
+    <view class="add_item">
+      <text class="item_text">详细地址:</text>
+      <input class="item_input_1" name="address" placeholder="请输入详细地址" value="{{addressInfo.address}}" />
+    </view>
+    <view class="add_item">
+      <text class="item_text">是否设为默认地址:</text>
+      <view class="body-view">
+        <block wx:if="{{addressInfo.isDefault=='YES'}}">
+          <switch checked name="isDefault" />
+        </block>
+        <block wx:else>
+          <switch name="isDefault"/>
+        </block>
+      </view>
+    </view>
+    <button class="add" form-type="submit">提交</button>
+  </form>
 </view>

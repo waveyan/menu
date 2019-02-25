@@ -1,6 +1,6 @@
 // data:dict,method:POST/GET,head:dict,dst:xxx/xxx/
+var apiPath = "http://127.0.0.1:8081/wxOrder/";
 function login(data) {
-  var apiPath = "http://127.0.0.1:8081/wxOrder/";
   wx.login({
     success(res) {
       if (res.code) {
@@ -41,6 +41,13 @@ function backendLogin(data) {
     }
   })
 }
+//获取用户access-token
+function getAccessToken(){
+  return wx.getStorageSync('accessToken')
+}
+
 module.exports = {
-  backendLogin: backendLogin
+  apiPath:apiPath,
+  backendLogin: backendLogin,
+  getAccessToken:getAccessToken,
 }
