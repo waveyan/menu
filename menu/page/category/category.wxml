@@ -1,6 +1,5 @@
 <import src="../../templates/buyTemplate/cart/cart.wxml" />
 <import src="../../templates/buyTemplate/drawer/drawer.wxml" />
-
 <view class="container">
   <!-- 左侧类别 -->
   <view class="content-container">

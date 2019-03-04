@@ -1,6 +1,6 @@
 var common = require('../../util/util.js');
 // 获取到小程序实例
-const app = getApp();
+var app = getApp();
 Page({
   data: {
     showCartDetail:false,
@@ -14,15 +14,15 @@ Page({
   // 生命周期函数--监听页面加载
   // 一个页面只会调用一次。
   onLoad: function(options) {
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      });
-    });
-
+    var that = this;
+    if (options.q) {
+      var scan_url = decodeURIComponent(options.q);
+      var deskNum = scan_url.match(/\d+/);
+      app.globalData.deskNum=deskNum;
+      console.log("desknum--------------"+app.globalData.deskNum);
+    } else {
+      console.log("fail");
+    }
   },
   // 每次打开页面都会调用一次
   onShow: function() {

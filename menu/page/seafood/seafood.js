@@ -72,13 +72,19 @@ Page({
         "pic":"http://123.56.182.28/images/201604/1460351146788043235.jpg",
         "sale_num":99
       }
-    ]
+    ],
+    deskNum:null
   },
   onLoad:function(options){
+    var that=this;
     // 页面初始化 options为页面跳转所带来的参数
     let res = wx.getSystemInfoSync()
     height = res.windowHeight
-    console.log("app" + app.globalData.height)
+    console.log("app" + app.globalData.height);
+    that.setData({
+      deskNum:app.globalData.deskNum
+    })
+
   },
   onReady:function(){
     // 页面渲染完成

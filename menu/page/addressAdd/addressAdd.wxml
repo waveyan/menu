@@ -22,7 +22,7 @@
       <text class="item_text">详细地址:</text>
       <input class="item_input_1" name="address" placeholder="请输入详细地址" value="{{addressInfo.address}}" />
     </view>
-    <view class="add_item">
+    <!-- <view class="add_item">
       <text class="item_text">是否设为默认地址:</text>
       <view class="body-view">
         <block wx:if="{{addressInfo.isDefault=='YES'}}">
@@ -32,7 +32,7 @@
           <switch name="isDefault"/>
         </block>
       </view>
-    </view>
+    </view> -->
     <button class="add" form-type="submit">提交</button>
   </form>
 </view>

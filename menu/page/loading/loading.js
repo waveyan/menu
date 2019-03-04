@@ -11,10 +11,16 @@ Page({
   getUserInfo: function (e) {
     // 将获取的用户信息赋值给全局 userInfo 变量，再跳回之前页
     if (e.detail.userInfo) {
-      app.globalData.userInfo = e.detail.userInfo
-      wx.switchTab({
-        url: '/page/index/index',
-      });
+      app.globalData.userInfo = e.detail.userInfo;
+      console.log("desknum+/+======" + app.globalData.deskNum);
+      if(app.globalData.deskNum)
+        wx.switchTab({
+          url: '/page/category/category'
+        })
+      else
+        wx.switchTab({
+          url: '/page/index/index'
+        })
     }
   },
 

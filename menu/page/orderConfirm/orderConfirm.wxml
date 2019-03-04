@@ -3,7 +3,7 @@
   <scroll-view scroll-y="true" scroll-x="false">
     <view bindtap="addressClick">
       <block wx:if='{{deskNum!=null}}'>
-        <view bindtap="addressClick">
+        <view>
           <view class="top_view">
             <text>桌号：{{deskNum}}</text>
           </view>

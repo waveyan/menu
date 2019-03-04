@@ -7,7 +7,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    this.getUserInfo()
+    this.getUserInfo();
   },
   // 获取用户信息
   getUserInfo: function() {

@@ -9,7 +9,7 @@
   <view class="usermotto interval">
     <image class="myNumber" src="../../res/images/icon/score.png" bindtap="map"></image>
     <text class="user-number">积分:</text>
-    <text class="number">6</text>
+    <text class="number">{{userInfo.integral}}</text>
     <!-- <text class="user-number">当前排号:</text>
     <text class="number">6</text> -->
   </view>

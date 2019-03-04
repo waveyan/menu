@@ -19,16 +19,10 @@
     "page/fqa/fqa",
     "page/feedback/feedback"
   ],
-  "networkTimeout": {
-    "connectSocket": "",
-    "request": "",
-    "downloadFile": "",
-    "uploadFile": ""
-  },
   "tabBar": {
     "backgroundColor": "#fbfafa",
     "position": "bottom",
-    "borderStyle": "block",
+    "borderStyle": "black",
     "color": "#666",
     "selectedColor": "#666",
     "list": [

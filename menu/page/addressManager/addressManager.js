@@ -1,4 +1,4 @@
-var app=getApp();
+var app = getApp();
 var api = require('../../util/api.js');
 Page({
   data: {
@@ -6,6 +6,8 @@ Page({
   },
   addressClick: function(e) {
     var that = this;
+    //若选择地址则清除桌号
+    app.globalData.deskNum = null;
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     prevPage.setData({
@@ -21,14 +23,37 @@ Page({
     })
   },
   addrDelete: function(e) {
+    var that=this;
     wx.showModal({
       title: '提示',
       content: '是否删除该地址？',
       success(res) {
         if (res.confirm) {
-          console.log('用户点击确定')
+          console.log('用户点击确定');
+          wx.request({
+            method: "POST",
+            url: api.apiPath + 'userapi/deleteAddress',
+            data:{'addressId':e.currentTarget.dataset.id},
+            header: {
+              'access-token': api.getAccessToken()
+            },
+            success(res) {
+              var data = res.data;
+              if (data.code == 0) {
+                that.onShow();
+              }
+              else{
+                wx.showToast({
+                  title: data.msg,
+                  icon:'none',
+                  duration:2000
+                });
+              }
+            }
+          })
+
         } else if (res.cancel) {
-          console.log('用户点击取消')
+          console.log('用户点击取消');
         }
       }
     })
@@ -39,7 +64,7 @@ Page({
     })
   },
   //地址
-  getMyAddressList: function () {
+  getMyAddressList: function() {
     var that = this;
     wx.request({
       method: "GET",
@@ -57,10 +82,10 @@ Page({
       }
     })
   },
-  onLoad: function(options) {
-  },
+  onLoad: function(options) {},
   onReady: function() {},
-  onShow: function () {
+  onShow: function() {
     this.getMyAddressList();
+    //若选择地址清除桌号
   },
 })
