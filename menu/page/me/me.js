@@ -14,7 +14,7 @@ Page({
   getIntegral:function(){
     var that=this;
     wx.request({
-      url: api.apiPath+'userapi/getMe',
+      url: api.apiPath+'/userapi/getMe',
       method:'GET',
       header: {
         'access-token': api.getAccessToken()

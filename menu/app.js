@@ -8,6 +8,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     this.getUserInfo();
+    this.getDishs();
   },
   // 获取用户信息
   getUserInfo: function() {
@@ -44,106 +45,25 @@ App({
       }
     })
   },
+  //获取菜单
+  getDishs:function(){
+    var that=this;
+    wx.request({
+      url: api.apiPath + '/otherapi/getDishs',
+      success(res) {
+        var data=res.data;
+        that.globalData.goods=data.data.good;
+        that.globalData.goodsList = data.data.classify;
+      }
+    })
+  },
   // 全局变量
   globalData: {
     userInfo: null,
     showCartDetail: false,
     deskNum:null,//桌号，扫码获取
-    goods: {
-      1: {
-        id: 1,
-        name: '果盘3',
-        pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        standard: '[{"0":"小份","2":"大份","3":"超大份","name":"份量","code":"cm","price":[120,240,360]},{"1":"超辣","0":"微辣","2":"无辣","name":"口味","code":"ys"}]',
-        sold: 1014,
-        price: 120,
-        ismode: 0,
-      },
-      2: {
-        id: 2,
-        name: '龙舌兰',
-        pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        sold: 1029,
-        price: 100
-      },
-      3: {
-        id: 3,
-        name: '方便面',
-        pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        standard: '[{"0":"小份","2":"大份","3":"超大份","name":"份量","code":"cm","price":[5,10,15]},{"1":"超辣","0":"微辣","2":"无辣","name":"口味","code":"ys"}]',
-        sold: 1030,
-        price: 5,
-        ismode: 0,
-      },
-      4: {
-        id: 4,
-        name: '粉丝',
-        pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        sold: 1059,
-        price: 5
-      },
-      5: {
-        id: 5,
-        name: '果盘1',
-        pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        sold: 1029,
-        price: 130
-      },
-      6: {
-        id: 6,
-        name: '果盘2',
-        pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        sold: 1064,
-        price: 150
-      },
-      7: {
-        id: 7,
-        name: '锐澳',
-        pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        sold: 814,
-        price: 200
-      },
-      8: {
-        id: 8,
-        name: '尊尼获加',
-        pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        sold: 124,
-        price: 220
-      },
-      9: {
-        id: 9,
-        name: '芝士华',
-        pic: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        sold: 102,
-        price: 300
-      }
-    },
-    goodsList: [{
-        id: '1',
-        classifyName: '热销',
-        goods: [1, 2, 3, 4, 5] //菜品id
-      },
-      {
-        id: '2',
-        classifyName: '小吃',
-        goods: [1, 3]
-      },
-      {
-        id: '3',
-        classifyName: '果盘',
-        goods: [1, 6, 5]
-      },
-      {
-        id: '4',
-        classifyName: '鸡尾酒',
-        goods: [1, 7, 8, 9]
-      },
-      {
-        id: '5',
-        classifyName: '主食',
-        goods: [3, 4]
-      }
-    ],
+    goods:null,
+    goodsList:null,
     cart: {
       count: 0, //商品总数量
       total: 0, //总价格

@@ -90,7 +90,7 @@ Page({
     var that = this;
     wx.request({
       method: "GET",
-      url: api.apiPath + 'userapi/getaddresslist',
+      url: api.apiPath + '/userapi/getaddresslist',
       header: {
         'access-token': api.getAccessToken()
       },

@@ -52,7 +52,8 @@ function getTime(time, fun) {
 
 // 抽屉详情属性str => array
 function Tap(input) {
-  var arr = [], arrayStr = JSON.parse(input);
+  // var arr = [], arrayStr = JSON.parse(input);
+  var arr=[],arrayStr=input;
   arrayStr.forEach(function(value) {
     var obj = {value: []};
     for(var key in value) {

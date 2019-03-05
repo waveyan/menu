@@ -32,7 +32,7 @@ Page({
           console.log('用户点击确定');
           wx.request({
             method: "POST",
-            url: api.apiPath + 'userapi/deleteAddress',
+            url: api.apiPath + '/userapi/deleteAddress',
             data:{'addressId':e.currentTarget.dataset.id},
             header: {
               'access-token': api.getAccessToken()
@@ -68,7 +68,7 @@ Page({
     var that = this;
     wx.request({
       method: "GET",
-      url: api.apiPath + 'userapi/getaddresslist',
+      url: api.apiPath + '/userapi/getaddresslist',
       header: {
         'access-token': api.getAccessToken()
       },

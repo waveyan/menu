@@ -55,7 +55,7 @@ Page({
         data.isDefault=1;
       wx.request({
         method: "POST",
-        url: api.apiPath + 'userapi/insertorupateaddress',
+        url: api.apiPath + '/userapi/insertorupateaddress',
         header: {
           'access-token': api.getAccessToken()
         },

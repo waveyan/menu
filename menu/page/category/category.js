@@ -1,12 +1,14 @@
 var common = require('../../util/util.js');
+var api = require('../../util/api.js');
 // 获取到小程序实例
 var app = getApp();
 Page({
   data: {
+    pex:null,
     showCartDetail:false,
     showCart:true,
-    goods: app.globalData.goods,
-    goodsList: app.globalData.goodsList, 
+    goods: null,
+    goodsList: null, 
     getCount: false, //是否已选规格
     number: 1, //规格中数量
   },
@@ -19,16 +21,16 @@ Page({
       var scan_url = decodeURIComponent(options.q);
       var deskNum = scan_url.match(/\d+/);
       app.globalData.deskNum=deskNum;
-      console.log("desknum--------------"+app.globalData.deskNum);
-    } else {
-      console.log("fail");
-    }
+    } 
   },
   // 每次打开页面都会调用一次
   onShow: function() {
     var that=this;
     that.setData({
-      classifySeleted: app.globalData.goodsList[0].id
+      classifySeleted: app.globalData.goodsList[0].id,
+      goods:app.globalData.goods,
+      goodsList:app.globalData.goodsList,
+      pex: api.apiPath,
     });
     that.refresh();
   },

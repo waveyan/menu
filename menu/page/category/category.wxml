@@ -5,22 +5,22 @@
   <view class="content-container">
     <scroll-view class="classify-container" scroll-y="true">
       <view class="classify {{classifySeleted==classify.id?'active':''}}" wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" data-id="{{classify.id}}" bindtap="tapClassify">
-        <view class="name">{{classify.classifyName}}</view>
+        <view class="name">{{classify.name}}</view>
       </view>
     </scroll-view>
 
     <!-- 菜单 -->
     <scroll-view class="goods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}" bindscroll="onGoodsScroll">
       <view wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" id="{{classify.id}}">
-        <view class="title">{{classify.classifyName}}</view>
+        <view class="title">{{classify.name}}</view>
         <view class="goods" wx:for="{{classify.goods}}" wx:for-item="id" wx:key="*this">
           <view bindtap='menuTap' data-id='{{id}}'>
-            <image class="pic" src="{{goods[id].pic}}"></image>
+            <image class="pic" src="{{pex}}{{goods[id].pic}}"></image>
             <view class="name ellipsis">{{goods[id].name}}</view>
-            <view class="sold">月售{{goods[id].sold}}</view>
+            <view class="sold">月售{{goods[id].saleNum}}</view>
             <view class="price">￥{{goods[id].price}}</view>
           </view>
-          <block wx:if="{{goods[id].ismode == 0}}">
+          <block wx:if="{{goods[id].isSpec.code == 1}}">
             <view class="button_mode" bindtap="setModalStatus" data-id='{{id}}' data-status="1">
               <text>选择规格</text>
             </view>
