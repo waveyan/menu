@@ -30,7 +30,7 @@ Page({
       classifySeleted: app.globalData.goodsList[0].id,
       goods:app.globalData.goods,
       goodsList:app.globalData.goodsList,
-      pex: api.apiPath,
+      pex: "http://127.0.0.1:8081",
     });
     that.refresh();
   },
