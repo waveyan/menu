@@ -54,7 +54,9 @@ function getTime(time, fun) {
 function Tap(input) {
   // var arr = [], arrayStr = JSON.parse(input);
   var arr=[],arrayStr=input;
+  console.log(input);
   arrayStr.forEach(function(value) {
+    
     var obj = {value: []};
     for(var key in value) {
       switch(key) {

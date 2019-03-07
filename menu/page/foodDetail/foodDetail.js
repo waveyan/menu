@@ -6,7 +6,6 @@ Page({
   data: {
     showCart: true,
     showCartDetail: false,
-    goods: app.globalData.goods,
     getCount: false, //是否已选规格
     number: 1,//规格中数量
   },
@@ -16,13 +15,12 @@ Page({
     // 获取到加入购物车选项信息
     var that = this;
     var postId = option.id;
-    // var postId = 0;
-    var item = that.data.goods[postId];
-    if (item.ismode == 0) {
+    console.log(that.data.goods);
+    var item = app.globalData.goods[postId];
+    if (item.isSpec.code == 1) {
       item.property = common.Tap(item.standard);
     }
     that.setData({
-      storeTotal: item.storeTotal,
       item: item,
       imgUrls: common.strToArray(item.imgBanner),
     })
@@ -97,14 +95,10 @@ Page({
   addNum: function() {
     var that = this,
       num = that.data.number;
-    if (num + 1 > that.data.item.storeTotal) {
-      common.alert.call(that, "超过最大供应量");
-    } else {
       num += 1;
       that.setData({
         number: num,
       })
-    }
   },
 
   minusNum: function() {

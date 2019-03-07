@@ -1,4 +1,3 @@
-<import src="../../templates/indexTemplate/poster-template/poster-template.wxml" />
 <import src="../../templates/indexTemplate/formula-template/formula-template.wxml" />
 <import src="../../templates/indexTemplate/menuList/menuList-template.wxml" />
 <import src="../../templates/indexTemplate/menuList/stars-template/stars-template.wxml" />
@@ -19,13 +18,15 @@
 </view>
 
 <!-- 头部样式 -->
-<template is="index-two" data="{{...swiper}}"></template>
+<template is="index-two" data="{{imgUrls,hotimg1,hotimg2,hotimg3}}"></template>
 
 <!-- 分割线 -->
 <view class="fengexian"></view>
 
 <!-- 海报 -->
-<template is="posterTemplate" />
+<view class="c-minheight wx-view_hTLJlH" data-c_e_id="wx_view_28f88e92" style="margin-top:15rpx;" style="background-color:#fff;">
+  <image class="wx-image_ncJNp9" style="border-radius:13rpx" src="http://xxy1978.oss-cn-shenzhen.aliyuncs.com/menu/icon/%E8%83%A1%E6%A1%83%E9%87%8C.png" />
+</view>
 
 <!-- 菜单标题 -->
 <view class="h2" style="background-color:#fff; margin-top:9rpx;">

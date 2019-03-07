@@ -1,5 +1,6 @@
 var postsData = require('../../data/posts-data.js')
 var common = require('../../util/util.js');
+var api = require('../../util/api.js');
 // 获取全局应用程序实例对象
 var app = getApp();
 
@@ -7,22 +8,9 @@ var app = getApp();
 Page({
   name: "index",
   data: {
-    swiper: {
-      imgUrls: [
-        '/res/images/tooopen_sy_143912755726.jpg',
-        '/res/images/tooopen_sy_175866434296.jpg',
-        '/res/images/tooopen_sy_175833047715.jpg'
-      ],
-      indicatorDots: true, //是否显示面板指示点
-      autoplay: true, //是否自动切换
-      interval: 5000, //自动切换时间间隔
-      duration: 1000, //滑动动画时长
-      circular: true, //是否采用衔接滑动,
-      hotimg1: "/res/images/1.jpg",
-      hotimg2: "/res/images/2.jpg",
-      hotimg3: "/res/images/3.jpg",
-    },
-    hotimg: {},
+    hotimg1: "/res/images/1.jpg",
+    hotimg2: "/res/images/2.jpg",
+    hotimg3: "/res/images/3.jpg",
     goods: app.globalData.goods,
     showCartDetail: false,
     showCart: true,
@@ -32,24 +20,26 @@ Page({
   postData: {},
 
   onLoad: function(options) {
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo,
-        name: userInfo.nickName,
-        posts_key: postsData.postList
-      })
+    var that = this;
+    wx.request({
+      url: api.apiPath + "/otherapi/getAppPicture",
+      method: "POST",
+      success(res) {
+        var data = res.data.data;
+        console.log(data);
+        that.setData({
+          posts_key: data.hotDish,
+          imgUrls: data.swiper
+        })
+      }
     })
-    that.setData({
-      posts_key: postsData.postList
-    })
+
 
   },
   onShow: function() {
     var that = this
     that.refresh();
+    console.log(that.data.swiper)
   },
 
   //以下为自定义点击事件
@@ -156,13 +146,12 @@ Page({
     })
     if (e.currentTarget.dataset.status == 1) {
       var postId = e.currentTarget.dataset.id;
-      var item = this.data.goods[postId];
-      if (item.ismode == 0) {
+      var item = app.globalData.goods[postId];
+      if (item.isSpec.code == 1) {
         item.property = common.Tap(item.standard);
       }
       this.setData({
         showModalStatus: true,
-        storeTotal: item.storeTotal,
         item: item,
         imgUrls: common.strToArray(item.imgBanner),
       });
@@ -214,14 +203,10 @@ Page({
   addNum: function() {
     var that = this,
       num = that.data.number;
-    if (num + 1 > that.data.item.storeTotal) {
-      common.alert.call(that, "超过最大供应量");
-    } else {
       num += 1;
       that.setData({
         number: num,
       })
-    }
   },
   minusNum: function() {
     var that = this,
@@ -237,7 +222,7 @@ Page({
   },
   // end drawer---------------------------------------------------------------------------------
   // 购物车结算按钮事件
-  submit: function (e) {
+  submit: function(e) {
     wx.navigateTo({
       url: '../orderConfirm/orderConfirm',
     })

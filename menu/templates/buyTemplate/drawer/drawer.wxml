@@ -3,7 +3,6 @@
   <view class="bottom-check" wx:if="{{ showModalStatus }}">
     <view class="check-top" bindtap="setModalStatus" data-status="0"></view>
     <view animation="{{animationData}}" class="check-bottom">
-      <view wx:if="{{warning}}" class="warning">{{warnDes}}</view>
       <view class="check-banner">
         <view class="banner-left inline-block">
           <image src="{{item.pic}}" class="check-image" />

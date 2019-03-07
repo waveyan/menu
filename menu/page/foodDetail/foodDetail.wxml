@@ -11,8 +11,8 @@
     </swiper-item>
   </swiper>
   <text class="c-block wx-text_V55JEt" data-c_e_id="wx_textbf43d609">{{item.name}}</text>
-  <text class="c-block wx-text_2" data-c_e_id="wx_textf2189671">月销量{{item.sold}}      好评率100%</text>
-  <block wx:if="{{item.ismode == 0}}">
+  <text class="c-block wx-text_2" data-c_e_id="wx_textf2189671">月销量{{item.saleNum}}      好评率{{item.favorable_rate}}%</text>
+  <block wx:if="{{item.isSpec.code == 1}}">
     <!-- 选择规格按钮 -->
     <view class="c-minheight wx-view_NwQHUg" data-c_e_id="wx_view_b9065420" bindtap="setModalStatus" data-status="1">
       <text class="c-block wx-text_FOAOCN" data-c_e_id="wx_text_9c0d6c6e">￥{{item.price}}    加入购物车</text>
@@ -24,7 +24,7 @@
       <text class="c-block wx-text_FOAOCN" data-c_e_id="wx_text_9c0d6c6e">￥{{item.price}}    加入购物车</text>
     </view>
   </block>
-  <view class="wx-view_Ipiy3Y" data-c_e_id="wx_viewa6f000ae" />
+  <!-- <view class="wx-view_Ipiy3Y" data-c_e_id="wx_viewa6f000ae" />
   <view class="commentlistwrap" data-c_e_id="wx_view_c359400f">
     <view class="wx-view_8NFuqw" data-c_e_id="wx_view_664566c4">
       <text class="c-block wx-text_t7lDiK" data-c_e_id="wx_text68f182cf">2人点评</text>
@@ -87,7 +87,7 @@
         </view>
       </view>
     </view>
-  </view>
+  </view> -->
   <!-- 购物车 -->
   <template is="cart" data="{{cart,showCartDetail,showCart,goods}}" />
   <!-- 规格抽屉 -->

@@ -79,8 +79,8 @@ radio-group{
 .wx-view_tdlUCs{display: flex; justify-content: flex-start; flex-wrap: wrap; }
 .wx-navigator_n3vQYd{width: 375rpx; min-height: 375rpx; text-align: center; padding: 10px 37.5rpx 5px; color: rgb(33, 33, 33); text-decoration: none; border-bottom-color: rgb(237, 237, 237); border-right: 1px solid rgb(237, 237, 237); border-bottom-width: 1px; border-bottom-style: solid; }
 .wx-image_HsAX8s{width:  300rpx; height:  300rpx; box-shadow: 0px 0px 38px -5px rgba(0,0,0,1); background-color:  transparent; -ms-box-shadow: 0px 0px 38px -5px rgba(0,0,0,1); -o-box-shadow: 0px 0px 38px -5px rgba(0,0,0,1); -moz-box-shadow: 0px 0px 38px -5px rgba(0,0,0,1); -webkit-box-shadow: 0px 0px 38px -5px rgba(0,0,0,1); }
-.wx-text_cjhm6S{text-align: left; font-size: 12px; color: rgb(153, 153, 153); line-height: 1.5em; }
-.wx-text_JkhshF2{font-size: 13px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; margin-bottom: 5px; min-height: 39px; text-align: left; }
+.wx-text_cjhm6S{text-align: left; font-size: 12px; color: rgb(153, 153, 153); line-height: 1.5em; padding: 15rpx}
+.wx-text_JkhshF2{font-size: 13px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; margin-bottom: -55rpx; min-height: 39px; text-align: left; }
 .wx-text_WEMSkk{color: rgb(0, 132, 207); font-size: 13px; text-align: left; }
 .wx-swiper-item_NOJSzC{background-image:  url(http://xxy1978.oss-cn-shenzhen.aliyuncs.com/menu/boy.png); background-size: cover; }
 .wx-swiper-item_dFjg29{background-size:  cover; background-image: url(http://xxy1978.oss-cn-shenzhen.aliyuncs.com/menu/Tap/tabTwp.jpg); }

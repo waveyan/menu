@@ -4,7 +4,6 @@ var api = require('../../util/api.js');
 var app = getApp();
 Page({
   data: {
-    pex:null,
     showCartDetail:false,
     showCart:true,
     goods: null,
@@ -30,7 +29,6 @@ Page({
       classifySeleted: app.globalData.goodsList[0].id,
       goods:app.globalData.goods,
       goodsList:app.globalData.goodsList,
-      pex: "http://127.0.0.1:8081",
     });
     that.refresh();
   },
@@ -125,12 +123,12 @@ Page({
     if (e.currentTarget.dataset.status == 1) {
       var postId = e.currentTarget.dataset.id;
       var item = this.data.goods[postId];
-      if (item.ismode == 0) {
+      if (item.isSpec.code == 1) {
         item.property = common.Tap(item.standard);
       }
+      console.log(item.property);
       this.setData({
         showModalStatus: true,
-        storeTotal: item.storeTotal,
         item: item,
         imgUrls: common.strToArray(item.imgBanner),
       });
@@ -182,14 +180,10 @@ Page({
   addNum: function () {
     var that = this,
       num = that.data.number;
-    if (num + 1 > that.data.item.storeTotal) {
-      common.alert.call(that, "超过最大供应量");
-    } else {
       num += 1;
       that.setData({
         number: num,
       })
-    }
   },
   minusNum: function () {
     var that = this,
