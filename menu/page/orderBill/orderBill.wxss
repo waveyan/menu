@@ -19,7 +19,7 @@
 }
 .item_input_1{
     padding-left: 15px;
-    width: 70%;
+    width: 85%;
 }
 .item_picker{
     width: 100%;
@@ -36,27 +36,6 @@
     padding-top: 1px;
     padding-left: 39px;
     color: lightskyblue;
-}
-.add_address{
-    display: inline-block;
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    margin-top:40rpx;
-    right: 0;
-}
-.add{
-    width: 90%;
-    height: 44px;
-    background-color: #feb70f;
-    color: white;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    font-size: 15px;
-    margin-left: 5%;
 }
 .radio{
   padding: 0rpx 0rpx 0rpx 20rpx;

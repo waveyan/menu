@@ -20,9 +20,5 @@
     </view>
     <view class="tip">可咨询公司财务部门获得[税号]或[社会信用代码]</view>
   </block>
-  <view class="add_address" bindtap="ok">
-    <view class="add">
-      <text>确定</text>
-    </view>
-  </view>
+  <button class='enter-button' bindtap="ok">确定</button>
 </view>

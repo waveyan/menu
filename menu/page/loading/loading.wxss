@@ -11,9 +11,3 @@
 .enter-container{
   width: 100%;
 }
-
-.enter-button{
-  width: 80%;
-  margin-top: 60rpx;
-  background-color: #eec82e;
-}

@@ -1,4 +1,3 @@
-<import src="../../templates/indexTemplate/formula-template/formula-template.wxml" />
 <import src="../../templates/indexTemplate/menuList/menuList-template.wxml" />
 <import src="../../templates/indexTemplate/menuList/stars-template/stars-template.wxml" />
 <import src="../../templates/indexTemplate//index-twoTemplate/index.wxml" />
@@ -7,15 +6,6 @@
 
 <!-- 购物车 -->
 <template is="cart" data="{{cart,showCartDetail,showCart,goods}}" />
-
-<!-- 弹出界面 -->
-<view class="goods-detail" hidden="{{showGoodsDetail}}">
-  <view class="mask" bindtap="hideGoodsDetail"></view>
-  <template is="formulaTemplate" />
-  <view class="goods-ding">
-    <image bindtap="closeTap" class="close" src="../../res/images/close.png" />
-  </view>
-</view>
 
 <!-- 头部样式 -->
 <template is="index-two" data="{{imgUrls,hotimg1,hotimg2,hotimg3}}"></template>
@@ -39,7 +29,7 @@
 <view class="c-minheight wx-view_TQ4nqD" data-c_e_id="wx_view878d6007" style="background-color:#fff;margin-top:3rpx;">
   <view class="list">
     <block wx:for="{{posts_key}}" wx-for-item="item" wx-for-index="idx" wx:key="postId">
-      <template is="menuListTemplate" data="{{...item}}" />
+      <template is="menuListTemplate" data="{{...item,hide_good_box,bus_x,bus_y}}" />
     </block>
   </view>
   <!-- 规格抽屉 -->

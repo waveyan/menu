@@ -23,9 +23,5 @@
       </block>
     </scroll-view>
   </view>
-  <view class="add_address" bindtap="addressAdd">
-    <view class="add">
-      <text>新建地址</text>
-    </view>
-  </view>
+  <button class='enter-button' bindtap="addressAdd">新建地址</button>
 </view>

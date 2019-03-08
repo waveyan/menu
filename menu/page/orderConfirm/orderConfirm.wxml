@@ -46,7 +46,12 @@
     </view>
 
     <view class="order_info">
-      <text>餐具数量</text>
+    <block wx:if="{{deskNum!=null}}">
+      <text>用餐人数</text>
+    </block>
+    <block wx:else>
+    <text>餐具数量</text>
+    </block>
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{chos_array}}">
         <text class="order_info_right_color" decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{chos_array[index]}}&nbsp;&nbsp;</text>
       </picker>

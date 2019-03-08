@@ -20,8 +20,11 @@
   </block>
   <block wx:else>
     <!-- 添加按钮 -->
-    <view class="c-minheight wx-view_NwQHUg" data-c_e_id="wx_view_b9065420" bindtap="tapAddCart" data-id="{{item.id}}">
+    <view class="c-minheight wx-view_NwQHUg" data-c_e_id="wx_view_b9065420" bindtap="touchOnGoods" data-id="{{item.id}}">
       <text class="c-block wx-text_FOAOCN" data-c_e_id="wx_text_9c0d6c6e">￥{{item.price}}    加入购物车</text>
+    </view>
+    <view class="good_box" hidden="{{hide_good_box}}" style="left: {{bus_x}}px; top: {{bus_y}}px;">
+      <image src="../../res/images/icon/getCar.png"></image>
     </view>
   </block>
   <!-- <view class="wx-view_Ipiy3Y" data-c_e_id="wx_viewa6f000ae" />

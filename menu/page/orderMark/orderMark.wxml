@@ -24,8 +24,6 @@
         </view>
       </view>
     </view>
-    <view class="add" data-c_e_id="wx_view_f118b919" bindtap='ok'>
-      确定
-    </view>
+    <button class='enter-button' bindtap='ok'>确定</button>
   </form>
 </view>

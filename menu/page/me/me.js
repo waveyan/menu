@@ -23,7 +23,7 @@ Page({
         var data = res.data;
         if (data.code == 0) {
           that.setData({
-            userInfo: data.data
+            userInfo: data.data.me
           })
         }
         else{

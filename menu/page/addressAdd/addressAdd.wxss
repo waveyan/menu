@@ -46,18 +46,6 @@
     /* bottom: 20px; */
     right: 0;
 }
-.add{
-    width: 90%;
-    height: 44px;
-    background-color: #feb70f;
-    color: white;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    font-size: 15px;
-    margin-left: 5%;
-}
 .body-view{
   margin-left: 35%;
 }

@@ -33,6 +33,6 @@
         </block>
       </view>
     </view> -->
-    <button class="add" form-type="submit">提交</button>
+    <button class="enter-button" form-type="submit">提交</button>
   </form>
 </view>

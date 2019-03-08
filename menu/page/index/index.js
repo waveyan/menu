@@ -11,26 +11,34 @@ Page({
     hotimg1: "/res/images/1.jpg",
     hotimg2: "/res/images/2.jpg",
     hotimg3: "/res/images/3.jpg",
-    goods:null,
+    goods: null,
     showCartDetail: false,
     showCart: true,
     getCount: false, //是否已选规格
     number: 1, //规格中数量
+    //动态加入购物车
+    hide_good_box: true,
+    bus_x: 0,
+    bus_y: 0
   },
   postData: {},
 
   onLoad: function(options) {
     var that = this;
+    var _windowHeight = wx.getSystemInfoSync().windowHeight;
+    // 目标终点元素 - 购物车的位置坐标
+    this.busPos = {};
+    this.busPos['x'] = 45; // x坐标暂写死，自己可根据UI来修改
+    this.busPos['y'] = _windowHeight - 30; // y坐标，也可以根据自己需要来修改
     wx.request({
       url: api.apiPath + "/otherapi/getAppPicture",
       method: "POST",
       success(res) {
         var data = res.data.data;
-        console.log(data);
         that.setData({
           posts_key: data.hotDish,
           imgUrls: data.swiper,
-          goods:app.globalData.goods
+          goods: app.globalData.goods
         })
       }
     })
@@ -66,20 +74,16 @@ Page({
         if (e.tapIndex == 0) {
           wx.scanCode({
             success(res) {
-              console.log(res)
-              that.setData({
-                result: res.result
-              })
+              var scan_url = res.result
+              var deskNum = scan_url.match(/\d+/);
+              app.globalData.deskNum = deskNum;
             },
             fail() {}
           })
         }
-        // 外买点餐
-        else {
-          wx.switchTab({
-            url: '../category/category'
-          })
-        }
+        wx.switchTab({
+          url: '../category/category'
+        })
       }
     })
   },
@@ -128,6 +132,60 @@ Page({
     this.setData({
       showCartDetail: app.globalData.showCartDetail
     });
+  },
+  // 动态加入购物车
+  touchOnGoods: function(e) {
+    // 如果good_box正在运动，不能重复点击
+    if (!this.data.hide_good_box) return;
+    this.finger = {};
+    var topPoint = {};
+    //点击点的坐标
+    this.finger['x'] = e.touches["0"].clientX;
+    this.finger['y'] = e.touches["0"].clientY;
+
+    //控制点的y值定在低的点的上方150处
+    if (this.finger['y'] < this.busPos['y']) {
+      topPoint['y'] = this.finger['y'] - 150;
+    } else {
+      topPoint['y'] = this.busPos['y'] - 150;
+    }
+
+    //控制点的x值在点击点和购物车之间
+    if (this.finger['x' > this.busPos['x']]) {
+      topPoint['x'] = (this.finger['x'] - this.busPos['x']) / 2 + this.busPos['x'];
+    } else {
+      topPoint['x'] = (this.busPos['x'] - this.finger['x']) / 2 + this.finger['x'];
+    }
+
+    this.linePos = app.bezier([this.busPos, topPoint, this.finger], 30);
+    this.startAnimation(e);
+  },
+  startAnimation: function(e) {
+    var index = 0,
+      that = this,
+      bezier_points = that.linePos['bezier_points'];
+    this.setData({
+      hide_good_box: false,
+      bus_x: that.finger['x'],
+      bus_y: that.finger['y']
+    })
+    index = bezier_points.length;
+    this.timer = setInterval(function() {
+      index--;
+      // 设置球的位置
+      that.setData({
+        bus_x: bezier_points[index]['x'],
+        bus_y: bezier_points[index]['y']
+      })
+      // 到最后一个点的时候，开始购物车的一系列变化，并清除定时器，隐藏小球
+      if (index < 1) {
+        clearInterval(that.timer);
+        that.setData({
+          hide_good_box: true
+        });
+        that.tapAddCart(e);
+      }
+    }, 33);
   },
   // drawer--------------------------------------------------------------------------------------
   // 抽屉显示和隐藏
@@ -202,10 +260,10 @@ Page({
   addNum: function() {
     var that = this,
       num = that.data.number;
-      num += 1;
-      that.setData({
-        number: num,
-      })
+    num += 1;
+    that.setData({
+      number: num,
+    })
   },
   minusNum: function() {
     var that = this,
