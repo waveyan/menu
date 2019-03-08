@@ -8,6 +8,7 @@ Page({
     showCartDetail: false,
     getCount: false, //是否已选规格
     number: 1,//规格中数量
+    goods:null,
   },
   postData: {},
 
@@ -23,6 +24,7 @@ Page({
     that.setData({
       item: item,
       imgUrls: common.strToArray(item.imgBanner),
+      goods: app.globalData.goods
     })
   },
   onShow: function() {

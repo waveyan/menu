@@ -81,7 +81,16 @@
 
     <view class="coupon" bindtap='myCoupon' data-total='{{cart.total}}'>
       <text>优惠券</text>
-      <text class="order_info_right_color" decode="true">无可用&nbsp;&nbsp;</text>
+
+      <block wx:if="{{coupon.couponType.code==1}}">
+        <text class="order_info_right_color" decode="true">减{{coupon.cash}}</text>
+      </block>
+      <block wx:elif="{{coupon.couponType.code==2}}">
+        <text class="order_info_right_color" decode="true">{{coupon.discountRate/10.0}}折优惠</text>
+      </block>
+      <block wx:else>
+        <text class="order_info_right_color" decode="true"> 无可用&nbsp;&nbsp;</text>
+      </block>
     </view>
     <view class="bottom_text_1">
       <text>商品金额</text>
@@ -93,10 +102,10 @@
     </view>
     <view class="bottom_text_3">
       <text>优惠券</text>
-      <text class="right_text">－ ¥ 0.0</text>
+      <text class="right_text">－ ¥ {{coupon_price}}</text>
     </view>
     <view class="true_pay">
-      <text class="true_pay_right">¥{{cart.total+distribution}}</text>
+      <text class="true_pay_right">¥{{cart.total+distribution-coupon_price}}</text>
       <text>实付金额:　</text>
     </view>
     <button class="bottom_btn" bindtap="paynow" type="primary">微信支付</button>

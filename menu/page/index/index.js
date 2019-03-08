@@ -11,7 +11,7 @@ Page({
     hotimg1: "/res/images/1.jpg",
     hotimg2: "/res/images/2.jpg",
     hotimg3: "/res/images/3.jpg",
-    goods: app.globalData.goods,
+    goods:null,
     showCartDetail: false,
     showCart: true,
     getCount: false, //是否已选规格
@@ -29,12 +29,11 @@ Page({
         console.log(data);
         that.setData({
           posts_key: data.hotDish,
-          imgUrls: data.swiper
+          imgUrls: data.swiper,
+          goods:app.globalData.goods
         })
       }
     })
-
-
   },
   onShow: function() {
     var that = this

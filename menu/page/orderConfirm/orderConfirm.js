@@ -9,6 +9,10 @@ Page({
     index: 0, //餐具默认数量
     distribution: 5, //配送费
     deskNum: null, //桌号
+    coupon: null, //某一可用优惠券
+    cart: null, //购物车
+    coupon_price: 0, //优惠券优惠金额
+
   },
   // 生命周期函数--监听页面加载
   onLoad: function(options) {
@@ -19,16 +23,15 @@ Page({
       goods: app.globalData.goods,
       cart: app.globalData.cart,
     });
-    //没有桌号就获取地址列表
-    if (app.globalData.deskNum == null)
-      //获取地址列表
-      this.getMyAddressList();
+    that.getMe();
   },
   onShow: function() {
-    var that=this;
+    var that = this;
     that.setData({
       deskNum: app.globalData.deskNum,
     })
+    //计算优惠券优惠金额
+    that.caculateCoupon();
   },
   //餐具
   bindPickerChange(e) {
@@ -40,31 +43,31 @@ Page({
   // 马上点餐
   addressClick: function() {
     var that = this;
-      wx.showActionSheet({
-        itemList: ['编辑收货信息', '扫描桌面二维码'],
-        success(e) {
-          // 扫码
-          if (e.tapIndex == 1) {
-            wx.scanCode({
-              success(res) {
-                console.log(res.result)
-                var scan_url = res.result
-                var deskNum = scan_url.match(/\d+/);
-                app.globalData.deskNum = deskNum;
-                that.setData({
-                  deskNum: deskNum
-                })
-              }
-            })
-          }
-          // 外买点餐
-          else {
-            wx.navigateTo({
-              url: '../addressManager/addressManager',
-            })
-          }
+    wx.showActionSheet({
+      itemList: ['编辑收货信息', '扫描桌面二维码'],
+      success(e) {
+        // 扫码
+        if (e.tapIndex == 1) {
+          wx.scanCode({
+            success(res) {
+              console.log(res.result)
+              var scan_url = res.result
+              var deskNum = scan_url.match(/\d+/);
+              app.globalData.deskNum = deskNum;
+              that.setData({
+                deskNum: deskNum
+              })
+            }
+          })
         }
-      })
+        // 外买点餐
+        else {
+          wx.navigateTo({
+            url: '../addressManager/addressManager',
+          })
+        }
+      }
+    })
   },
   //备注
   goToMark: function(e) {
@@ -85,23 +88,51 @@ Page({
       url: '../myCoupon/myCoupon?total=' + e.currentTarget.dataset.total,
     })
   },
-  //地址
-  getMyAddressList: function() {
+  //wo
+  getMe: function() {
     var that = this;
     wx.request({
       method: "GET",
-      url: api.apiPath + '/userapi/getaddresslist',
+      url: api.apiPath + '/userapi/getMe',
       header: {
         'access-token': api.getAccessToken()
       },
       success(res) {
         var data = res.data;
-        if (data.data.length > 0) {
-          that.setData({
-            addressInfo: data.data[0]
-          })
+        var coupon = data.data.coupon;
+        for (var i = 0; i < coupon.length; i++) {
+          if (that.data.cart.total >= coupon[i].useLimit) {
+            console.log(coupon[i])
+            that.setData({
+              coupon: coupon[i]
+            });
+            break;
+          }
         }
+        //计算机优惠券优惠金额
+        that.caculateCoupon();
+        //设置地址
+        that.setData({
+          addressInfo: data.data.address[0],
+        })
       }
     })
+  },
+
+  //计算优惠券优惠金额
+  caculateCoupon:function(){
+    var that=this;
+    //计算优惠券优惠金额
+    if (that.data.coupon != null && that.data.coupon.couponType.code == 1)
+      that.setData({
+        coupon_price: that.data.coupon.cash
+      })
+    else if (that.data.coupon != null && that.data.coupon.couponType.code == 2) {
+      var discount = 100 - that.data.coupon.discountRate
+      var p = that.data.cart.total * discount / 100.0;
+      that.setData({
+        coupon_price: p
+      });
+    }
   }
 })

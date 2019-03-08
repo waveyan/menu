@@ -81,9 +81,7 @@
 
 
 .coupon-rig .t3 {
-  padding-top: 25rpx;
-  font-size:25rpx;
-
+  font-size:28rpx;
 }
 
 .coupon-rig .t3 text {
@@ -159,6 +157,6 @@
 }
 
 .scrollview-list {
-  margin-top: 95rpx;
+  margin-top: 20rpx;
   background-color: #efefef;
 }

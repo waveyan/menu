@@ -10,7 +10,7 @@
   <image src="../../res/images/flow.png"></image>
   <view class="index-btn" bindtap="actionSheetTap" data-url="select_phone">马上点餐</view>
 </view>
-<view class="hotCon">
+<!-- <view class="hotCon">
   <view class="hotTitle"></view>
   <view class="hot clearfix">
     <view class="hot_l" data-brandID="{{brandID1}}" data-modelID="{{modelID1}}" catchtap="openwin1">
@@ -28,7 +28,7 @@
       </view>
     </view>
   </view>
-</view>
+</view> -->
 <view class="silde clearfix">
   <view class="b_r" catchtap="openwin" data-url="feedback">
     <view class="imgCon b_r" catchtap="openwin" data-url="feedback">
@@ -40,7 +40,7 @@
     <view class="imgCon" catchtap="openwin" data-url="serverFlow">
       <image src="../../res/images/icon/fwlc.png" catchtap="openwin" data-url="serverFlow"></image>
     </view>
-    <text catchtap="openwin" data-url="serverFlow">服务流程</text>
+    <text catchtap="openwin" data-url="serverFlow">关于我们</text>
   </view>
   <view catchtap="openwin" data-url="fqa">
     <view class="imgCon" catchtap="openwin" data-url="fqa">
