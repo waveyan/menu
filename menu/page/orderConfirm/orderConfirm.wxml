@@ -88,7 +88,7 @@
       <text>优惠券</text>
 
       <block wx:if="{{coupon.couponType.code==1}}">
-        <text class="order_info_right_color" decode="true">减{{coupon.cash}}</text>
+        <text class="order_info_right_color" decode="true">优惠{{coupon.cash}}元</text>
       </block>
       <block wx:elif="{{coupon.couponType.code==2}}">
         <text class="order_info_right_color" decode="true">{{coupon.discountRate/10.0}}折优惠</text>

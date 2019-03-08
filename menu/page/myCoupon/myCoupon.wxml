@@ -40,11 +40,19 @@
               <view class="t1 t">优惠券</view>
               <view class="t2 t">当日起截止至</view>
               <view class="t2 t">{{item.expireDate}}</view>
-              <block wx:if="{{cart.total<item.useLimit}}">
+              <!-- undefined<item.useLimit == flase -->
+              <block wx:if="{{total<item.useLimit}}">
                 <button class='t3 t' disabled="{{true}}">不可用</button>
               </block>
               <block wx:else>
-                <button class='t3 t' data-item='{{item}}' bindtap="clickUse" >立即使用</button>
+                <!-- 从订单页来 -->
+                <block wx:if="{{total!=null}}">
+                  <button class='t3 t' data-item='{{item}}' bindtap="clickUse">立即使用</button>
+                </block>
+                <!-- 从我的优惠券来 -->
+                <block wx:else>
+                  <button class='t3 t' data-item='{{item}}' bindtap="clickToGo">立即使用</button>
+                </block>
               </block>
             </view>
           </view>

@@ -7,9 +7,13 @@ Page({
   },
   onLoad: function(options) {
     var that = this;
-    that.setData({
-      cart: app.globalData.cart
-    });
+    var total=options.total;
+    //从订单页来
+    if(total)
+      that.setData({
+        total: options.total
+      });
+    //从我的优惠券来
     wx.request({
       url: api.apiPath + '/userapi/getMyCoupon',
       header: {
@@ -26,6 +30,7 @@ Page({
   },
   onShow: function() {},
 
+  //从订单页来使用优惠券
   clickUse: function(e) {
     var coupon=e.currentTarget.dataset.item;
     var that = this;
@@ -38,5 +43,11 @@ Page({
     wx.navigateBack({
       delta: 1
     })
-  }
+  },
+  //从我的优惠券来使用优惠券
+  clickToGo:function(){
+    wx.switchTab({
+      url: '/page/category/category',
+    })
+  },
 })

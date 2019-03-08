@@ -4,120 +4,51 @@
 <template is="switchTab" data="{{currentNavtab,navTab}}" />
 
   <scroll-view bindscroll="srcoll" class="scrollview-list" scroll-y="true" style="height:90%" bindscrolltolower="lower">
-    <view class="blank"></view>
+ <view class="blank"></view>
     <view class="coupon-list">
-      <view class="item stamp stamp01 ">
-        <!-- 左侧 -->
-        <view class="float-li t1">
-          <view class="coupon-left">
-            <view class="t t1">￥</view>
-            <view class="t t2">100</view>
-            <view class="t t3">新人专享全场满199减30</view>
-            <view class="t t3_5">兑换积分:99</view>
-            <view class="t t4">优惠券编号：264669616164</view>
+      <block wx:for="{{coupon}}">
+        <view class="item stamp stamp0{{index %5+1}} ">
+          <!-- 左侧 -->
+          <view class="float-li t1">
+            <view class="coupon-left">
+              <block wx:if="{{item.couponType.code==2}}">
+                <view class="t t2">{{item.discountRate/10}}折</view>
+                <view class="t t3">会员专享全场
+                  <block wx:if="{{item.useLimit==0}}">
+                    均可使用
+                  </block>
+                  <block wx:else>
+                    满{{item.useLimit}}可使用
+                  </block>
+                </view>
+              </block>
+              <block wx:else>
+                <view class="t t1">￥</view>
+                <view class="t t2">{{item.cash}}</view>
+                <view class="t t3">会员专享全场
+                  <block wx:if="{{item.useLimit==0}}">
+                    购即减
+                  </block>
+                  <block wx:else>
+                    满{{item.useLimit}}减{{item.cash}}
+                  </block>
+                </view>
+              </block>
+
+              <view class="t t4">优惠券编号：{{item.id}}</view>
+            </view>
           </view>
-        </view>
-        <!-- 右侧 -->
-        <view class="float-li-rig">
-          <view class="coupon-rig">
-            <view class="t1 t">优惠券</view>
-            <view class="t2 t">2018-01-17</view>
-            <view class="t2 t">2018-01-25</view>
-            <view class="t3 t">
-              <text>立即领取</text>
+          <!-- 右侧 -->
+          <view class="float-li-rig">
+            <view class="coupon-rig">
+              <view class="t1 t">优惠券</view>
+              <view class="t2 t">当日起截止至</view>
+              <view class="t2 t">{{item.expireDate}}</view>
+              <button class='t3 t' data-id='{{item.id}}' bindtap="getCoupon">立即领取</button>
             </view>
           </view>
         </view>
-        <i></i>
-      </view>
-      <view class="item stamp stamp02 ">
-        <view class="float-li t1">
-          <view class="coupon-left">
-            <view class="t t1">￥</view>
-            <view class="t t2">100</view>
-            <view class="t t3">新人专享全场满199减30</view>
-            <view class="t t3_5">兑换积分:99</view>
-            <view class="t t4">优惠券编号：264669616164</view>
-          </view>
-        </view>
-        <view class="float-li-rig">
-          <view class="coupon-rig">
-            <view class="t1 t">优惠券</view>
-            <view class="t2 t">2018-01-17</view>
-            <view class="t2 t">2018-01-25</view>
-            <view class="t3 t">
-              <text>立即领取</text>
-            </view>
-          </view>
-        </view>
-        <i></i>
-      </view>
-      <view class="item stamp stamp03 ">
-        <view class="float-li t1">
-          <view class="coupon-left">
-            <view class="t t1">￥</view>
-            <view class="t t2">100</view>
-            <view class="t t3">新人专享全场满199减30</view>
-            <view class="t t3_5">兑换积分:99</view>
-            <view class="t t4">优惠券编号：264669616164</view>
-          </view>
-        </view>
-        <view class="float-li-rig">
-          <view class="coupon-rig">
-            <view class="t1 t">优惠券</view>
-            <view class="t2 t">2018-01-17</view>
-            <view class="t2 t">2018-01-25</view>
-            <view class="t3 t">
-              <text>立即领取</text>
-            </view>
-          </view>
-        </view>
-        <i></i>
-      </view>
-      <view class="item stamp stamp04 ">
-        <view class="float-li t1">
-          <view class="coupon-left">
-            <view class="t t1">￥</view>
-            <view class="t t2">100</view>
-            <view class="t t3">新人专享全场满199减30</view>
-            <view class="t t3_5">兑换积分:99</view>
-            <view class="t t4">优惠券编号：264669616164</view>
-          </view>
-        </view>
-        <view class="float-li-rig">
-          <view class="coupon-rig">
-            <view class="t1 t">优惠券</view>
-            <view class="t2 t">2018-01-17</view>
-            <view class="t2 t">2018-01-25</view>
-            <view class="t3 t">
-              <text>立即领取</text>
-            </view>
-          </view>
-        </view>
-        <i></i>
-      </view>
-      <view class="item stamp stamp05 ">
-        <view class="float-li t1">
-          <view class="coupon-left">
-            <view class="t t1">￥</view>
-            <view class="t t2">100</view>
-            <view class="t t3">新人专享全场满199减30</view>
-            <view class="t t3_5">兑换积分:99</view>
-            <view class="t t4">优惠券编号：264669616164</view>
-          </view>
-        </view>
-        <view class="float-li-rig">
-          <view class="coupon-rig">
-            <view class="t1 t">优惠券</view>
-            <view class="t2 t">2018-01-17</view>
-            <view class="t2 t">2018-01-25</view>
-            <view class="t3 t">
-              <text>立即领取</text>
-            </view>
-          </view>
-        </view>
-        <i></i>
-      </view>
+      </block>
       <view class="blank"></view>
     </view>
   </scroll-view>

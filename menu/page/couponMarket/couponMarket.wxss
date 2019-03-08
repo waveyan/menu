@@ -1,4 +1,5 @@
 @import "../../templates/buyTemplate/switchTab/switchTab.wxss";
+
 .container {
   overflow: hidden;
   width: 100%;
@@ -6,6 +7,7 @@
   flex-direction: column;
   background-color: #efefef;
 }
+
 .coupon-list {
   width: 710rpx;
   margin: 0 auto;
@@ -54,10 +56,11 @@
 
 .coupon-left .t3 {
   left: 220rpx;
-  top: 25rpx;
+  top: 50rpx;
   width: 190rpx;
   font-size: 30rpx;
 }
+
 .coupon-left .t3_5 {
   left: 220rpx;
   top: 110rpx;
@@ -78,18 +81,14 @@
 .coupon-rig .t1 {
   font-size: 40rpx;
   padding: 30rpx 0 10rpx 0;
-  
 }
+
 .coupon-rig .t2 {
   font-size: 30rpx;
 }
 
-
-
 .coupon-rig .t3 {
-  padding-top: 25rpx;
-  font-size:25rpx;
-
+  font-size: 28rpx;
 }
 
 .coupon-rig .t3 text {
