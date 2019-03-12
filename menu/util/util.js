@@ -57,7 +57,7 @@ function Tap(input) {
   console.log(input);
   arrayStr.forEach(function(value) {
     
-    var obj = {value: []};
+    var obj = {value: [],key:[]};
     for(var key in value) {
       switch(key) {
         case "name":
@@ -70,7 +70,8 @@ function Tap(input) {
           obj.price = value[key];
           break;
         default:
-          obj.value.push(value[key]);
+          obj.value.push(value[key]+key);
+          obj.key.push(key)
       }
     }
     arr.push(obj);

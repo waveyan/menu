@@ -7,22 +7,22 @@ Page({
   data: {
     navTab: ["0-99", "100-199", "200-299"],
     currentNavtab: 0,
-    coupon:null,
-    all_coupon:null,
+    coupon: null,
+    all_coupon: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var that=this;
+    var that = this;
     wx.request({
-      url: api.apiPath +'/otherapi/getCoupon',
-      success(res){
-        var data=res.data;
+      url: api.apiPath + '/otherapi/getCoupon',
+      success(res) {
+        var data = res.data;
         that.setData({
           coupon: data.data[that.data.currentNavtab],
-          all_coupon:data.data
+          all_coupon: data.data
         })
 
       }
@@ -76,7 +76,26 @@ Page({
     }
   },
   //领取优惠券
-  getCoupon:function(e){
-    console.log(e.currentTarget.dataset.id)
+  getCoupon: function(e) {
+    console.log(e.currentTarget.dataset.id);
+    wx.request({
+      url: api.apiPath + '/userapi/receiveCoupon',
+      method: "POST",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "access-token":api.getAccessToken(),
+      },
+      data: {
+        "couponId": e.currentTarget.dataset.id
+      },
+      success(res) {
+        console.log(res);
+        wx.showToast({
+          title: res.data.data.msg,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
   }
 })

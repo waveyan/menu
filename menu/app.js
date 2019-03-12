@@ -107,6 +107,8 @@ App({
       one.favour = e.currentTarget.dataset.favour;
       one.num = e.currentTarget.dataset.num;
       one.id = e.currentTarget.dataset.id;
+      one.weightId = e.currentTarget.dataset.weightid;
+      one.tasteId = e.currentTarget.dataset.tasteid;
     }
     count += e.currentTarget.dataset.num;
     this.globalData.cart.standardCart[key] = one;

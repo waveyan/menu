@@ -43,7 +43,7 @@
         </view>
       </view>
       <view bindtap="setModalStatus" data-status="0">
-        <button class="confirm" data-name='{{item.name}}' data-favour="{{haveCheckedProp}}" data-price="{{item.price}}" data-num='{{number}}' data-id='{{item.id}}' bindtap="tapAddCart" disabled="{{getCount==false}}">确定</button>
+        <button class="confirm" data-name='{{item.name}}' data-favour="{{haveCheckedProp}}" data-price="{{item.price}}" data-num='{{number}}' data-id='{{item.id}}' bindtap="tapAddCart" disabled="{{getCount==false}}" data-weightId='{{item.weightId}}' data-tasteId='{{item.tasteId}}'>确定</button>
       </view>
     </view>
   </view>

@@ -107,7 +107,6 @@ Page({
 
   // 添加购物车
   tapAddCart: function(e) {
-    console.log(this)
     var that = this
     app.tapAddCart(e);
     that.refresh();
@@ -229,18 +228,24 @@ Page({
 
   // 抽屉弹出信息的属性值
   getChecked: function(e) {
-    var price, that = this,
+    var key,price, that = this,
       haveCheckedProp = "",
       name = e.currentTarget.dataset.property,
       value = e.currentTarget.dataset.value,
       length, objLength;
     if (name == 'cm') {
       price = that.data.item.property[0].price[e.currentTarget.dataset.code];
+      key=that.data.item.property[0].key[e.currentTarget.dataset.code]
       that.data.item.price = price;
-      that.setData({
-        item: that.data.item
-      });
+      that.data.item.weightId=key;
     }
+    else{
+      key = that.data.item.property[1].key[e.currentTarget.dataset.code]
+      that.data.item.tasteId = key;
+    }
+    that.setData({
+      item: that.data.item
+    });
     that.postData[name] = value;
     length = that.data.item.property.length;
     objLength = common.objLength(that.postData);

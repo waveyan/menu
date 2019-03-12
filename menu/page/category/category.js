@@ -218,11 +218,17 @@ Page({
       length, objLength;
     if (name == 'cm') {
       price = that.data.item.property[0].price[e.currentTarget.dataset.code];
+      key = that.data.item.property[0].key[e.currentTarget.dataset.code]
       that.data.item.price = price;
-      that.setData({
-        item: that.data.item
-      });
+      that.data.item.weightId = key;
     }
+    else {
+      key = that.data.item.property[1].key[e.currentTarget.dataset.code]
+      that.data.item.tasteId = key;
+    }
+    that.setData({
+      item: that.data.item
+    });
     that.postData[name] = value;
     length = that.data.item.property.length;
     objLength = common.objLength(that.postData);

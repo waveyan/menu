@@ -31,15 +31,15 @@
                 </view>
               </block>
 
-              <view class="t t4">优惠券编号：{{item.id}}</view>
+              <view class="t t4">{{item.couponType.message}}编号：{{item.id}}</view>
             </view>
           </view>
           <!-- 右侧 -->
           <view class="float-li-rig">
             <view class="coupon-rig">
-              <view class="t1 t">优惠券</view>
+              <view class="t1 t">{{item.couponType.message}}</view>
               <view class="t2 t">当日起截止至</view>
-              <view class="t2 t">{{item.expireDate}}</view>
+              <view class="t2 t">{{item.expiredDate}}</view>
               <!-- undefined<item.useLimit == flase -->
               <block wx:if="{{total<item.useLimit}}">
                 <button class='t3 t' disabled="{{true}}">不可用</button>

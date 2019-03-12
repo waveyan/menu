@@ -120,8 +120,8 @@ Page({
   },
 
   //计算优惠券优惠金额
-  caculateCoupon:function(){
-    var that=this;
+  caculateCoupon: function() {
+    var that = this;
     //计算优惠券优惠金额
     if (that.data.coupon != null && that.data.coupon.couponType.code == 1)
       that.setData({
@@ -134,5 +134,45 @@ Page({
         coupon_price: p
       });
     }
+  },
+  //确定支付
+  paynow: function() {
+    var that = this;
+    var standardCart = that.data.cart.standardCart;
+    var cart = that.data.cart.list;
+    var goodsId='';
+    //普通菜色
+    for (var key in cart){
+      goodsId += key + "#" + cart[key]+',';
+    }
+    //可选规格菜色
+    for (var key in standardCart){
+      goodsId += standardCart[key].id + '#' + standardCart[key].num + '#' + standardCart[key].tasteId + '#' + standardCart[key].weightId+','
+    }
+    //发票
+    var bill={};
+    bill.type=that.data.bvalue;
+    bill.up=that.data.up;
+    bill.code=that.data.code;
+    var data={};
+    data.addressId=that.data.addressInfo.id;
+    data.deskNum=that.data.deskNum;
+    data.goodsId=goodsId;
+    data.chosNum=that.data.index;
+    data.mark=that.data.mark;
+    data.couponId=that.data.coupon.id;
+    data.bill = JSON.stringify(bill);
+    let str = JSON.stringify(data)
+    console.log(str);
+    wx.request({
+      url: api.apiPath+'/userapi/saveOrder',
+      method:"POST",
+      header:{'access-token':api.getAccessToken()},
+      data:data,
+      success(res){
+        console.log(res.data);
+      }
+    })
+
   }
 })
