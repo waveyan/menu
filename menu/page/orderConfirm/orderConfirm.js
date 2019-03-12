@@ -160,7 +160,8 @@ Page({
     data.goodsId=goodsId;
     data.chosNum=that.data.index;
     data.mark=that.data.mark;
-    data.couponId=that.data.coupon.id;
+    if (that.data.coupon)
+      data.couponId=that.data.coupon.id;
     data.bill = JSON.stringify(bill);
     let str = JSON.stringify(data)
     console.log(str);

@@ -1,5 +1,5 @@
 const app = getApp()
-
+var api = require('../../util/api.js');
 Page({
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -12,6 +12,8 @@ Page({
     // 将获取的用户信息赋值给全局 userInfo 变量，再跳回之前页
     if (e.detail.userInfo) {
       app.globalData.userInfo = e.detail.userInfo;
+      //
+      api.backendLogin(e.detail.userInfo);
       if(app.globalData.deskNum)
         wx.switchTab({
           url: '/page/category/category'

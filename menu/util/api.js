@@ -3,6 +3,7 @@ var apiPath = "http://192.168.1.4:8081/wxOrder";
 function login(data) {
   wx.login({
     success(res) {
+      console.log(res);
       if (res.code) {
         data.code = res.code;
         wx.request({
