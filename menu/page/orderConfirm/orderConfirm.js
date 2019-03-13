@@ -171,7 +171,44 @@ Page({
       header:{'access-token':api.getAccessToken()},
       data:data,
       success(res){
-        console.log(res.data);
+        var data=res.data;
+        if(data.code==0){
+          var orderId=data.data;
+          //请求服务器下单
+          wx.request({
+            url: api.apiPath+'/userapi/toPay',
+            method:"POST",
+            header:{"access-token":api.getAccessToken()},
+            data:{"orderId":orderId},
+            success(res){
+              if (res.data.code == 0) {
+                const payParam = res.data;
+                console.log(payParam);
+                wx.requestPayment({
+                  'timeStamp': payParam.timeStamp,
+                  'nonceStr': payParam.nonceStr,
+                  'package': payParam.package,
+                  'signType': payParam.signType,
+                  'paySign': payParam.paySign,
+                  'success': function (res) {
+                    console.log(res);
+                  },
+                  'fail': function (res) {
+                    console.log(res);
+                  }
+                });
+              } else {
+                wx.showModal({
+                  title: '提示',
+                  content: "11111111",
+                  showCancel: false,
+                  success: function (rs) { }
+                })
+              }
+            }
+          })
+
+        }
       }
     })
 

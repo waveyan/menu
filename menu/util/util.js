@@ -70,7 +70,7 @@ function Tap(input) {
           obj.price = value[key];
           break;
         default:
-          obj.value.push(value[key]+key);
+          obj.value.push(value[key]);
           obj.key.push(key)
       }
     }
