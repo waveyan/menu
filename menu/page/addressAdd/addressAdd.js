@@ -21,31 +21,31 @@ Page({
     if (data.name.length == 0) {
       wx.showToast({
         title: '收货人不能为空',
-        icon: 'loading',
+        icon: 'none',
         mask: true
       })
     } else if (data.phone.length == 0) {
       wx.showToast({
         title: '手机号不能为空',
-        icon: 'loading',
+        icon: 'none',
         mask: true
       })
     } else if (data.province.length == 0) {
       wx.showToast({
         title: '省份不能为空',
-        icon: 'loading',
+        icon: 'none',
         mask: true
       })
     } else if (data.city.length == 0) {
       wx.showToast({
         title: '市不能为空',
-        icon: 'loading',
+        icon: 'none',
         mask: true
       })
     } else if (data.address.length == 0) {
       wx.showToast({
         title: '地址不能为空',
-        icon: 'loading',
+        icon: 'none',
         mask: true
       })
     } else {

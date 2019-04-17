@@ -39,8 +39,9 @@ Page({
             },
             success(res) {
               var data = res.data;
+              console.log(data.code == 0);
               if (data.code == 0) {
-                that.onShow();
+                that.getMyAddressList();
               }
               else{
                 wx.showToast({
@@ -74,7 +75,7 @@ Page({
       },
       success(res) {
         var data = res.data;
-        if (data.data.length > 0) {
+        if (data.code== 0) {
           that.setData({
             addressList: data.data
           })
@@ -85,7 +86,8 @@ Page({
   onLoad: function(options) {},
   onReady: function() {},
   onShow: function() {
-    this.getMyAddressList();
+    var that=this;
+    that.getMyAddressList();
     //若选择地址清除桌号
   },
 })

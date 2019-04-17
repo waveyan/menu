@@ -135,82 +135,103 @@ Page({
       });
     }
   },
+  //检查地址
+  checkAddress: function() {
+    var that = this;
+    if (that.data.addressInfo != null || that.data.deskNum != null) return true;
+    else {
+      wx.showToast({
+        title: "请填写收获地址或扫描桌面二维码",
+        duration: 2000,
+        icon:'none',
+        mask: true,
+      });
+      return false;
+    }
+  },
   //确定支付
   paynow: function() {
     var that = this;
-    var standardCart = that.data.cart.standardCart;
-    var cart = that.data.cart.list;
-    var goodsId='';
-    //普通菜色
-    for (var key in cart){
-      goodsId += key + "#" + cart[key]+',';
-    }
-    //可选规格菜色
-    for (var key in standardCart){
-      goodsId += standardCart[key].id + '#' + standardCart[key].num + '#' + standardCart[key].tasteId + '#' + standardCart[key].weightId+','
-    }
-    //发票
-    var bill={};
-    bill.type=that.data.bvalue;
-    bill.up=that.data.up;
-    bill.code=that.data.code;
-    var data={};
-    data.addressId=that.data.addressInfo.id;
-    data.deskNum=that.data.deskNum;
-    data.goodsId=goodsId;
-    data.chosNum=that.data.index;
-    data.mark=that.data.mark;
-    if (that.data.coupon)
-      data.couponId=that.data.coupon.id;
-    data.bill = JSON.stringify(bill);
-    let str = JSON.stringify(data)
-    console.log(str);
-    wx.request({
-      url: api.apiPath+'/userapi/saveOrder',
-      method:"POST",
-      header:{'access-token':api.getAccessToken()},
-      data:data,
-      success(res){
-        var data=res.data;
-        if(data.code==0){
-          var orderId=data.data;
-          //请求服务器下单
-          wx.request({
-            url: api.apiPath+'/userapi/toPay',
-            method:"POST",
-            header:{"access-token":api.getAccessToken()},
-            data:{"orderId":orderId},
-            success(res){
-              if (res.data.code == 0) {
-                const payParam = res.data;
-                console.log(payParam);
-                wx.requestPayment({
-                  'timeStamp': payParam.timeStamp,
-                  'nonceStr': payParam.nonceStr,
-                  'package': payParam.package,
-                  'signType': payParam.signType,
-                  'paySign': payParam.paySign,
-                  'success': function (res) {
-                    console.log(res);
-                  },
-                  'fail': function (res) {
-                    console.log(res);
-                  }
-                });
-              } else {
-                wx.showModal({
-                  title: '提示',
-                  content: "11111111",
-                  showCancel: false,
-                  success: function (rs) { }
-                })
-              }
-            }
-          })
-
-        }
+    if (that.checkAddress()) {
+      var standardCart = that.data.cart.standardCart;
+      var cart = that.data.cart.list;
+      var goodsId = '';
+      //普通菜色
+      for (var key in cart) {
+        goodsId += key + "#" + cart[key] + ',';
       }
-    })
-
+      //可选规格菜色
+      for (var key in standardCart) {
+        goodsId += standardCart[key].id + '#' + standardCart[key].num + '#' + standardCart[key].tasteId + '#' + standardCart[key].weightId + ','
+      }
+      //发票
+      var bill = {};
+      bill.type = that.data.bvalue;
+      bill.up = that.data.up;
+      bill.code = that.data.code;
+      var data = {};
+      if (that.data.addressInfo!=null)
+        data.addressId = that.data.addressInfo.id;
+      data.deskNo = that.data.deskNum[0];
+      data.goodsId = goodsId;
+      data.chosNum = that.data.index;
+      data.mark = that.data.mark;
+      if (that.data.coupon)
+        data.couponId = that.data.coupon.id;
+      data.bill = JSON.stringify(bill);
+      let str = JSON.stringify(data)
+      console.log(str);
+      wx.request({
+        url: api.apiPath + '/userapi/saveOrder',
+        method: "POST",
+        header: {
+          'access-token': api.getAccessToken()
+        },
+        data: data,
+        success(res) {
+          var data = res.data;
+          if (data.code == 0) {
+            var orderId = data.data;
+            //请求服务器下单
+            wx.request({
+              url: api.apiPath + '/userapi/toPay',
+              method: "POST",
+              header: {
+                "access-token": api.getAccessToken()
+              },
+              data: {
+                "orderId": orderId
+              },
+              success(res) {
+                if (res.data.code == 0) {
+                  const payParam = res.data.data;
+                  console.log(payParam);
+                  wx.requestPayment({
+                    'timeStamp': payParam.timeStamp,
+                    'nonceStr': payParam.nonceStr,
+                    'package': payParam.package,
+                    'signType': payParam.signType,
+                    'paySign': payParam.paySign,
+                    'success': function(res) {
+                      console.log(res);
+                    },
+                    'fail': function(res) {
+                      console.log(res);
+                    }
+                  });
+                } else {
+                  wx.showModal({
+                    title: '提示',
+                    content: "11111111",
+                    showCancel: false,
+                    success: function(rs) {}
+                  })
+                }
+              }
+            })
+          }
+        }
+      })
+    }
   }
 })

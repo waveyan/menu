@@ -46,7 +46,7 @@
 }
 
 .coupon-left .t2 {
-  left: 30rpx;
+  left: 45rpx;
   top: 50rpx;
   font-size: 80rpx;
   font-weight: bold;
