@@ -1,39 +1,16 @@
 var util = require('../../util/util.js')
-// var request = require('../../utils/https.js')
-var uri = 'orderapi/orderlist'
+var api=require('../../util/api.js')
 Page({
   data: {
-    navTab: ["全部订单", "进行中", "已完成"],
+    navTab: ["进行中", "已完成"],
     currentNavtab: 0,
-    pageNo: 1,
-    hidden: false,
-    list: [],
-    newlist: [],
-    tips: '', //无数据
-    newlist: [{
-        state: '进行中',
-        orderTotalPrice: 200,
-        button: '查看',
-        goodsImage: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        goodsName: '牛肉',
-        goodsNum: 1
-      }, 
-      {
-        state: '进行中',
-        orderTotalPrice: 200,
-        button: '查看',
-        goodsImage: 'http://img1.gtimg.com/health/pics/hv1/138/79/2068/134491983.jpg',
-        goodsName: '牛肉',
-        goodsNum: 1
-      }
-    ]
+    ordersList: null,
+    list:null,
   },
-  onLoad: function(options) {
-    this.setData({
-      currentNavtab: options.id
-    })
-    //刷新数据
-    this.getData();
+  onShow:function(){
+    var that=this;
+    that.getMyOrders();
+    console.log(that.data.ordersList)
   },
   //切换tab刷新数据
   switchTab: function(o) {
@@ -42,16 +19,9 @@ Page({
     if (idx !== that.data.currentNavtab) {
       that.setData({
         currentNavtab: idx,
-        list: [], //数据源清空
-        newlist: [],
-        pageNo: 1
+        list: that.data.ordersList[idx], //数据源清空
       })
-      //刷新数据
-      that.getData();
     }
-  },
-  getData: function() {
-    var that = this;
   },
   //点击到相应的页面
   orderbutton: function(options) {
@@ -65,15 +35,26 @@ Page({
 
     // }
   },
-
-  //下滑加载更多
-  lower: function() {
-    console.log("下滑啦");
-    var that = this;
-    that.setData({
-      pageNo: that.data.pageNo + 1
+  //获取我的订单
+  getMyOrders:function(){
+    var that=this;
+    wx.request({
+      url: api.apiPath+'/userapi/getMyOrders',
+      header:{'access-token':api.getAccessToken()},
+      data:{'page':1,'start':0,'limit':1000},
+      method:'POST',
+      success(res){
+        var data=res.data;
+        console.log(data);
+        if(data.code==0){
+        that.setData({
+          list:data.data[that.data.currentNavtab],
+          ordersList:data.data,
+        });
+        }
+      }
     })
-    that.getData();
+
   },
   goToComment:function(){
     wx.navigateTo({

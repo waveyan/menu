@@ -103,7 +103,6 @@
   padding: 10px;
   border-top: 0.5px solid silver;
   border-top-color: #efeff4;
-  display: flex;
   flex-direction: row-reverse;
 }
 

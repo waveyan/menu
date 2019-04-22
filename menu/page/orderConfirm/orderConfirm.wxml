@@ -58,7 +58,7 @@
     </view>
     <view class="order_info" bindtap='goToMark'>
       <text>备注</text>
-      <text class="order_info_right_color"><block wx:if="{{mark}}">{{mark}}</block><block wx:else>〉</block></text>
+      <text class="order_info_right_color" decode="true"><block wx:if="{{mark}}">{{mark}}&nbsp;&nbsp;</block><block wx:else>〉</block></text>
     </view>
 
     <block wx:if="{{bvalue==1}}">

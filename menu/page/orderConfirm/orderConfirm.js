@@ -53,9 +53,10 @@ Page({
               console.log(res.result)
               var scan_url = res.result
               var deskNum = scan_url.match(/\d+/);
-              app.globalData.deskNum = deskNum;
+              console.log(deskNum)
+              app.globalData.deskNum = deskNum[0];
               that.setData({
-                deskNum: deskNum
+                deskNum: deskNum[0]
               })
             }
           })
@@ -172,9 +173,9 @@ Page({
       var data = {};
       if (that.data.addressInfo!=null)
         data.addressId = that.data.addressInfo.id;
-      data.deskNo = that.data.deskNum[0];
+      data.deskNo = that.data.deskNum;
       data.goodsId = goodsId;
-      data.chosNum = that.data.index;
+      data.chosNum = parseInt(that.data.index);
       data.mark = that.data.mark;
       if (that.data.coupon)
         data.couponId = that.data.coupon.id;

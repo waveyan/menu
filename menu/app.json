@@ -1,11 +1,12 @@
 {
   "pages": [
     "page/index/index",
+    "page/orderTotal/orderTotal",
+    
     "page/myCoupon/myCoupon",
     "page/comment/comment",
     "page/loading/loading",
     "page/couponMarket/couponMarket",
-    "page/orderTotal/orderTotal",
     "page/me/me",
     "page/orderDetail/orderDetail",
     "page/addressManager/addressManager",

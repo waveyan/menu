@@ -1,26 +1,19 @@
+var util = require('../../util/util.js')
+var api = require('../../util/api.js')
 const app = getApp();
 Page({
   data: {
     orderData: {},
-    // 默认地址
-    addressInfo: {
-      trueName: 'xxxx1',
-      mobPhone: '13xxxxxxxxxxxxxxxxx',
-      areaInfo: '广东省',
-      address: '四会市东海明珠豪庭',
-      addressId: 1
-    },
-    chos_array: ['不需要', '1人', '2人', '3人', '4人', '5人', '6人', '7人', '8人', '9人', '10人', '10人以上'], //餐具数量
-    index: 0, //餐具默认数量
-    distribution: 5, //配送费
+    bill:{}
   },
   // 生命周期函数--监听页面加载
   onLoad: function(options) {
-    console.log(options)
     var that = this;
+    var jsObj=JSON.parse(options.order);
+    console.log(jsObj);
     that.setData({
-      goods: app.globalData.goods,
-      cart: app.globalData.cart,
+      orderData:jsObj,
+      bill:JSON.parse(jsObj.bill)
     })
   },
   onShow: function() {},

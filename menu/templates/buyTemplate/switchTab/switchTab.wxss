@@ -12,7 +12,7 @@
 
 .top-bar-item {
   display: inline-block;
-  width: 33%;
+  width: 50%;
   color: gray;
   text-align: center;
   font-size: 28rpx;
