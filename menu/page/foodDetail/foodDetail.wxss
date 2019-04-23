@@ -271,3 +271,14 @@
 .bottom-check {
   position: fixed;
 }
+
+.title3 {
+  padding: 5rpx 20rpx;
+  color: #3c3c3c;
+  font-size: 24rpx;
+}
+
+.star-image {
+  width: 24rpx;
+  height: 24rpx;
+}

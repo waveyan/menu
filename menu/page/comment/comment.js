@@ -15,6 +15,7 @@ Page({
   // 监听字数
   bindTextAreaChange: function (e) {
     var that = this
+    console.log(e);
     var value = e.detail.value,
       len = parseInt(value.length);
     if (len > that.data.noteMaxLen)
@@ -31,10 +32,9 @@ Page({
       icon: 'success',
       duration: 1500,
       mask: false,
-      success: function () {
-        that.setData({ info: '', noteNowLen: 0, flag: 0 })
-      }
     })
+    console.log(that.data.infos);//key为dishId
+    console.log(that.data.rate);
   },
   changeColor1: function (e) {
     var that = this;

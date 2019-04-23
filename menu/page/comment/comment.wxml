@@ -4,11 +4,11 @@
     <view class="comment1-description">
       <view class='how'>{{item.name}}</view>
       <view class="star-pos">
-        <view class="stars  {{rate[index+1]>=1? 'on': ''}}" bindtap="changeColor1" data-id="{{index+1}}"></view>
-        <view class="stars  {{rate[index+1]>=2? 'on': ''}}" bindtap="changeColor2" data-id="{{index+1}}"></view>
-        <view class="stars  {{rate[index+1]>=3? 'on': ''}}" bindtap="changeColor3" data-id="{{index+1}}"></view>
-        <view class="stars  {{rate[index+1]>=4? 'on': ''}}" bindtap="changeColor4" data-id="{{index+1}}"></view>
-        <view class="stars  {{rate[index+1]>=5? 'on': ''}}" bindtap="changeColor5" data-id="{{index+1}}"></view>
+        <view class="stars  {{rate[index]>=1? 'on': ''}}" bindtap="changeColor1" data-id="{{index}}"></view>
+        <view class="stars  {{rate[index]>=2? 'on': ''}}" bindtap="changeColor2" data-id="{{index}}"></view>
+        <view class="stars  {{rate[index]>=3? 'on': ''}}" bindtap="changeColor3" data-id="{{index}}"></view>
+        <view class="stars  {{rate[index]>=4? 'on': ''}}" bindtap="changeColor4" data-id="{{index}}"></view>
+        <view class="stars  {{rate[index]>=5? 'on': ''}}" bindtap="changeColor5" data-id="{{index}}"></view>
       </view>
 
     </view>
@@ -16,8 +16,8 @@
     <view class="weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <textarea class="weui-textarea" bindinput="bindTextAreaChange" data-id='1' placeholder="我要提出建议..." style="height: 8em" value="{{infos[1].info}}" maxlength="{{noteMaxLen}}" focus />
-          <view class="weui-textarea-counter">{{infos[1].noteNowLen}}/{{noteMaxLen}}</view>
+          <textarea class="weui-textarea" bindinput="bindTextAreaChange" data-id='{{index}}' placeholder="我要提出建议..." style="height: 8em" value="{{infos[index].info}}" maxlength="{{noteMaxLen}}" focus />
+          <view class="weui-textarea-counter">{{infos[index].noteNowLen}}/{{noteMaxLen}}</view>
         </view>
       </view>
     </view>

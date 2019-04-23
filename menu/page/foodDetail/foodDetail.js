@@ -1,5 +1,5 @@
 var common = require('../../util/util.js');
-
+var api=require('../../util/api.js');
 var app = getApp();
 // 创建页面实例对象
 Page({
@@ -12,7 +12,9 @@ Page({
     //动态加入购物车
     hide_good_box: true,
     bus_x: 0,
-    bus_y: 0
+    bus_y: 0,
+    dishId:null,//菜单id
+    comments:[],//评论
   },
   postData: {},
 
@@ -24,9 +26,9 @@ Page({
     this.busPos = {};
     this.busPos['x'] = 45; // x坐标暂写死，自己可根据UI来修改
     this.busPos['y'] = _windowHeight - 30; // y坐标，也可以根据自己需要来修改
-    var postId = option.id;
+    that.data.dishId = option.id;
     console.log(that.data.goods);
-    var item = app.globalData.goods[postId];
+    var item = app.globalData.goods[that.data.dishId];
     if (item.isSpec.code == 1) {
       item.property = common.Tap(item.standard);
     }
@@ -35,10 +37,29 @@ Page({
       imgUrls: common.strToArray(item.imgBanner),
       goods: app.globalData.goods
     })
+    //获取评论
+    that.getComment();
   },
   onShow: function() {
     var that = this;
     that.refresh();
+  },
+  //get comments of this food
+  getComment:function(){
+    var that=this;
+    wx.request({
+      url: api.apiPath +'/otherapi/getComment',
+      data:{'dishId':that.data.dishId},
+      success(res){
+        var data=res.data
+        if(data.code==0)
+        that.setData({
+          comments:data.data
+        })
+        console.log(data.data);
+      }
+    })
+
   },
   // 抽屉显示和隐藏
   setModalStatus: function(e) {

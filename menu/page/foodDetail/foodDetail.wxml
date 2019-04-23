@@ -32,47 +32,54 @@
     <view class="wx-view_8NFuqw" data-c_e_id="wx_view_664566c4">
       <text class="c-block wx-text_t7lDiK" data-c_e_id="wx_text68f182cf">客户点评</text>
     </view>
-    <view class="commentlistitem" data-c_e_id="wx_view_16d0f86f">
-      <navigator class="nav_userlink" data-c_e_id="wx_navigator2ffed891" hover-class="navigator-hover">
-        <view class="likeuser fm2" data-c_e_id="wx_viewd34d457a">
-          <image class="useravatar" data-c_e_id="wx_image7b2bd094" mode="aspectFill" src="http://imgcdn.guoku.com/avatar/50/681eb4e30ac36d9481ea421c3fc61c6b.jpg" style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url(http://imgcdn.guoku.com/avatar/50/681eb4e30ac36d9481ea421c3fc61c6b.jpg); "
-          />
-        </view>
-      </navigator>
-      <view class="c-minheight wx-view_WnUrtw" data-c_e_id="wx_view_66505bdf">
-        <view class="wx-view_F9ISUC" data-c_e_id="wx_view27217bec">
-          <navigator class="wx-navigator_wTcTS2" data-c_e_id="wx_navigator70eae9f8" hover-class="navigator-hover">
-            <text class="wx-text_71u3gA" data-c_e_id="wx_text5fe6919d">木芽</text>
-          </navigator>
-          <view class="wx-view_wrkAD7" data-c_e_id="wx_view_53be94ea">
+    <block wx:for="{{comments}}">
+      <view class="commentlistitem" data-c_e_id="wx_view_16d0f86f">
+        <navigator class="nav_userlink" data-c_e_id="wx_navigator2ffed891" hover-class="navigator-hover">
+          <view class="likeuser fm2" data-c_e_id="wx_viewd34d457a">
+            <image class="useravatar" data-c_e_id="wx_image7b2bd094" mode="aspectFill" src="{{item.order.user.avatarUrl}}" style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url({{item.order.user.avatarUrl}}); "
+            />
+          </view>
+        </navigator>
+        <view class="c-minheight wx-view_WnUrtw" data-c_e_id="wx_view_66505bdf">
+          <view class="wx-view_F9ISUC" data-c_e_id="wx_view27217bec">
+            <navigator class="wx-navigator_wTcTS2" data-c_e_id="wx_navigator70eae9f8" hover-class="navigator-hover">
+              <text class="wx-text_71u3gA" data-c_e_id="wx_text5fe6919d">{{item.order.user.nickName}}</text>
+              <block wx:if="{{item.rate==5}}">
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+              </block>
+              <block wx:elif="{{item.rate==4}}">
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+              </block>
+              <block wx:elif="{{item.rate==3}}">
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+              </block>
+              <block wx:elif="{{item.rate==2}}">
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+              </block>
+              <block wx:elif="{{item.rate==1}}">
+                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+              </block>
+            </navigator>
+            <view class="wx-view_wrkAD7" data-c_e_id="wx_view_53be94ea">
+            </view>
+          </view>
+          <text class="c-block wx-text_kGXxsa" data-c_e_id="wx_text_39bacddb">{{item.comment}}</text>
+          <view class="comment_operate" data-c_e_id="wx_view_cf5ce19f">
+            <text class="listitem_creattime" data-c_e_id="wx_text8c8804b3">{{item.createTime}}</text>
           </view>
         </view>
-        <text class="c-block wx-text_kGXxsa" data-c_e_id="wx_text_39bacddb">在植觉买过东西，每一件都是用心之作。很喜欢植觉的调调，不争不抢。今天在这个app上无意中也看到了植觉小物，小确幸顿时溢满心间</text>
-        <view class="comment_operate" data-c_e_id="wx_view_cf5ce19f">
-          <text class="listitem_creattime" data-c_e_id="wx_text8c8804b3">2016.10.29</text>
-        </view>
       </view>
-    </view>
-    <view class="commentlistitem" data-c_e_id="wx_view4daafd3b">
-      <navigator class="nav_userlink" data-c_e_id="wx_navigator4581cf51" hover-class="navigator-hover">
-        <view class="likeuser fm3" data-c_e_id="wx_view94910b5d">
-          <image class="useravatar" data-c_e_id="wx_imaged4532b14" mode="aspectFill" src="http://imgcdn.guoku.com/avatar/128/589c0d8d2966eb20241a61564676b7f7.jpg" style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url(http://imgcdn.guoku.com/avatar/128/589c0d8d2966eb20241a61564676b7f7.jpg); "
-          />
-        </view>
-      </navigator>
-      <view class="c-minheight wx-view_WnUrtw" data-c_e_id="wx_viewc808f6b9">
-        <view class="wx-view_F9ISUC" data-c_e_id="wx_view54c5a204">
-          <navigator class="wx-navigator_wTcTS2" data-c_e_id="wx_navigator9e12243f" hover-class="navigator-hover">
-            <text class="wx-text_71u3gA" data-c_e_id="wx_textf720176a">UPUP</text>
-          </navigator>
-          <view class="wx-view_wrkAD7" data-c_e_id="wx_viewd862c378" />
-        </view>
-        <text class="c-block wx-text_kGXxsa" data-c_e_id="wx_texte7f2518b">所以说包装多重要，你普通卖花的能把弹簧草卖到这个价格吗？呵呵……</text>
-        <view class="comment_operate" data-c_e_id="wx_view1ec2d46b">
-          <text class="listitem_creattime" data-c_e_id="wx_text7a845479">2016.10.29</text>
-        </view>
-      </view>
-    </view>
+    </block>
   </view>
   <!-- 购物车 -->
   <template is="cart" data="{{cart,showCartDetail,showCart,goods}}" />
