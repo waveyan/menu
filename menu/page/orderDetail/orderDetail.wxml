@@ -42,13 +42,13 @@
       <block wx:else>{{orderData.chosNum}}人&nbsp;&nbsp;</block>
       </text>
     </view>
-    <view class="order_info" bindtap='goToMark'>
+    <view class="order_info">
       <text>备注</text>
       <text class="order_info_right_color">{{orderData.remark}}</text>
     </view>
 
     <block wx:if="{{bill.code}}">
-      <view class="bill" bindtap='goToBill'>
+      <view class="bill">
         <view class="top_view">
           <text>发票信息（公司）</text>
         </view>
@@ -58,13 +58,13 @@
       </view>
     </block>
     <block wx:elif="{{bill.up}}">
-      <view class="order_info" bindtap='goToBill'>
+      <view class="order_info">
         <text>发票信息(个人)</text>
         <text class="order_info_right_color">抬头：{{bill.up}}</text>
       </view>
     </block>
     <block wx:else>
-      <view class="order_info" bindtap='goToBill'>
+      <view class="order_info">
         <text>发票信息</text>
         <text class="order_info_right_color" decode="true">不需要&nbsp;&nbsp;</text>
       </view>
@@ -73,10 +73,12 @@
     <view class="true_pay">
       <text>实付金额:　</text>
       <text class="true_pay_right">¥{{orderData.totalPrice}}</text>
-
     </view>
+    <view class="address_view">
+    </view>
+      <text class="order_info_right_color">该订单创建时间为：{{orderData.orderTime}}</text>
     <block wx:if="{{orderData.ifComment==0&&orderData.ifComplete==1}}">
-      <button class="bottom_btn">评价</button>
+      <button class="bottom_btn" bindtap='goToComment'>评价</button>
     </block>
     <block wx:if="{{orderData.ifPay==1&&orderData.ifComplete==0}}">
       <button type='primary' class='refund_btn'>申请退款</button>

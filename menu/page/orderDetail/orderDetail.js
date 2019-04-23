@@ -4,7 +4,8 @@ const app = getApp();
 Page({
   data: {
     orderData: {},
-    bill:{}
+    bill:{},
+    orderJson:''
   },
   // 生命周期函数--监听页面加载
   onLoad: function(options) {
@@ -13,53 +14,14 @@ Page({
     console.log(jsObj);
     that.setData({
       orderData:jsObj,
-      bill:JSON.parse(jsObj.bill)
+      bill:JSON.parse(jsObj.bill),
+      orderJson:options.order,
     })
   },
-  onShow: function() {},
-  //餐具
-  bindPickerChange(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      index: e.detail.value
-    })
-  },
-  // 马上点餐
-  addressClick: function() {
-    const that = this
-    wx.showActionSheet({
-      itemList: ['编辑收货信息', '扫描桌面二维码'],
-      success(e) {
-        // 扫码
-        if (e.tapIndex == 1) {
-          wx.scanCode({
-            success(res) {
-              console.log(res)
-              that.setData({
-                result: res.result
-              })
-            },
-            fail() {}
-          })
-        }
-        // 编辑收货地址
-        else {
-          wx.navigateTo({
-            url: '../addressManager/addressManager',
-          })
-        }
-      }
-    })
-  },
-  goToMark: function(e) {
+  goToComment: function (e) {
+    var that=this;
     wx.navigateTo({
-      url: '../orderMark/orderMark',
+      url: '../comment/comment?order=' + that.data.orderJson,
     })
-  },
-  goToBill: function(e) {
-    var that = this;
-    wx.navigateTo({
-      url: '../orderBill/orderBill?up=' + that.data.up + '&code=' + that.data.code + '&value=' + that.data.bvalue,
-    })
-  },
+  }
 })

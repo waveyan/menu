@@ -27,7 +27,7 @@
         <block wx:else>
         订单已完成
           <block wx:if="{{item.ifComment==0}}">
-          <button class='order_btn'>待评价</button>
+          <button class='order_btn' bindtap='goToComment' data-order='{{item.orderJson}}'>待评价</button>
           </block>
         </block>
         </view>

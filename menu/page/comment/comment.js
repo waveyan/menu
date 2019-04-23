@@ -6,7 +6,9 @@ Page({
     info: "",
     noteNowLen: 0,//备注当前字数
     how:"",
-    infos:{}
+    infos:{},
+    goods:{},
+    orderData:{},
   },
   _rate:{},
   _infos:{},
@@ -33,21 +35,6 @@ Page({
         that.setData({ info: '', noteNowLen: 0, flag: 0 })
       }
     })
-
-  },
-  setHow:function(that){
-    if(that.data.flag<=2)
-    that.setData({
-      how:"不太理想！",
-    })
-    else if(that.data.flag>2&&that.data.flag<4)
-    that.setData({
-      how:"还行吧！",
-    })
-    else
-    that.data.setData({
-      how:"非常好！"
-    })
   },
   changeColor1: function (e) {
     var that = this;
@@ -55,7 +42,6 @@ Page({
     that.setData({
       rate:that._rate
     });
-    // that.setHow(that);
   },
   changeColor2: function (e) {
     var that = this;
@@ -63,7 +49,6 @@ Page({
     that.setData({
       rate: that._rate
     });
-    // that.setHow(that);
   },
   changeColor3: function (e) {
     var that = this;
@@ -71,7 +56,6 @@ Page({
     that.setData({
       rate: that._rate
     });
-    // that.setHow(that);
   },
   changeColor4: function (e) {
     var that = this;
@@ -79,7 +63,6 @@ Page({
     that.setData({
       rate: that._rate
     });
-    // that.setHow(that);
   },
   changeColor5: function (e) {
     var that = this;
@@ -87,6 +70,19 @@ Page({
     that.setData({
       rate: that._rate
     });
-    // that.setHow(that);
   },
+  onLoad:function(e){
+    var that=this;
+    console.log(e);
+    var obj=JSON.parse(e.order);
+    var temp={};
+    //去重，口味不同分量不同的同一菜色
+    for(var i=0;i<obj.goods.length;i++){
+      temp[obj.goods[i].id]=obj.goods[i]
+    }
+    that.setData({
+      goods:temp,
+      orderData:obj
+    });
+  }
 })

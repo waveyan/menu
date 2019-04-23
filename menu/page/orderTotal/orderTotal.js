@@ -23,18 +23,6 @@ Page({
       })
     }
   },
-  //点击到相应的页面
-  orderbutton: function(options) {
-    // var type = options.currentTarget.dataset.button;
-    // console.log(type)
-    // if (type == "去支付") {
-
-    // } else if (type == "查看详情") {
-
-    // } else if (type == "确认收货") {
-
-    // }
-  },
   //获取我的订单
   getMyOrders:function(){
     var that=this;
@@ -56,9 +44,9 @@ Page({
     })
 
   },
-  goToComment:function(){
+  goToComment:function(e){
     wx.navigateTo({
-      url: '../comment/comment',
+      url: '../comment/comment?order=' + e.currentTarget.dataset.order,
     })
   }
 
