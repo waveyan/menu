@@ -1,5 +1,6 @@
 <import src="../../templates/buyTemplate/cart/cart.wxml" />
 <import src="../../templates/buyTemplate/drawer/drawer.wxml" />
+<scroll-view scroll-y='true' style='height:{{scroll_height}}rpx' lower-threshold="10" bindscrolltolower='getMoreComment'>
 <view class="wx-view_KHAWVZ" data-c_e_id="wx_viewb7dbd52e">
   <swiper autoplay="True" class="wx-swiper_Mn3JMs" data-c_e_id="wx_swiper43d9f094" indicator-dots="True" lower-threshold="50">
     <swiper-item class="c-full wx-swiper-item_F6vCx8" data-c_e_id="wx_swiper_item7c6cedf6">
@@ -27,62 +28,65 @@
       <image src="../../res/images/icon/getCar.png"></image>
     </view>
   </block>
+
   <view class="wx-view_Ipiy3Y" data-c_e_id="wx_viewa6f000ae" />
   <view class="commentlistwrap" data-c_e_id="wx_view_c359400f">
     <view class="wx-view_8NFuqw" data-c_e_id="wx_view_664566c4">
       <text class="c-block wx-text_t7lDiK" data-c_e_id="wx_text68f182cf">客户点评</text>
     </view>
-    <block wx:for="{{comments}}">
-      <view class="commentlistitem" data-c_e_id="wx_view_16d0f86f">
-        <navigator class="nav_userlink" data-c_e_id="wx_navigator2ffed891" hover-class="navigator-hover">
-          <view class="likeuser fm2" data-c_e_id="wx_viewd34d457a">
-            <image class="useravatar" data-c_e_id="wx_image7b2bd094" mode="aspectFill" src="{{item.order.user.avatarUrl}}" style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url({{item.order.user.avatarUrl}}); "
-            />
-          </view>
-        </navigator>
-        <view class="c-minheight wx-view_WnUrtw" data-c_e_id="wx_view_66505bdf">
-          <view class="wx-view_F9ISUC" data-c_e_id="wx_view27217bec">
-            <navigator class="wx-navigator_wTcTS2" data-c_e_id="wx_navigator70eae9f8" hover-class="navigator-hover">
-              <text class="wx-text_71u3gA" data-c_e_id="wx_text5fe6919d">{{item.order.user.nickName}}</text>
-              <block wx:if="{{item.rate==5}}">
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-              </block>
-              <block wx:elif="{{item.rate==4}}">
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-              </block>
-              <block wx:elif="{{item.rate==3}}">
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-              </block>
-              <block wx:elif="{{item.rate==2}}">
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-              </block>
-              <block wx:elif="{{item.rate==1}}">
-                <image class='star-image' src="../../res/images/icon/star.jpg"></image>
-              </block>
-            </navigator>
-            <view class="wx-view_wrkAD7" data-c_e_id="wx_view_53be94ea">
+      <block wx:for="{{comments}}">
+        <view class="commentlistitem" data-c_e_id="wx_view_16d0f86f">
+          <navigator class="nav_userlink" data-c_e_id="wx_navigator2ffed891" hover-class="navigator-hover">
+            <view class="likeuser fm2" data-c_e_id="wx_viewd34d457a">
+              <image class="useravatar" data-c_e_id="wx_image7b2bd094" mode="aspectFill" src="{{item.order.user.avatarUrl}}" style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url({{item.order.user.avatarUrl}}); "
+              />
+            </view>
+          </navigator>
+          <view class="c-minheight wx-view_WnUrtw" data-c_e_id="wx_view_66505bdf">
+            <view class="wx-view_F9ISUC" data-c_e_id="wx_view27217bec">
+              <navigator class="wx-navigator_wTcTS2" data-c_e_id="wx_navigator70eae9f8" hover-class="navigator-hover">
+                <text class="wx-text_71u3gA" data-c_e_id="wx_text5fe6919d">{{item.order.user.nickName}}</text>
+                <block wx:if="{{item.rate==5}}">
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                </block>
+                <block wx:elif="{{item.rate==4}}">
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                </block>
+                <block wx:elif="{{item.rate==3}}">
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                </block>
+                <block wx:elif="{{item.rate==2}}">
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                </block>
+                <block wx:elif="{{item.rate==1}}">
+                  <image class='star-image' src="../../res/images/icon/star.jpg"></image>
+                </block>
+              </navigator>
+              <view class="wx-view_wrkAD7" data-c_e_id="wx_view_53be94ea">
+              </view>
+            </view>
+            <text class="c-block wx-text_kGXxsa" data-c_e_id="wx_text_39bacddb">{{item.comment}}</text>
+            <view class="comment_operate" data-c_e_id="wx_view_cf5ce19f">
+              <text class="listitem_creattime" data-c_e_id="wx_text8c8804b3">{{item.createTime}}</text>
             </view>
           </view>
-          <text class="c-block wx-text_kGXxsa" data-c_e_id="wx_text_39bacddb">{{item.comment}}</text>
-          <view class="comment_operate" data-c_e_id="wx_view_cf5ce19f">
-            <text class="listitem_creattime" data-c_e_id="wx_text8c8804b3">{{item.createTime}}</text>
-          </view>
         </view>
-      </view>
-    </block>
+      </block>
   </view>
+
   <!-- 购物车 -->
   <template is="cart" data="{{cart,showCartDetail,showCart,goods}}" />
   <!-- 规格抽屉 -->
   <template is="drawer" data="{{showModalStatus,item,animationData,warning,haveCheckedProp,postData,index,number,getCount}}" />
 </view>
+</scroll-view>

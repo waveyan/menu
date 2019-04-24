@@ -46,7 +46,7 @@ Page({
   },
   goToComment:function(e){
     wx.navigateTo({
-      url: '../comment/comment?order=' + e.currentTarget.dataset.order,
+      url: '../comment/comment?order=' + e.currentTarget.dataset.order+'&from=orderTotal',
     })
   }
 

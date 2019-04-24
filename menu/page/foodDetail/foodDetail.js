@@ -15,13 +15,19 @@ Page({
     bus_y: 0,
     dishId:null,//菜单id
     comments:[],//评论
+    comment_start:0//评论查询起始位置，返回10条已写死
   },
   postData: {},
 
   onLoad: function(option) {
     // 获取到加入购物车选项信息
     var that = this;
-    var _windowHeight = wx.getSystemInfoSync().windowHeight;
+    var _windowHeight = wx.getSystemInfoSync().windowHeight;//屏幕高度
+    let _windowWidth = wx.getSystemInfoSync().windowWidth // 屏幕的宽度
+    //scroll-view自适应
+    this.setData({
+      scroll_height: _windowHeight * 750 / _windowWidth - 30
+    })
     // 目标终点元素 - 购物车的位置坐标
     this.busPos = {};
     this.busPos['x'] = 45; // x坐标暂写死，自己可根据UI来修改
@@ -38,28 +44,31 @@ Page({
       goods: app.globalData.goods
     })
     //获取评论
-    that.getComment();
+    that.getMoreComment();
   },
   onShow: function() {
     var that = this;
     that.refresh();
   },
-  //get comments of this food
-  getComment:function(){
+  //滚动刷新更多评论
+  getMoreComment:function(){
     var that=this;
+    var comments=that.data.comments;
     wx.request({
-      url: api.apiPath +'/otherapi/getComment',
-      data:{'dishId':that.data.dishId},
-      success(res){
-        var data=res.data
-        if(data.code==0)
-        that.setData({
-          comments:data.data
-        })
-        console.log(data.data);
+      url: api.apiPath + '/otherapi/getComment',
+      data: { 'dishId': that.data.dishId, 'start': that.data.comment_start },
+      success(res) {
+        var data = res.data
+        if (data.code == 0){
+          comments = comments.concat(data.data);
+          console.log(data.data);
+          that.setData({
+            comments: comments,
+            comment_start:that.data.comment_start+10
+          })
+        }
       }
     })
-
   },
   // 抽屉显示和隐藏
   setModalStatus: function(e) {
