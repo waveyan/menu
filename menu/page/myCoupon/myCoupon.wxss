@@ -45,7 +45,13 @@
   top: 83rpx;
 }
 
-.coupon-left .t2 {
+.coupon-left .zt2 {
+  left: 15rpx;
+  top: 50rpx;
+  font-size: 80rpx;
+  font-weight: bold;
+}
+.coupon-left .xt2 {
   left: 45rpx;
   top: 50rpx;
   font-size: 80rpx;

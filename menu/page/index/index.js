@@ -45,6 +45,10 @@ Page({
   },
   onShow: function() {
     var that = this
+    that.setData({
+      showCartDetail:false
+    })
+    //关闭购物车详情栏
     that.refresh();
     console.log(that.data.swiper)
   },
@@ -100,7 +104,7 @@ Page({
     var that = this
     that.setData({
       cart: app.globalData.cart,
-      showCartDetail: app.globalData.showCartDetail,
+      //showCartDetail: app.globalData.showCartDetail,
       showCart: app.globalData.showCart,
     })
   },

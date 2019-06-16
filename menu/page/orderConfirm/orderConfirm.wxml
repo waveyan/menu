@@ -91,7 +91,7 @@
         <text class="order_info_right_color" decode="true">优惠{{coupon.cash}}元</text>
       </block>
       <block wx:elif="{{coupon.couponType.code==2}}">
-        <text class="order_info_right_color" decode="true">{{coupon.discountRate/10.0}}折优惠</text>
+        <text class="order_info_right_color" decode="true">{{coupon.discountRate}}折优惠</text>
       </block>
       <block wx:else>
         <text class="order_info_right_color" decode="true"> 无可用&nbsp;&nbsp;</text>

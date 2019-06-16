@@ -7,7 +7,7 @@ Page({
     addressInfo: null,
     chos_array: ['不需要', '1人', '2人', '3人', '4人', '5人', '6人', '7人', '8人', '9人', '10人', '10人以上'], //餐具数量
     index: 0, //餐具默认数量
-    distribution: 5, //配送费
+    distribution: 0, //配送费
     deskNum: null, //桌号
     coupon: null, //某一可用优惠券
     cart: null, //购物车
@@ -110,7 +110,7 @@ Page({
             break;
           }
         }
-        //计算机优惠券优惠金额
+        //计算优惠券优惠金额
         that.caculateCoupon();
         //设置地址
         that.setData({
@@ -129,10 +129,10 @@ Page({
         coupon_price: that.data.coupon.cash
       })
     else if (that.data.coupon != null && that.data.coupon.couponType.code == 2) {
-      var discount = 100 - that.data.coupon.discountRate
-      var p = that.data.cart.total * discount / 100.0;
+      var discount = that.data.coupon.discountRate
+      var p = that.data.cart.total * discount / 10.0;
       that.setData({
-        coupon_price: p
+        coupon_price: p,
       });
     }
   },
@@ -153,6 +153,7 @@ Page({
   //确定支付
   paynow: function() {
     var that = this;
+    var orderId=null;
     if (that.checkAddress()) {
       var standardCart = that.data.cart.standardCart;
       var cart = that.data.cart.list;
@@ -179,6 +180,7 @@ Page({
       data.mark = that.data.mark;
       if (that.data.coupon)
         data.couponId = that.data.coupon.id;
+      console.log(that.data.coupon)
       data.bill = JSON.stringify(bill);
       let str = JSON.stringify(data)
       console.log(str);
@@ -192,7 +194,7 @@ Page({
         success(res) {
           var data = res.data;
           if (data.code == 0) {
-            var orderId = data.data;
+            orderId = data.data;
             //请求服务器下单
             wx.request({
               url: api.apiPath + '/userapi/toPay',
@@ -215,15 +217,26 @@ Page({
                     'paySign': payParam.paySign,
                     'success': function(res) {
                       console.log(res);
+                      
                     },
                     'fail': function(res) {
                       console.log(res);
+                      //删除订单
+                      wx.request({
+                        url: api.apiPath + '/userapi/toPay',
+                        data:{'orderId':orderId},
+                        header: { 'access-token': api.getAccessToken()},
+                        method:'POST',
+                        success(res){
+                          console.log('删除订单成功！！');
+                        }
+                      })
                     }
                   });
                 } else {
                   wx.showModal({
                     title: '提示',
-                    content: "11111111",
+                    content: "支付失败！",
                     showCancel: false,
                     success: function(rs) {}
                   })

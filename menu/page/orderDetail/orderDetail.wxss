@@ -127,3 +127,7 @@
   border-top: 0.5px solid silver;
   border-top-color: #efeff4;
 }
+.star-image {
+  width: 24rpx;
+  height: 24rpx;
+}

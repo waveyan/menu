@@ -39,7 +39,11 @@ Page({
       goods:app.globalData.goods,
       goodsList:app.globalData.goodsList,
     });
-    that.refresh();
+    that.refresh()
+    //关闭购物车详情栏
+    that.setData({
+      showCartDetail: false
+    })
   },
   onGoodsScroll: function(e) {
     if (e.detail.scrollTop > 10 && !this.data.scrollDown) {
@@ -83,7 +87,7 @@ Page({
   refresh: function () {
     this.setData({
       cart: app.globalData.cart,
-      showCartDetail: app.globalData.showCartDetail,
+      //showCartDetail: app.globalData.showCartDetail,
       showCart: app.globalData.showCart,
     })
   },

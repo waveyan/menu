@@ -82,15 +82,17 @@ Page({
           wx.showToast({
             title: '发布成功!',
             icon: 'success',
-            duration: 1500,
+            duration: 3000,
             mask: false,
-          });
-          //返回上一页,from来自orderTotal返回上一层，来自orderDetail返回上两层
-          var delta = 1;
-          if (that.data.from != 'orderTotal')
-            delta = 2;
-          wx.navigateBack({
-            delta: delta
+            success(e){
+              //返回上一页,from来自orderTotal返回上一层，来自orderDetail返回上两层
+              var delta = 1;
+              if (that.data.from != 'orderTotal')
+                delta = 2;
+              wx.navigateBack({
+                delta: delta
+              });
+            }
           });
         } else {
           wx.showToast({

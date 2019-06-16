@@ -1,5 +1,5 @@
 // data:dict,method:POST/GET,head:dict,dst:xxx/xxx/
-var apiPath = "http://127.0.0.1:8081/wxOrder";
+var apiPath = "http://192.168.1.4:8081/wxOrder";
 //var apiPath = "https://www.dayuhc.cn/wxOrder";
 function login(data) {
   wx.login({

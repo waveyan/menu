@@ -12,18 +12,17 @@
           <view class="float-li t1">
             <view class="coupon-left">
               <block wx:if="{{item.couponType.code==2}}">
-                <view class="t t2">{{item.discountRate/10}}折</view>
+                <view class="t zt2">{{item.discountRate}}折</view>
                 <view class="t t3"><text>会员专享全场<block wx:if="{{item.useLimit==0}}">均可使用</block><block wx:else>满{{item.useLimit}}可使用</block>
                 兑换积分:{{item.integral}}</text>
                 </view>
               </block>
               <block wx:else>
                 <view class="t t1">￥</view>
-                <view class="t t2">{{item.cash}}</view>
+                <view class="t xt2">{{item.cash}}</view>
                 <view class="t t3">
                   <text>会员专享全场<block wx:if="{{item.useLimit==0}}">购即减
-</block><block wx:else> 满{{item.useLimit}}减{{item.cash}}</block>
-兑换积分:{{item.integral}}
+</block><block wx:else> 满{{item.useLimit}}减{{item.cash}}</block>兑换积分:{{item.integral}}
                    </text>
                 </view>
               </block>
