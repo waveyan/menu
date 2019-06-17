@@ -2,7 +2,6 @@
   "pages": [
     "page/index/index",
     "page/orderTotal/orderTotal",
-    
     "page/myCoupon/myCoupon",
     "page/comment/comment",
     "page/loading/loading",
@@ -52,5 +51,6 @@
         "text": "个人中心"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

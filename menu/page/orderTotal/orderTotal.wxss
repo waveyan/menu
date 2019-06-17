@@ -151,3 +151,12 @@
   float: right;
   margin-top: 20rpx
 }
+/* 模态框 */
+.tellinput {
+  border: 1px solid #efeff4;
+}
+
+.tellsection input {
+  color: #000;
+  width: 100%;
+}

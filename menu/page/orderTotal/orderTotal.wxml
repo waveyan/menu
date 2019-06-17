@@ -2,7 +2,17 @@
 <view class="container">
 <!-- 切换栏 -->
 <template is="switchTab" data="{{currentNavtab,navTab}}" />
-
+<!-- 模态框 -->
+  <view>
+    <modal title="退款理由" confirm-text="确认" cancel-text="取消" hidden="{{addtellHidden}}" bindconfirm="modalConfirm" bindcancel="modalCancel">
+      <label>
+        <view class="tellsection">
+          <input class="tellinput" maxlength="50" bindinput="saveUsertell" placeholder="亲~我是哪里做得不好呀 ╯﹏╰ "/>
+        </view>
+      </label>
+    </modal>
+  </view>
+  <!-- end 模态框 -->
   <!--列表list组件 需要修改-->
   <scroll-view bindscroll="srcoll" class="scrollview-list" scroll-y="true" style="height:750px">
   <block wx:for="{{list}}">
@@ -21,7 +31,12 @@
         <block wx:if="{{currentNavtab==0}}">
           订单进行中
           <block wx:if="{{item.ifPay==1}}">
-          <button class='order_btn'>申请退款</button>
+          <block wx:if="{{ item.refund_status==0}}">
+          <button class='order_btn' bindtap='footAddtell' data-id="{{item.id}}">申请退款</button>
+          </block>
+          <block wx:else>
+                    <button class='order_btn' disabled='true'>已申请退款</button>
+                    </block>
           </block>
         </block>
         <block wx:else>
